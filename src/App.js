@@ -1,8 +1,10 @@
-import './index.css';
-import { useState, useEffect } from 'react';
-import { supabase } from './supabaseClient';
-import Auth from './Auth';
-import Account from './Account';
+/* eslint-disable import/no-anonymous-default-export */
+import "./index.css";
+import { useState, useEffect } from "react";
+import { supabase } from "./supabaseClient";
+import Auth from "./Auth";
+import Account from "./Account";
+import StretchCam from "./StretchCam";
 
 export default () => {
   const [session, setSession] = useState(null);
@@ -16,11 +18,12 @@ export default () => {
   }, []);
 
   return (
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+    <div className="container" style={{ padding: "50px 0 100px 0" }}>
       {!session ? (
         <Auth />
       ) : (
-        <Account key={session.user.id} session={session} />
+        <StretchCam />
+        // <Account key={session.user.id} session={session} />
       )}
     </div>
   );
