@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
 
@@ -6,9 +7,9 @@ const Teachable = () => {
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
   // the link to your model provided by Teachable Machine export panel
-  const URL = "../public/model";
+  const URL = "../public/model/";
   let model, webcam, ctx, labelContainer, maxPredictions;
-
+  const canvasRef = useRef(null); //in use effect/didmount
   async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
@@ -16,7 +17,7 @@ const Teachable = () => {
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     // Note: the pose library adds a tmPose object to your window (window.tmPose)
-    model = await tmPose.load(modelURL, metadataURL);
+    model = await tmPose.load("model/model.json", "model/metadata.json");
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
@@ -28,10 +29,11 @@ const Teachable = () => {
     window.requestAnimationFrame(loop);
 
     // append/get elements to the DOM
-    const canvas = document.getElementById("canvas");
-    canvas.width = size;
-    canvas.height = size;
-    ctx = canvas.getContext("2d");
+    // const canvas = document.getElementById("canvas");
+
+    // canvas.width = size;
+    // canvas.height = size;
+    ctx = canvasRef.current.getContext("2d"); //in use effect/didmount
     labelContainer = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions; i++) {
       // and class labels
@@ -56,7 +58,10 @@ const Teachable = () => {
       const classPrediction =
         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
       labelContainer.childNodes[i].innerHTML = classPrediction;
+      console.log(classPrediction);
     }
+    //console.log(maxPredictions);
+    //console.log(classPrediction);
 
     // finally draw the poses
     drawPose(pose);
@@ -76,11 +81,16 @@ const Teachable = () => {
   return (
     <div>
       <div>Teachable Machine Pose Model</div>
-      <button type="button" onclick="init()">
+      <button
+        type="button"
+        onClick={() => {
+          init();
+        }}
+      >
         Start
       </button>
       <div>
-        <canvas id="canvas"></canvas>
+        <canvas ref={canvasRef} width={200} height={200}></canvas>
       </div>
       <div id="label-container"></div>
     </div>
