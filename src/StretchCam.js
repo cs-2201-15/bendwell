@@ -1,22 +1,28 @@
 import * as tf from "@tensorflow/tfjs";
 import * as posenet from "@tensorflow-models/posenet";
 import Webcam from "react-webcam";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { drawKeypoints, drawSkeleton } from "./Utilities";
+import ml5 from "ml5";
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
+const StretchCam = () => {
+  const [tracking, setTracking] = useState(true);
+
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
   const runPosenet = async () => {
     const net = await posenet.load({
       inputResolution: { width: 640, height: 480 },
-      scale: 0.5,
+      scale: 0.3,
     });
-    setInterval(() => {
-      detect(net);
-    }, 1000);
+
+    if (!tracking) {
+      setInterval(() => {
+        detect(net);
+      }, 1000);
+    }
   };
 
   const detect = async (net) => {
@@ -57,6 +63,9 @@ export default () => {
 
   return (
     <div>
+      <button type="button" onClick={() => setTracking(!tracking)}>
+        Track
+      </button>
       <Webcam
         ref={webcamRef}
         style={{
@@ -65,6 +74,7 @@ export default () => {
           marginRight: "auto",
           left: 0,
           right: 0,
+          top: 100,
           textAlign: "center",
           zindex: 9,
           width: 640,
@@ -80,6 +90,7 @@ export default () => {
           marginRight: "auto",
           left: 0,
           right: 0,
+          top: 100,
           textAlign: "center",
           zindex: 9,
           width: 640,
@@ -89,3 +100,5 @@ export default () => {
     </div>
   );
 };
+
+export default StretchCam;
