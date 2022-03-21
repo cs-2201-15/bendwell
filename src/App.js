@@ -5,6 +5,7 @@ import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
 import Account from "./Account";
 import StretchCam from "./StretchCam";
+import Teachable from "./Teachable";
 
 export default () => {
   const [session, setSession] = useState(null);
@@ -22,7 +23,8 @@ export default () => {
       {!session ? (
         <Auth />
       ) : (
-        <StretchCam />
+        <Teachable />
+        // <StretchCam />
         // <Account key={session.user.id} session={session} />
       )}
     </div>
