@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useEffect, useState } from 'react';
-import { supabase } from './supabaseClient';
+import { supabase } from '../supabaseClient';
 import VisuallyHidden from '@reach/visually-hidden';
 
 export default ({ url, size, onUpload }) => {
