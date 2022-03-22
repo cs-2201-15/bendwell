@@ -2,18 +2,18 @@ import { useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
 
+//if we get "t is not a func" error, make sure dependencies are as follows:    "@teachablemachine/pose": "^0.8.6",
+// "@tensorflow/tfjs": "^3.14.0",
+
 const Teachable = () => {
   // More API functions here:
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
   // the link to your model provided by Teachable Machine export panel
-  const URL = "../public/model/";
+  //const URL = "../public/model/";
   let model, webcam, ctx, labelContainer, maxPredictions;
   const canvasRef = useRef(null); //in use effect/didmount
   async function init() {
-    const modelURL = URL + "model.json";
-    const metadataURL = URL + "metadata.json";
-
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     // Note: the pose library adds a tmPose object to your window (window.tmPose)
@@ -28,11 +28,6 @@ const Teachable = () => {
     await webcam.play();
     window.requestAnimationFrame(loop);
 
-    // append/get elements to the DOM
-    // const canvas = document.getElementById("canvas");
-
-    // canvas.width = size;
-    // canvas.height = size;
     ctx = canvasRef.current.getContext("2d"); //in use effect/didmount
     labelContainer = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions; i++) {
@@ -61,7 +56,6 @@ const Teachable = () => {
       console.log(classPrediction);
     }
     //console.log(maxPredictions);
-    //console.log(classPrediction);
 
     // finally draw the poses
     drawPose(pose);

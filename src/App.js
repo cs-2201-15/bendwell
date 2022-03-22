@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
 import Account from "./Account";
-import StretchCam from "./StretchCam";
 import Teachable from "./Teachable";
 
 export default () => {
