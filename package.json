@@ -5,7 +5,7 @@
   "dependencies": {
     "@reach/visually-hidden": "^0.16.0",
     "@supabase/supabase-js": "^1.31.1",
-    "@tensorflow-models/posenet": "^2.2.2",
+    "@teachablemachine/pose": "^0.8.6",
     "@tensorflow/tfjs": "^3.14.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
