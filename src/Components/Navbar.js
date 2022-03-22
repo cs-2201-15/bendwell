@@ -24,8 +24,9 @@ export default function Navbar() {
           <Link to="/home">
             <h1>BendWell</h1>
           </Link>
-          <Link to="/login">Login</Link>
           <Link to="/stretches">Stretches</Link>
+          <Link to="/createaccount">Create Account</Link>
+          <Link to="/login">Login</Link>
         </nav>
       ) : (
         //Login
