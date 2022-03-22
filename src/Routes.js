@@ -1,15 +1,15 @@
-import React from 'react';
-import { withRouter, Route, Redirect, Routes } from 'react-router-dom';
-import Auth from './Components/Auth';
-import Home from './Components/Home';
-import Teachable from './Components/Teachable';
-import AllStretches from './Components/AllStretches';
-import SingleStretch from './Components/SingleStretch';
-import Account from './Components/Account';
-import Routines from './Components/Routines';
-import SingleRoutine from './Components/SingleRoutine';
-import { useState, useEffect } from 'react';
-import { supabase } from './supabaseClient';
+import React from "react";
+import { withRouter, Route, Redirect, Routes } from "react-router-dom";
+import Auth from "./Components/Auth";
+import Home from "./Components/Home";
+import Teachable from "./Components/Teachable";
+import AllStretches from "./Components/AllStretches";
+import SingleStretch from "./Components/SingleStretch";
+import Account from "./Components/Account";
+import Routines from "./Components/Routines";
+import SingleRoutine from "./Components/SingleRoutine";
+import { useState, useEffect } from "react";
+import { supabase } from "./supabaseClient";
 
 const RoutesDirectory = () => {
   const [session, setSession] = useState(null);
@@ -28,25 +28,27 @@ const RoutesDirectory = () => {
 
   return (
     <div>
-      {!session ? (
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Auth />} />
-          <Route path="/stretches" element={<AllStretches />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route path="/stretchcam" element={<Teachable />} />
-          <Route path="/stretches/:id" element={<SingleStretch />} />
-          <Route
-            path="/account"
-            element={<Account key={session.user.id} session={session} />}
-          />
-          {/* <Route path="/account" element={<Account />} /> */}
-          <Route path="/routines" element={<Routines />} />
-          <Route path="/routines/:id" element={<SingleRoutine />} />
-        </Routes>
-      )}
+      <Routes>
+        {!session ? (
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Auth />} />
+            <Route path="/stretches" element={<AllStretches />} />
+          </>
+        ) : (
+          <>
+            <Route path="/stretchcam" element={<Teachable />} />
+            <Route path="/stretches/:id" element={<SingleStretch />} />
+            <Route
+              path="/account"
+              element={<Account key={session.user.id} session={session} />}
+            />
+            {/* <Route path="/account" element={<Account />} /> */}
+            <Route path="/routines" element={<Routines />} />
+            <Route path="/routines/:id" element={<SingleRoutine />} />
+          </>
+        )}
+      </Routes>
     </div>
   );
 };
