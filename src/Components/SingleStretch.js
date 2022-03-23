@@ -10,7 +10,7 @@ const SingleStretch = () => {
   let params = useParams();
   const stretchId = params.id;
   let stretch = useSelector((state) => state.stretch);
-
+  // [{}]
   stretch = stretch[0] || {};
   console.log(stretch);
 

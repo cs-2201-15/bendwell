@@ -18,11 +18,11 @@ const _setRoutines = (routines) => {
 export const setRoutines = (id) => {
   return async (dispatch) => {
     try {
-      let { data: Routines, error } = await supabase
-        .from('Routines')
+      let { data: routines, error } = await supabase
+        .from('routines')
         .select('*')
-        .eq('id', id)
-      dispatch(_setRoutines(Routines))
+        .eq('userId', id)
+      dispatch(_setRoutines(routines))
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +36,7 @@ let initialState = [];
 export default function routinesReducer(state = initialState, action) {
   switch (action.type) {
     case SET_ROUTINES:
-      return action.routine;
+      return action.routines;
     default:
       return state;
   }
