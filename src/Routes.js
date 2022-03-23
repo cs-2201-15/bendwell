@@ -17,6 +17,7 @@ import SingleRoutine from "./Components/SingleRoutine";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 
+
 const RoutesDirectory = () => {
   const [session, setSession] = useState(null);
 
@@ -37,8 +38,9 @@ const RoutesDirectory = () => {
       {!session ? (
         <>
           <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Auth />} />
           <Route path="/stretches" element={<AllStretches />} />
+          <Route path="/createaccount" element={<CreateAccount />} />
+          <Route path="/login" element={<Auth />} />
           <Route path="/" element={<Home />} />
         </>
       ) : (
