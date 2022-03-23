@@ -19,7 +19,7 @@ export const setStretches = () => {
   return async (dispatch) => {
     try {
       let { data: Stretches, error } = await supabase
-        .from("Stretches")
+        .from("stretches")
         .select("*");
       dispatch(_setStretches(Stretches));
     } catch (error) {

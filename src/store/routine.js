@@ -1,42 +1,50 @@
-// import { supabase } from "../supabaseClient";
+import { supabase } from "../supabaseClient";
 
-// //action types
+//action types
 
-// const SET_ROUTINE = "SET_ROUTINE";
+const SET_ROUTINE = "SET_ROUTINE";
 
-// //action creators
+//action creators
 
-// const _setRoutine = (routine) => {
-//   return {
-//     type: SET_ROUTINE,
-//     routine,
-//   };
-// };
+const _setRoutine = (routine) => {
+  return {
+    type: SET_ROUTINE,
+    routine,
+  };
+};
 
-// //thunks
+//thunks
 
-// export const setRoutine = () => {
-//   return async (dispatch) => {
-//     try {
-//       let { data: Stretches, error } = await supabase
-//         .from("Stretches")
-//         .select("*");
-//       dispatch(_setStretches(Stretches));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };
+export const setRoutine = (id) => {
+  return async (dispatch) => {
+    try {
+      let { data: routine, error } = await supabase
+        .from("routines")
+        .select(
+          `*,
+        stretches:stretches(*)
+        `
+        )
+        .eq("id", id);
 
-// //reducer
+      console.log(routine);
 
-// let initialState = [];
+      dispatch(_setRoutine(routine));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 
-// export default function routineReducer(state = initialState, action) {
-//   switch (action.type) {
-//     case SET_STRETCHES:
-//       return action.stretches;
-//     default:
-//       return state;
-//   }
-// }
+//reducer
+
+let initialState = [];
+
+export default function routineReducer(state = initialState, action) {
+  switch (action.type) {
+    case SET_ROUTINE:
+      return action.routine;
+    default:
+      return state;
+  }
+}

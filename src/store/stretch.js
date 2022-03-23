@@ -19,7 +19,7 @@ export const setStretch = (id) => {
   return async (dispatch) => {
     try {
       let { data: Stretch, error } = await supabase
-        .from("Stretches")
+        .from("stretches")
         .select("*")
         .eq("id", id);
       dispatch(_setStretch(Stretch));
