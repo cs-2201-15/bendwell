@@ -8,8 +8,9 @@ const AllStretches = () => {
 
   useEffect(() => {
     dispatch(setStretches());
-  });
-
+  }, []);
+  // you need to add a dependency array (can be empty []) to this useEffect
+  // or else it will dispatch over and over continuosly
   return (
     <div>
       {console.log(stretches)}
