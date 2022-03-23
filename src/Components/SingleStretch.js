@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { setSingleCamera } from "../store/camera";
 import { setStretch } from "../store/stretch";
 
 const SingleStretch = () => {
@@ -10,7 +11,8 @@ const SingleStretch = () => {
   let params = useParams();
   const stretchId = params.id;
   let stretch = useSelector((state) => state.stretch);
-  // [{}]
+  const navigate = useNavigate();
+
   stretch = stretch[0] || {};
   console.log(stretch);
 
@@ -18,6 +20,11 @@ const SingleStretch = () => {
     dispatch(setStretch(stretchId));
     setLoading(false);
   }, []);
+
+  const handleClick = () => {
+    dispatch(setSingleCamera(stretch.id));
+    navigate(`/stretchcam`);
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -30,6 +37,9 @@ const SingleStretch = () => {
           <img src={stretch.image_url} alt="Stretch Img" />
           <p>{stretch.description}</p>
         </div>
+        <button type="button" onClick={() => handleClick()}>
+          Start Stretch
+        </button>
       </div>
     );
   }

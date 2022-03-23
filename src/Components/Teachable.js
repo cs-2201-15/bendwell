@@ -1,12 +1,14 @@
-import { useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import * as tf from '@tensorflow/tfjs';
-import * as tmPose from '@teachablemachine/pose';
+import { useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as tf from "@tensorflow/tfjs";
+import * as tmPose from "@teachablemachine/pose";
 
 //if we get "t is not a func" error, make sure dependencies are as follows:    "@teachablemachine/pose": "^0.8.6",
 // "@tensorflow/tfjs": "^3.14.0",
 
 const Teachable = () => {
+  const cameraArr = useSelector((state) => state.camera);
+  console.log(cameraArr);
   // More API functions here:
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
@@ -31,9 +33,9 @@ const Teachable = () => {
     // dispatch(setSingleStretch())
   }, []);
 
-  const sun = 'Sun';
-  const tree = 'Tree';
-  const mountain = 'Mountain';
+  const sun = "Sun";
+  const tree = "Tree";
+  const mountain = "Mountain";
 
   const poseArray = [sun, tree, mountain];
 
@@ -41,7 +43,7 @@ const Teachable = () => {
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     // Note: the pose library adds a tmPose object to your window (window.tmPose)
-    model = await tmPose.load('model/model.json', 'model/metadata.json');
+    model = await tmPose.load("model/model.json", "model/metadata.json");
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
@@ -52,11 +54,11 @@ const Teachable = () => {
     await webcam.play();
     window.requestAnimationFrame(loop);
 
-    ctx = canvasRef.current.getContext('2d'); //in use effect/didmount
-    labelContainer = document.getElementById('label-container');
+    ctx = canvasRef.current.getContext("2d"); //in use effect/didmount
+    labelContainer = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions; i++) {
       // and class labels
-      labelContainer.appendChild(document.createElement('div'));
+      labelContainer.appendChild(document.createElement("div"));
     }
   }
 

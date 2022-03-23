@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { setRoutineCamera } from "../store/camera";
 import { setRoutine } from "../store/routine";
 
 const SingleRoutine = () => {
@@ -8,6 +9,7 @@ const SingleRoutine = () => {
 
   const dispatch = useDispatch();
   let params = useParams();
+  const navigate = useNavigate();
 
   const routineId = params.id;
   let routine = useSelector((state) => state.routine);
@@ -22,6 +24,11 @@ const SingleRoutine = () => {
     setLoading(false);
   }, []);
 
+  const handleClick = () => {
+    dispatch(setRoutineCamera(routine.stretches));
+    navigate(`/stretchcam`);
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   } else {
@@ -29,6 +36,9 @@ const SingleRoutine = () => {
       <div className="single-stretch">
         <h2>{routine.name}</h2>
         <h3>{routine.notes}</h3>
+        <button type="button" onClick={() => handleClick()}>
+          Start Routine
+        </button>
         {routine.stretches.map((stretch) => {
           return (
             <div className="stretch-preview" key={stretch.id}>
