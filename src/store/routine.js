@@ -20,8 +20,15 @@ export const setRoutine = (id) => {
     try {
       let { data: routine, error } = await supabase
         .from("routines")
-        .select("*")
+        .select(
+          `*,
+        stretches:stretches(*)
+        `
+        )
         .eq("id", id);
+
+      console.log(routine);
+
       dispatch(_setRoutine(routine));
     } catch (error) {
       console.log(error);
