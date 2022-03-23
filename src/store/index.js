@@ -3,9 +3,11 @@ import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import stretches from "./stretches";
+import stretch from "./stretch";
 
 const reducer = combineReducers({
   stretches,
+  stretch,
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
