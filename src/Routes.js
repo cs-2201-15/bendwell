@@ -5,6 +5,7 @@ import {
   Redirect,
   Routes,
   BrowserRouter,
+
 } from 'react-router-dom';
 import Auth from './Components/Auth';
 import Home from './Components/Home';
@@ -17,6 +18,7 @@ import SingleRoutine from './Components/SingleRoutine';
 import { useState, useEffect } from 'react';
 import { supabase } from './supabaseClient';
 import CreateAccount from './Components/CreateAccount';
+
 
 const RoutesDirectory = () => {
   const [session, setSession] = useState(null);
@@ -38,7 +40,9 @@ const RoutesDirectory = () => {
       {!session ? (
         <>
           <Route path="/home" element={<Home />} />
+          <Route path="/stretchcam" element={<Teachable />} />
           <Route path="/stretches" element={<AllStretches />} />
+          <Route path="/stretches/:id" element={<SingleStretch />} />
           <Route path="/createaccount" element={<CreateAccount />} />
           <Route path="/login" element={<Auth />} />
           <Route path="/testwindow" element={<Teachable />} />

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { setStretches } from "../store/stretches";
 
 const AllStretches = () => {
@@ -15,7 +16,15 @@ const AllStretches = () => {
     <div>
       {console.log(stretches)}
       {stretches.map((stretch) => {
-        return <h1>{stretch.name}</h1>;
+        return (
+          <div className="stretch-preview" key={stretch.id}>
+            <Link to={`/stretches/${stretch.id}`}>
+              <h2>{stretch.name}</h2>
+              <img src={stretch.image_url} alt="Stretch Img" />
+              <h3>{`Target: ${stretch.target}`}</h3>
+            </Link>
+          </div>
+        );
       })}
     </div>
   );
