@@ -1,7 +1,7 @@
-import { useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import * as tf from '@tensorflow/tfjs';
-import * as tmPose from '@teachablemachine/pose';
+import { useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as tf from "@tensorflow/tfjs";
+import * as tmPose from "@teachablemachine/pose";
 
 //if we get "t is not a func" error, make sure dependencies are as follows:    "@teachablemachine/pose": "^0.8.6",
 // "@tensorflow/tfjs": "^3.14.0",
@@ -23,25 +23,26 @@ const Teachable = () => {
   //auth.session check
   // fetchSingle
 
-  const stretch = useSelector((state) => state.stretch);
+  //const stretch = useSelector((state) => state.stretch);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(setSingleStretch())
+    // dispatch(setSingleStretch()) //this is gonna set the state to our array of either one stretch or all of them from a routine. ex : stretch
   }, []);
 
-  const sun = 'Sun';
-  const tree = 'Tree';
-  const mountain = 'Mountain';
+  const sun = "Sun";
+  const tree = "Tree";
+  const mountain = "Mountain";
+  let currentStretchScore;
 
-  const poseArray = [sun, tree, mountain];
+  const stretch = [sun, tree, mountain];
 
   async function init() {
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     // Note: the pose library adds a tmPose object to your window (window.tmPose)
-    model = await tmPose.load('model/model.json', 'model/metadata.json');
+    model = await tmPose.load("model/model.json", "model/metadata.json");
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
@@ -52,11 +53,11 @@ const Teachable = () => {
     await webcam.play();
     window.requestAnimationFrame(loop);
 
-    ctx = canvasRef.current.getContext('2d'); //in use effect/didmount
-    labelContainer = document.getElementById('label-container');
+    ctx = canvasRef.current.getContext("2d"); //in use effect/didmount
+    labelContainer = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions; i++) {
       // and class labels
-      labelContainer.appendChild(document.createElement('div'));
+      labelContainer.appendChild(document.createElement("div"));
     }
   }
 
@@ -72,27 +73,29 @@ const Teachable = () => {
     const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
+    for (let i = 0; i < stretch.length; i++) {
+      //looping over stretches/routine on state
+      for (let j = 0; j < maxPredictions; j++) {
+        //looping over classes in model
 
-    for (let j = 0; j < poseArray; j++) {
-      pose = poseArray[j];
-
-      for (let i = 0; i < maxPredictions; i++) {
-        //person selects stretch
-        // thunk returns stretch
-        // 'sun' inside array
-        //prediction[i] === state.stretch.classname
-        //return prediction.probability...
-        //if prediction[i] > .80
-        // move to next stretch prediction[i]++
+        if (
+          prediction[j].className === stretch[i] &&
+          prediction[j].probability > 0.8
+        ) {
+          setTimeout(() => {
+            currentStretchScore = prediction[j].probability;
+            // console.log(
+            //   "current Target :",
+            //   stretch[i],
+            //   "current prediction :",
+            //   prediction[j]
+            // );
+            console.log("Hold for 5 seconds!");
+          }, 5000);
+          continue;
+        }
       }
-
-      // const classPrediction =
-      //   prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
-      // labelContainer.childNodes[i].innerHTML = classPrediction;
-
-      // console.log(prediction[i]);
     }
-    //console.log(maxPredictions);
 
     // finally draw the poses
     drawPose(pose);
@@ -127,7 +130,9 @@ const Teachable = () => {
       <div>
         <canvas ref={canvasRef} width={200} height={200}></canvas>
       </div>
-      <div id="label-container"></div>
+      <div id="label-container">
+        <p>{currentStretchScore}</p>
+      </div>
     </div>
   );
 };
