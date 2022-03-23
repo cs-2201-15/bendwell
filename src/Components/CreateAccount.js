@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 
-export default function Auth() {
+export default function CreateAccount() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,9 +11,10 @@ export default function Auth() {
 
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signIn({ email, password });
+      const { error } = await supabase.auth.signUp({ email, password });
 
       if (error) throw error;
+      alert('You have successfully created an Account!');
     } catch (error) {
       alert(error.error_description || error.message);
     } finally {
@@ -25,7 +26,7 @@ export default function Auth() {
     <div className="row flex flex-center">
       <div className="col-6 form-widget" aria-live="polite">
         <h1 className="header">Supabase + React</h1>
-        <p className="description">Sign In</p>
+        <p className="description">Create Account Below!</p>
         {loading ? (
           'Loading...'
         ) : (
@@ -48,7 +49,7 @@ export default function Auth() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="button block" aria-live="polite">
-              Sign In
+              Create Account
             </button>
           </form>
         )}
