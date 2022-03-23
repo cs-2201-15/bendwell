@@ -1,6 +1,7 @@
-import { useRef } from "react";
-import * as tf from "@tensorflow/tfjs";
-import * as tmPose from "@teachablemachine/pose";
+import { useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import * as tf from '@tensorflow/tfjs';
+import * as tmPose from '@teachablemachine/pose';
 
 //if we get "t is not a func" error, make sure dependencies are as follows:    "@teachablemachine/pose": "^0.8.6",
 // "@tensorflow/tfjs": "^3.14.0",
@@ -13,11 +14,34 @@ const Teachable = () => {
   //const URL = "../public/model/";
   let model, webcam, ctx, labelContainer, maxPredictions;
   const canvasRef = useRef(null); //in use effect/didmount
+
+  //ensure store key value is === stretch
+
+  //guest
+  //state.singleStretch
+
+  //auth.session check
+  // fetchSingle
+
+  const stretch = useSelector((state) => state.stretch);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(setSingleStretch())
+  }, []);
+
+  const sun = 'Sun';
+  const tree = 'Tree';
+  const mountain = 'Mountain';
+
+  const poseArray = [sun, tree, mountain];
+
   async function init() {
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     // Note: the pose library adds a tmPose object to your window (window.tmPose)
-    model = await tmPose.load("model/model.json", "model/metadata.json");
+    model = await tmPose.load('model/model.json', 'model/metadata.json');
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
@@ -28,11 +52,11 @@ const Teachable = () => {
     await webcam.play();
     window.requestAnimationFrame(loop);
 
-    ctx = canvasRef.current.getContext("2d"); //in use effect/didmount
-    labelContainer = document.getElementById("label-container");
+    ctx = canvasRef.current.getContext('2d'); //in use effect/didmount
+    labelContainer = document.getElementById('label-container');
     for (let i = 0; i < maxPredictions; i++) {
       // and class labels
-      labelContainer.appendChild(document.createElement("div"));
+      labelContainer.appendChild(document.createElement('div'));
     }
   }
 
@@ -49,17 +73,34 @@ const Teachable = () => {
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
 
-    for (let i = 0; i < maxPredictions; i++) {
-      const classPrediction =
-        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-      labelContainer.childNodes[i].innerHTML = classPrediction;
-      console.log(classPrediction);
+    for (let j = 0; j < poseArray; j++) {
+      pose = poseArray[j];
+
+      for (let i = 0; i < maxPredictions; i++) {
+        //person selects stretch
+        // thunk returns stretch
+        // 'sun' inside array
+        //prediction[i] === state.stretch.classname
+        //return prediction.probability...
+        //if prediction[i] > .80
+        // move to next stretch prediction[i]++
+      }
+
+      // const classPrediction =
+      //   prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
+      // labelContainer.childNodes[i].innerHTML = classPrediction;
+
+      // console.log(prediction[i]);
     }
     //console.log(maxPredictions);
 
     // finally draw the poses
     drawPose(pose);
   }
+
+  //delays, pause?, timer
+  //victory messages
+  //
 
   function drawPose(pose) {
     if (webcam.canvas) {

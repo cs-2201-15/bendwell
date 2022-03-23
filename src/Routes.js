@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 import {
   withRouter,
   Route,
   Redirect,
   Routes,
   BrowserRouter,
-} from "react-router-dom";
-import Auth from "./Components/Auth";
-import Home from "./Components/Home";
-import Teachable from "./Components/Teachable";
-import AllStretches from "./Components/AllStretches";
-import SingleStretch from "./Components/SingleStretch";
-import Account from "./Components/Account";
-import Routines from "./Components/Routines";
-import SingleRoutine from "./Components/SingleRoutine";
-import { useState, useEffect } from "react";
-import { supabase } from "./supabaseClient";
-
+} from 'react-router-dom';
+import Auth from './Components/Auth';
+import Home from './Components/Home';
+import Teachable from './Components/Teachable';
+import AllStretches from './Components/AllStretches';
+import SingleStretch from './Components/SingleStretch';
+import Account from './Components/Account';
+import Routines from './Components/Routines';
+import SingleRoutine from './Components/SingleRoutine';
+import { useState, useEffect } from 'react';
+import { supabase } from './supabaseClient';
+import CreateAccount from './Components/CreateAccount';
 
 const RoutesDirectory = () => {
   const [session, setSession] = useState(null);
@@ -41,6 +41,7 @@ const RoutesDirectory = () => {
           <Route path="/stretches" element={<AllStretches />} />
           <Route path="/createaccount" element={<CreateAccount />} />
           <Route path="/login" element={<Auth />} />
+          <Route path="/testwindow" element={<Teachable />} />
           <Route path="/" element={<Home />} />
         </>
       ) : (
