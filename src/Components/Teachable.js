@@ -1,13 +1,18 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
+import { useNavigate } from "react-router-dom";
 
 //if we get "t is not a func" error, make sure dependencies are as follows:    "@teachablemachine/pose": "^0.8.6",
 // "@tensorflow/tfjs": "^3.14.0",
 
 const Teachable = () => {
+
   const cameraArr = useSelector((state) => state.camera);
+  const [completed, setCompleted] = useState(false)
+  const [detected, setDetected] = useState(false)
+
   console.log(cameraArr);
   // More API functions here:
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
@@ -16,6 +21,12 @@ const Teachable = () => {
   //const URL = "../public/model/";
   let model, webcam, ctx, labelContainer, maxPredictions;
   const canvasRef = useRef(null); //in use effect/didmount
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setCompleted(false);
+  },[])
 
   async function init() {
     // load the model and metadata
@@ -42,50 +53,40 @@ const Teachable = () => {
 
   async function loop(timestamp) {
     webcam.update(); // update the webcam frame
-    await predict();
+    let {pose, prediction} = await predict();
+    if(cameraArr.length>0){
+      if(await verify(cameraArr[0], prediction) && !detected){
+        setDetected(true)
+        console.log("Hold that pose for 5 seconds", cameraArr[0].name)
+        setTimeout(() => {
+          cameraArr.shift()
+          console.log("camera array shifted")
+          setDetected(false)
+        }, 5000)
+      }
+    }else{
+      setCompleted(true)
+      console.log("Routine Completed")
+    }
     window.requestAnimationFrame(loop);
   }
 
   async function verify(currPose, prediction){
     for(let i = 0; i<maxPredictions; i++){
-      if(currPose.name === prediction[i].className && prediction[i].probability>0.8){
-        setTimeout(() => {
-          let currScore = prediction[i].probability
-          console.log("Hold for 5 seconds: ", currScore)
-        }, 5000)
-        return true
+      if(currPose.name === prediction[i].className && prediction[i].probability>0.95){
+        return prediction[i].probability
       }
       continue
     }
-    return false
+    return 0
   }
 
   async function predict() {
-    let { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-
-    let currPose = cameraArr[0] || {}
-    while(currPose !== null){
-
-      // Prediction #1: run input through posenet
-      // estimatePose can take in an image, video or canvas html element
-      let prediction = await model.predict(posenetOutput);
-
-      // Prediction 2: run input through teachable machine classification model
-      let verified = verify(currPose, prediction)
-
-      if(verified){
-      cameraArr.shift()
-      }
-
-    }
-
-    // finally draw the poses
-    drawPose(pose);
+    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+    const prediction = await model.predict(posenetOutput);
+    drawPose(pose)
+    return({pose, prediction})
   }
-
-  //delays, pause?, timer
-  //victory messages
-  //
 
   function drawPose(pose) {
     if (webcam.canvas) {
@@ -98,6 +99,12 @@ const Teachable = () => {
       }
     }
   }
+
+  const handleClick = () => {
+    navigate(`/stretches`);
+  }
+
+  // let stretchName = cameraArr[0].name || ""
   return (
     <div>
       <div>Teachable Machine Pose Model</div>
@@ -113,7 +120,8 @@ const Teachable = () => {
         <canvas ref={canvasRef} width={200} height={200}></canvas>
       </div>
       <div id="label-container">
-        <p>{}</p>
+        {/* <div>{`Stretch: ${stretchName}`}</div> */}
+        {completed ? <button onClick={() => handleClick()}>Go Back to Stretches</button> : <></>}
       </div>
     </div>
   );

@@ -61,6 +61,7 @@ const RoutesDirectory = () => {
           <Route path="/routines" element={<Routines />} />
           <Route path="/routines/:id" element={<SingleRoutine />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/testwindow" element={<Teachable />} />
           <Route path="/" element={<Home />} />
         </>
       )}
