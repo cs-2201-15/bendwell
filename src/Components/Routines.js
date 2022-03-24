@@ -1,17 +1,24 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { setRoutines } from "../store/routines";
-import { supabase } from "../supabaseClient";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { setRoutines, addRoutine } from '../store/routines';
+import { supabase } from '../supabaseClient';
 
 const AllRoutines = () => {
   const dispatch = useDispatch();
   const routines = useSelector((state) => state.routines) || [];
 
+  let status = false;
+
+  let user = supabase.auth.user();
   useEffect(() => {
-    let user = supabase.auth.user();
     dispatch(setRoutines(user.id));
   }, []);
+
+  const handleClick = () => {
+    // status = !status;
+    dispatch(addRoutine(user.id));
+  };
 
   return (
     <div className="routines-view">
@@ -27,6 +34,9 @@ const AllRoutines = () => {
           </div>
         );
       })}
+      <button className="add-routine" onClick={() => handleClick()}>
+        Add Routine
+      </button>
     </div>
   );
 };
