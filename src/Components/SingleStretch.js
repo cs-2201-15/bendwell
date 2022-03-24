@@ -23,7 +23,7 @@ const SingleStretch = () => {
 
   const handleClick = () => {
     dispatch(setSingleCamera(stretch.id));
-    navigate(`/stretchcam`);
+    navigate(`/testwindow`);
   };
 
   if (loading) {

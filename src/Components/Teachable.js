@@ -17,32 +17,6 @@ const Teachable = () => {
   let model, webcam, ctx, labelContainer, maxPredictions;
   const canvasRef = useRef(null); //in use effect/didmount
 
-  //ensure store key value is === stretch
-
-  //guest
-  //state.singleStretch
-
-  //auth.session check
-  // fetchSingle
-
-  //const stretch = useSelector((state) => state.stretch);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // dispatch(setSingleStretch()) //this is gonna set the state to our array of either one stretch or all of them from a routine. ex : stretch
-  }, []);
-
-  const sun = "Sun";
-  const tree = "Tree";
-  const mountain = "Mountain";
-<<<<<<< HEAD
-=======
-  let currentStretchScore;
->>>>>>> 41715225f36a49748c4a3a758428920d84a5783e
-
-  const stretch = [sun, tree, mountain];
-
   async function init() {
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -72,34 +46,37 @@ const Teachable = () => {
     window.requestAnimationFrame(loop);
   }
 
-  async function predict() {
-    // Prediction #1: run input through posenet
-    // estimatePose can take in an image, video or canvas html element
-    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-    // Prediction 2: run input through teachable machine classification model
-    const prediction = await model.predict(posenetOutput);
-    for (let i = 0; i < stretch.length; i++) {
-      //looping over stretches/routine on state
-      for (let j = 0; j < maxPredictions; j++) {
-        //looping over classes in model
-
-        if (
-          prediction[j].className === stretch[i] &&
-          prediction[j].probability > 0.8
-        ) {
-          setTimeout(() => {
-            currentStretchScore = prediction[j].probability;
-            // console.log(
-            //   "current Target :",
-            //   stretch[i],
-            //   "current prediction :",
-            //   prediction[j]
-            // );
-            console.log("Hold for 5 seconds!");
-          }, 5000);
-          continue;
-        }
+  async function verify(currPose, prediction){
+    for(let i = 0; i<maxPredictions; i++){
+      if(currPose.name === prediction[i].className && prediction[i].probability>0.8){
+        setTimeout(() => {
+          let currScore = prediction[i].probability
+          console.log("Hold for 5 seconds: ", currScore)
+        }, 5000)
+        return true
       }
+      continue
+    }
+    return false
+  }
+
+  async function predict() {
+    let { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+
+    let currPose = cameraArr[0] || {}
+    while(currPose !== null){
+
+      // Prediction #1: run input through posenet
+      // estimatePose can take in an image, video or canvas html element
+      let prediction = await model.predict(posenetOutput);
+
+      // Prediction 2: run input through teachable machine classification model
+      let verified = verify(currPose, prediction)
+
+      if(verified){
+      cameraArr.shift()
+      }
+
     }
 
     // finally draw the poses
@@ -136,7 +113,7 @@ const Teachable = () => {
         <canvas ref={canvasRef} width={200} height={200}></canvas>
       </div>
       <div id="label-container">
-        <p>{currentStretchScore}</p>
+        <p>{}</p>
       </div>
     </div>
   );
