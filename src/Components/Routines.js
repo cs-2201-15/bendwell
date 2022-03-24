@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setRoutines, addRoutine } from '../store/routines';
+import { setRoutines, addRoutine, removeRoutine } from '../store/routines';
 import { supabase } from '../supabaseClient';
 
 const AllRoutines = () => {
@@ -20,6 +20,10 @@ const AllRoutines = () => {
     dispatch(addRoutine(user.id));
   };
 
+  const deleteRoutine = (id) => {
+    dispatch(removeRoutine(id));
+  };
+
   return (
     <div className="routines-view">
       {routines.map((routine) => {
@@ -31,10 +35,21 @@ const AllRoutines = () => {
                 <h3>{`Notes: ${routine.notes}`}</h3>
               </div>
             </Link>
+            <button
+              type="button"
+              className="remove-routine"
+              onClick={(routine) => deleteRoutine(routine.id)}
+            >
+              Remove Routine
+            </button>
           </div>
         );
       })}
-      <button className="add-routine" onClick={() => handleClick()}>
+      <button
+        type="button"
+        className="add-routine"
+        onClick={() => handleClick()}
+      >
         Add Routine
       </button>
     </div>
