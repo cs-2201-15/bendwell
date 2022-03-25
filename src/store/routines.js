@@ -21,10 +21,10 @@ const _addRoutine = (routine) => {
   };
 };
 
-const _removeRoutine = (routine) => {
+const _removeRoutine = (routineId) => {
   return {
     type: REMOVE_ROUTINE,
-    routine,
+    routineId,
   };
 };
 
@@ -61,11 +61,16 @@ export const addRoutine = (id) => {
 export const removeRoutine = (routineId) => {
   return async (dispatch) => {
     try {
+      await supabase
+        .from("stretchRoutines")
+        .delete()
+        .eq("routineId", routineId);
       const { data: routine, error } = await supabase
         .from("routines")
         .delete()
         .match({ id: routineId });
-      dispatch(_removeRoutine(routine));
+      console.log(routine);
+      dispatch(_removeRoutine(routineId));
     } catch (error) {
       console.log(error);
     }
@@ -83,7 +88,8 @@ export default function routinesReducer(state = initialState, action) {
     case ADD_ROUTINE:
       return [...state, action.routine];
     case REMOVE_ROUTINE:
-      return state.filter((routine) => routine.id !== action.routine.id);
+      console.log(state);
+      return state.filter((routine) => routine.id !== action.routineId);
     default:
       return state;
   }
