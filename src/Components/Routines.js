@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { setRoutines, addRoutine, removeRoutine } from '../store/routines';
-import { supabase } from '../supabaseClient';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { setRoutines, addRoutine, removeRoutine } from "../store/routines";
+import { supabase } from "../supabaseClient";
 
 const AllRoutines = () => {
   const dispatch = useDispatch();
   const routines = useSelector((state) => state.routines) || [];
+  const [sendRequest, setSendRequest] = useState(false);
 
   let status = false;
 
@@ -17,10 +18,12 @@ const AllRoutines = () => {
 
   const handleClick = () => {
     // status = !status;
+    setSendRequest(!sendRequest);
     dispatch(addRoutine(user.id));
   };
 
   const deleteRoutine = (id) => {
+    console.log(id);
     dispatch(removeRoutine(id));
   };
 
@@ -35,10 +38,11 @@ const AllRoutines = () => {
                 <h3>{`Notes: ${routine.notes}`}</h3>
               </div>
             </Link>
+
             <button
               type="button"
               className="remove-routine"
-              onClick={(routine) => deleteRoutine(routine.id)}
+              onClick={() => deleteRoutine(routine.id)}
             >
               Remove Routine
             </button>
