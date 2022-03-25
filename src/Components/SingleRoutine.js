@@ -26,7 +26,7 @@ const SingleRoutine = () => {
 
   const handleClick = () => {
     dispatch(setRoutineCamera(routine.stretches));
-    navigate(`/stretchcam`);
+    navigate(`/testwindow`);
   };
 
   if (loading) {

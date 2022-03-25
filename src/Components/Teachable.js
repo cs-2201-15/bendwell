@@ -1,13 +1,18 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
+import { useNavigate } from "react-router-dom";
 
 //if we get "t is not a func" error, make sure dependencies are as follows:    "@teachablemachine/pose": "^0.8.6",
 // "@tensorflow/tfjs": "^3.14.0",
 
 const Teachable = () => {
+
   const cameraArr = useSelector((state) => state.camera);
+  const [completed, setCompleted] = useState(false)
+  const [detected, setDetected] = useState(false)
+
   console.log(cameraArr);
   // More API functions here:
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
@@ -17,27 +22,11 @@ const Teachable = () => {
   let model, webcam, ctx, labelContainer, maxPredictions;
   const canvasRef = useRef(null); //in use effect/didmount
 
-  //ensure store key value is === stretch
-
-  //guest
-  //state.singleStretch
-
-  //auth.session check
-  // fetchSingle
-
-  const stretch = useSelector((state) => state.stretch);
-
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // dispatch(setSingleStretch())
-  }, []);
-
-  const sun = "Sun";
-  const tree = "Tree";
-  const mountain = "Mountain";
-
-  const poseArray = [sun, tree, mountain];
+    setCompleted(false);
+  },[])
 
   async function init() {
     // load the model and metadata
@@ -64,45 +53,40 @@ const Teachable = () => {
 
   async function loop(timestamp) {
     webcam.update(); // update the webcam frame
-    await predict();
+    let {pose, prediction} = await predict();
+    if(cameraArr.length>0){
+      if(await verify(cameraArr[0], prediction) && !detected){
+        setDetected(true)
+        console.log("Hold that pose for 5 seconds", cameraArr[0].name)
+        setTimeout(() => {
+          cameraArr.shift()
+          console.log("camera array shifted")
+          setDetected(false)
+        }, 5000)
+      }
+    }else{
+      setCompleted(true)
+      console.log("Routine Completed")
+    }
     window.requestAnimationFrame(loop);
   }
 
-  async function predict() {
-    // Prediction #1: run input through posenet
-    // estimatePose can take in an image, video or canvas html element
-    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-    // Prediction 2: run input through teachable machine classification model
-    const prediction = await model.predict(posenetOutput);
-
-    for (let j = 0; j < poseArray; j++) {
-      pose = poseArray[j];
-
-      for (let i = 0; i < maxPredictions; i++) {
-        //person selects stretch
-        // thunk returns stretch
-        // 'sun' inside array
-        //prediction[i] === state.stretch.classname
-        //return prediction.probability...
-        //if prediction[i] > .80
-        // move to next stretch prediction[i]++
+  async function verify(currPose, prediction){
+    for(let i = 0; i<maxPredictions; i++){
+      if(currPose.name === prediction[i].className && prediction[i].probability>0.95){
+        return prediction[i].probability
       }
-
-      // const classPrediction =
-      //   prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
-      // labelContainer.childNodes[i].innerHTML = classPrediction;
-
-      // console.log(prediction[i]);
+      continue
     }
-    //console.log(maxPredictions);
-
-    // finally draw the poses
-    drawPose(pose);
+    return 0
   }
 
-  //delays, pause?, timer
-  //victory messages
-  //
+  async function predict() {
+    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+    const prediction = await model.predict(posenetOutput);
+    drawPose(pose)
+    return({pose, prediction})
+  }
 
   function drawPose(pose) {
     if (webcam.canvas) {
@@ -115,6 +99,12 @@ const Teachable = () => {
       }
     }
   }
+
+  const handleClick = () => {
+    navigate(`/stretches`);
+  }
+
+  // let stretchName = cameraArr[0].name || ""
   return (
     <div>
       <div>Teachable Machine Pose Model</div>
@@ -129,7 +119,10 @@ const Teachable = () => {
       <div>
         <canvas ref={canvasRef} width={200} height={200}></canvas>
       </div>
-      <div id="label-container"></div>
+      <div id="label-container">
+        {/* <div>{`Stretch: ${stretchName}`}</div> */}
+        {completed ? <button onClick={() => handleClick()}>Go Back to Stretches</button> : <></>}
+      </div>
     </div>
   );
 };
