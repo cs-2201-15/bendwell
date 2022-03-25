@@ -11,8 +11,8 @@ const Teachable = () => {
 
   const cameraArr = useSelector((state) => state.camera);
   const [completed, setCompleted] = useState(false)
-  const [detected, setDetected] = useState(false)
-
+  const [match, setMatch] = useState(false)
+  let matched = false;
   console.log(cameraArr);
   // More API functions here:
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
@@ -27,6 +27,7 @@ const Teachable = () => {
   useEffect(() => {
     setCompleted(false);
   },[])
+
 
   async function init() {
     // load the model and metadata
@@ -54,29 +55,33 @@ const Teachable = () => {
   async function loop(timestamp) {
     webcam.update(); // update the webcam frame
     let {pose, prediction} = await predict();
-    if(cameraArr.length>0){
-      if(await verify(cameraArr[0], prediction) && !detected){
-        setDetected(true)
-        console.log("Hold that pose for 5 seconds", cameraArr[0].name)
-        setTimeout(() => {
-          cameraArr.shift()
-          console.log("camera array shifted")
-          setDetected(false)
-        }, 5000)
+    if(!match){
+      if(cameraArr.length>0){
+        // console.log("CURRENT: ", cameraArr[0].name, "Prediction: ", prediction)
+        let score = verify(cameraArr[0], prediction)
+        console.log("CURRENT SCORE:", score, "for stretch:", cameraArr[0].name)
+        if(score && !match){
+          console.log(`Pose Matched: ${score} Hit the next stretch button to start`)
+          matched = true
+          setMatch(matched)
+        }
+      }else{
+        setCompleted(true)
+        console.log("Routine Completed")
       }
-    }else{
-      setCompleted(true)
-      console.log("Routine Completed")
     }
     window.requestAnimationFrame(loop);
   }
 
-  async function verify(currPose, prediction){
-    for(let i = 0; i<maxPredictions; i++){
-      if(currPose.name === prediction[i].className && prediction[i].probability>0.95){
+  const verify = (currPose, prediction) => {
+    console.log("Current:", currPose.name, prediction)
+    for(let i = 0; i<prediction.length-1; i++){
+      if(currPose.name === prediction[i].className && prediction[i].probability>0.8){
+        console.log("Matched: ", prediction[i].className, prediction[i].probability)
         return prediction[i].probability
+      }else{
+        continue
       }
-      continue
     }
     return 0
   }
@@ -85,7 +90,7 @@ const Teachable = () => {
     const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
     const prediction = await model.predict(posenetOutput);
     drawPose(pose)
-    return({pose, prediction})
+    return {pose, prediction}
   }
 
   function drawPose(pose) {
@@ -102,8 +107,14 @@ const Teachable = () => {
 
   const handleClick = () => {
     navigate(`/stretches`);
+    window.location.reload(true)
   }
 
+  const handleNext = () => {
+    cameraArr.shift()
+    matched = false
+    setMatch(matched)
+  }
   // let stretchName = cameraArr[0].name || ""
   return (
     <div>
@@ -121,7 +132,7 @@ const Teachable = () => {
       </div>
       <div id="label-container">
         {/* <div>{`Stretch: ${stretchName}`}</div> */}
-        {completed ? <button onClick={() => handleClick()}>Go Back to Stretches</button> : <></>}
+        {completed ? (<button onClick={() => handleClick()}>Go Back to Stretches</button>) : (match ? (<button onClick={() => handleNext()}>Next Stretch</button>):(<></>))}
       </div>
     </div>
   );
