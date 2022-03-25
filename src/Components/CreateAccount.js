@@ -1,59 +1,104 @@
-import { useState } from 'react';
-import { supabase } from '../supabaseClient';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../supabaseClient";
+import Avatar from "./Avatar";
 
-export default function CreateAccount() {
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const CreateAccount = ({ session }) => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState(null);
 
-  const handleLogin = async (e) => {
+  const [avatar_url, setAvatarUrl] = useState(null);
+
+  useEffect(() => {
+    getProfile();
+  }, [session]);
+
+  const getProfile = async () => {
+    try {
+      setLoading(true);
+      const user = supabase.auth.user();
+
+      let { data, error, status } = await supabase
+        .from("profiles")
+        .select(`username, avatar_url`)
+        .eq("id", user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const updateProfile = async (e) => {
     e.preventDefault();
 
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signUp({ email, password });
+      const user = supabase.auth.user();
 
-      if (error) throw error;
-      alert('You have successfully created an Account!');
+      const updates = {
+        id: user.id,
+        username,
+        avatar_url,
+        updated_at: new Date(),
+      };
+
+      let { error } = await supabase.from("profiles").insert(updates, {
+        returning: "minimal",
+      });
+
+      navigate("/account");
+
+      if (error) {
+        throw error;
+      }
     } catch (error) {
-      alert(error.error_description || error.message);
+      alert(error.message);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget" aria-live="polite">
-        <h1 className="header">Supabase + React</h1>
-        <p className="description">Create Account Below!</p>
-        {loading ? (
-          'Loading...'
-        ) : (
-          <form onSubmit={handleLogin}>
-            <label htmlFor="email">Email</label>
+    <div aria-live="polite">
+      {loading ? (
+        "Saving ..."
+      ) : (
+        <form onSubmit={updateProfile} className="form-widget">
+          <Avatar
+            url={avatar_url}
+            size={150}
+            onUpload={(url) => {
+              setAvatarUrl(url);
+              updateProfile({ username, avatar_url: url });
+            }}
+          />
+          <div>Email: {session.user.email}</div>
+          <div>
+            <label htmlFor="username">Name</label>
             <input
-              id="email"
-              className="inputField"
-              type="email"
-              placeholder="Your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="username"
+              type="text"
+              value={username || ""}
+              onChange={(e) => setUsername(e.target.value)}
             />
-            <input
-              id="password"
-              className="inputField"
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button className="button block" aria-live="polite">
+          </div>
+
+          <div>
+            <button className="button block primary" disabled={loading}>
               Create Account
             </button>
-          </form>
-        )}
-      </div>
+          </div>
+        </form>
+      )}
     </div>
   );
-}
+};
+
+export default CreateAccount;

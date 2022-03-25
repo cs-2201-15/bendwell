@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { supabase } from '../supabaseClient';
-import Avatar from './Avatar';
+import { useState, useEffect } from "react";
+import { supabase } from "../supabaseClient";
+import Avatar from "./Avatar";
 
 const Account = ({ session }) => {
   const [loading, setLoading] = useState(true);
@@ -18,9 +18,9 @@ const Account = ({ session }) => {
       const user = supabase.auth.user();
 
       let { data, error, status } = await supabase
-        .from('profiles')
+        .from("profiles")
         .select(`username, avatar_url`)
-        .eq('id', user.id)
+        .eq("id", user.id)
         .single();
 
       if (error && status !== 406) {
@@ -49,13 +49,12 @@ const Account = ({ session }) => {
       const updates = {
         id: user.id,
         username,
-
         avatar_url,
         updated_at: new Date(),
       };
 
-      let { error } = await supabase.from('profiles').upsert(updates, {
-        returning: 'minimal',
+      let { error } = await supabase.from("profiles").upsert(updates, {
+        returning: "minimal",
       });
 
       if (error) {
@@ -71,7 +70,7 @@ const Account = ({ session }) => {
   return (
     <div aria-live="polite">
       {loading ? (
-        'Saving ...'
+        "Saving ..."
       ) : (
         <form onSubmit={updateProfile} className="form-widget">
           <Avatar
@@ -88,7 +87,7 @@ const Account = ({ session }) => {
             <input
               id="username"
               type="text"
-              value={username || ''}
+              value={username || ""}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
