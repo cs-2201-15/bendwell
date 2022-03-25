@@ -7,9 +7,6 @@ import { supabase } from "../supabaseClient";
 const AllRoutines = () => {
   const dispatch = useDispatch();
   const routines = useSelector((state) => state.routines) || [];
-  const [sendRequest, setSendRequest] = useState(false);
-
-  let status = false;
 
   let user = supabase.auth.user();
   useEffect(() => {
@@ -17,8 +14,6 @@ const AllRoutines = () => {
   }, []);
 
   const handleClick = () => {
-    // status = !status;
-    setSendRequest(!sendRequest);
     dispatch(addRoutine(user.id));
   };
 
