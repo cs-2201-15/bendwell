@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setRoutines } from "../store/routines";
+import { addStretch } from "../store/routine";
 import { setStretches } from "../store/stretches";
 import { supabase } from "../supabaseClient";
 
@@ -24,13 +25,13 @@ const AllStretches = () => {
     setSelectVal(event.target.value);
   };
 
-  const handleClick = () => {
-    //dispatch our func on click
-    return true;
+  const handleClick = (stretchId, selectedRoutineId) => {
+    dispatch(addStretch(stretchId, selectedRoutineId));
   };
 
   return (
     <div>
+      {console.log(selectVal)}
       {stretches.map((stretch) => {
         return (
           <div className="stretch-preview" key={stretch.id}>
@@ -43,7 +44,7 @@ const AllStretches = () => {
               <button
                 type="button"
                 className="add-to-routine"
-                onClick={() => handleClick()}
+                onClick={() => handleClick(stretch.id, selectVal)}
               >
                 Add to a routine
               </button>
@@ -51,7 +52,7 @@ const AllStretches = () => {
                 id="selectRoutines"
                 name="routines"
                 value={selectVal}
-                onChange={() => handleSelect}
+                onChange={(event) => handleSelect(event)}
               >
                 {routines.map((routine) => {
                   return (
