@@ -12,6 +12,7 @@ const Teachable = () => {
   const cameraArr = useSelector((state) => state.camera);
   const [completed, setCompleted] = useState(false)
   const [match, setMatch] = useState(false)
+  const [status, setStatus] = useState("Ready To Stretch?")
   let matched = false;
   console.log(cameraArr);
   // More API functions here:
@@ -50,6 +51,7 @@ const Teachable = () => {
       // and class labels
       labelContainer.appendChild(document.createElement("div"));
     }
+
   }
 
   async function loop(timestamp) {
@@ -60,7 +62,7 @@ const Teachable = () => {
         // console.log("CURRENT: ", cameraArr[0].name, "Prediction: ", prediction)
         let score = verify(cameraArr[0], prediction)
         console.log("CURRENT SCORE:", score, "for stretch:", cameraArr[0].name)
-        if(score && !match){
+        if(score && !matched){
           console.log(`Pose Matched: ${score} Hit the next stretch button to start`)
           matched = true
           setMatch(matched)
@@ -68,19 +70,27 @@ const Teachable = () => {
       }else{
         setCompleted(true)
         console.log("Routine Completed")
+        setStatus("Routine Complete! Click to go back to check out some more stretches.")
       }
-    }
+      }
     window.requestAnimationFrame(loop);
   }
 
   const verify = (currPose, prediction) => {
     console.log("Current:", currPose.name, prediction)
     for(let i = 0; i<prediction.length-1; i++){
-      if(currPose.name === prediction[i].className && prediction[i].probability>0.8){
-        console.log("Matched: ", prediction[i].className, prediction[i].probability)
-        return prediction[i].probability
-      }else{
-        continue
+      if(!matched || !match){
+        if(currPose.name === prediction[i].className && prediction[i].probability>0.8){
+          console.log("Matched: ", prediction[i].className, prediction[i].probability)
+          setStatus(`Awesome job doing the ${currPose.name} stretch! Try to hold this stretch and click next to continue`)
+          return prediction[i].probability
+        }else if(currPose.name === prediction[i].className && 0.8>prediction[i].probability>0.4){
+          setStatus(`Try the ${currPose.name}`)
+        }else if(currPose.name === prediction[i].className && 0.4>prediction[i].probability){
+          setStatus(`Try correcting your pose for ${currPose.name}, and make sure your whole body is in frame!`)
+        }else{
+          continue
+        }
       }
     }
     return 0
@@ -132,6 +142,7 @@ const Teachable = () => {
       </div>
       <div id="label-container">
         {/* <div>{`Stretch: ${stretchName}`}</div> */}
+        <h3>{status}</h3>
         {completed ? (<button onClick={() => handleClick()}>Go Back to Stretches</button>) : (match ? (<button onClick={() => handleNext()}>Next Stretch</button>):(<></>))}
       </div>
     </div>
