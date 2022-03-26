@@ -54,6 +54,11 @@ const AllStretches = () => {
                 value={selectVal}
                 onChange={(event) => handleSelect(event)}
               >
+                <option
+                  value=""
+                  label=""
+                >
+                </option>
                 {routines.map((routine) => {
                   return (
                     <option

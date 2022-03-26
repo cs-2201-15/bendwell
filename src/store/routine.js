@@ -83,7 +83,9 @@ export default function routineReducer(state = initialState, action) {
     case SET_ROUTINE:
       return action.routine;
     case DELETE_STRETCH:
-      return state.stretches.filter((stretch) => stretch.id !== action.stretchId)
+      return {...state,
+        stretches: state.stretches.filter((stretch) => stretch.id !== action.stretchId)
+      }
     default:
       return state;
   }

@@ -42,9 +42,9 @@ const SingleRoutine = () => {
         <button type="button" onClick={() => handleClick()}>
           Start Routine
         </button>
-        {routine.stretches.map((stretch) => {
+        {routine.stretches.map((stretch, i) => {
           return (
-            <div className="stretch-preview" key={stretch.id}>
+            <div className="stretch-preview" key={i}>
               <Link to={`/stretches/${stretch.id}`}>
                 <p>{stretch.name}</p>
                 <img src={stretch.image_url} alt="Stretch Img" />

@@ -50,7 +50,7 @@ export const addRoutine = (id) => {
       const { data: routine, error } = await supabase
         .from("routines")
         .insert([
-          { userId: id, name: "new routine", notes: "placeholder for notes" },
+          { userId: id, name: "new routine", notes: "Your New Routine!" },
         ]);
       dispatch(_addRoutine(routine));
     } catch (error) {
