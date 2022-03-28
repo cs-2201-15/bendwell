@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { setRoutines, addRoutine, removeRoutine } from "../store/routines";
-import { supabase } from "../supabaseClient";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { setRoutines, addRoutine, removeRoutine } from '../store/routines';
+import { supabase } from '../supabaseClient';
 
 const AllRoutines = () => {
   const dispatch = useDispatch();
@@ -23,13 +23,15 @@ const AllRoutines = () => {
 
   return (
     <div className="routines-view">
+      {routines.length ? null : 'Please add a routine!'}
+
       {routines.map((routine) => {
         return (
           <div className="routine-preview" key={routine.id}>
             <Link to={`/routines/${routine.id}`}>
               <div className="routine-info">
                 <h2>{routine.name}</h2>
-                <h3>{`Notes: ${routine.notes}`}</h3>
+                {/* <h3>{`Notes: ${routine.notes}`}</h3> */}
               </div>
             </Link>
 
