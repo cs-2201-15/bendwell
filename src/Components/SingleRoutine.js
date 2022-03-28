@@ -45,9 +45,16 @@ const SingleRoutine = () => {
       <div className="single-stretch">
         <h2>{routine.name}</h2>
         <h3>{routine.notes}</h3>
-        <button type="button" onClick={() => handleClick()}>
-          Start Routine
-        </button>
+        {routine.stretches.length ? (
+          <button type="button" onClick={() => handleClick()}>
+            Start Routine
+          </button>
+        ) : (
+          <h4>
+            No current stretches. Go to "Stretches" tab to add some stretches
+            here!
+          </h4>
+        )}
 
         <button type="button" onClick={() => openDetails()}>
           Edit Details
