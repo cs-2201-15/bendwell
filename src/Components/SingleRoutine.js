@@ -23,7 +23,7 @@ const SingleRoutine = () => {
   useEffect(() => {
     dispatch(setRoutine(routineId));
     setLoading(false);
-  }, []);
+  }, [details]);
 
   const handleClick = () => {
     dispatch(setRoutineCamera(routine.stretches));
