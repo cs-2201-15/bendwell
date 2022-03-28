@@ -86,7 +86,7 @@ export default function routinesReducer(state = initialState, action) {
     case SET_ROUTINES:
       return action.routines;
     case ADD_ROUTINE:
-      return [...state, action.routine];
+      return [...state, action.routine[0]];
     case REMOVE_ROUTINE:
       return state.filter((routine) => routine.id !== action.routineId);
     default:

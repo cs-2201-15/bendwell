@@ -51,6 +51,7 @@ const AllStretches = () => {
               <select
                 id="selectRoutines"
                 name="routines"
+                style={{ color: "black" }}
                 value={selectVal}
                 onChange={(event) => handleSelect(event)}
               >
