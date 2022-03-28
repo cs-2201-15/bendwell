@@ -18,7 +18,6 @@ const AllRoutines = () => {
   };
 
   const deleteRoutine = (id) => {
-    console.log(id);
     dispatch(removeRoutine(id));
   };
 

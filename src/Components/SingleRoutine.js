@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { setRoutineCamera } from "../store/camera";
-import { setRoutine } from "../store/routine";
+import { deleteStretch, setRoutine } from "../store/routine";
 
 const SingleRoutine = () => {
   const [loading, setLoading] = useState(true);
@@ -12,8 +12,7 @@ const SingleRoutine = () => {
   const navigate = useNavigate();
 
   const routineId = params.id;
-  let routine = useSelector((state) => state.routine);
-  routine = routine[0] || {};
+  let routine = useSelector((state) => state.routine) || {};
   if (!routine.stretches) {
     routine.stretches = [];
   }
@@ -29,6 +28,10 @@ const SingleRoutine = () => {
     navigate(`/testwindow`);
   };
 
+  const handleDelete = (stretchId, routineId) => {
+    dispatch(deleteStretch(stretchId, routineId))
+  }
+
   if (loading) {
     return <p>Loading...</p>;
   } else {
@@ -39,14 +42,15 @@ const SingleRoutine = () => {
         <button type="button" onClick={() => handleClick()}>
           Start Routine
         </button>
-        {routine.stretches.map((stretch) => {
+        {routine.stretches.map((stretch, i) => {
           return (
-            <div className="stretch-preview" key={stretch.id}>
+            <div className="stretch-preview" key={i}>
               <Link to={`/stretches/${stretch.id}`}>
                 <p>{stretch.name}</p>
                 <img src={stretch.image_url} alt="Stretch Img" />
                 <p>{`Target: ${stretch.target}`}</p>
               </Link>
+              <button onClick={() => handleDelete(stretch.id, routine.id)}>Remove Stretch</button>
             </div>
           );
         })}

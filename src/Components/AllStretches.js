@@ -17,8 +17,8 @@ const AllStretches = () => {
   let user = supabase.auth.user();
 
   useEffect(() => {
-    dispatch(setRoutines(user.id));
     dispatch(setStretches());
+    dispatch(setRoutines(user.id));
   }, []);
 
   const handleSelect = (event) => {
@@ -54,6 +54,11 @@ const AllStretches = () => {
                 value={selectVal}
                 onChange={(event) => handleSelect(event)}
               >
+                <option
+                  value=""
+                  label=""
+                >
+                </option>
                 {routines.map((routine) => {
                   return (
                     <option
