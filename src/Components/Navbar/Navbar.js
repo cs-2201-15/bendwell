@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { supabase } from "../../supabaseClient";
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { supabase } from '../../supabaseClient';
+import './Navbar.scss';
 
-export default function Navbar() {
+export default function Navbar({ menuOpen, setMenuOpen }) {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
@@ -18,28 +19,19 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div>
+    <div className={'navbar ' + (menuOpen && 'active')}>
       {!session ? (
-        <nav>
-          <Link to="/home">
-            <h1>BendWell</h1>
-          </Link>
+        <div className="navbar-content">
           <Link to="/stretches">Stretches</Link>
           <Link to="/signup">Create Account</Link>
           <Link to="/login">Login</Link>
-        </nav>
+        </div>
       ) : (
-        //Login
-        <>
-          <nav>
-            <Link to="/home">
-              <h1>BendWell</h1>
-            </Link>
-            <Link to="/stretches">Stretches</Link>
-            <Link to="/routines">Routines</Link>
-            <Link to="/account">My Account</Link>
-          </nav>
-        </>
+        <div className="navbar-content">
+          <Link to="/stretches">Stretches</Link>
+          <Link to="/routines">Routines</Link>
+          <Link to="/account">My Account</Link>
+        </div>
       )}
     </div>
   );
