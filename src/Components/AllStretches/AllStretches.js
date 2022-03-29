@@ -5,6 +5,7 @@ import { setRoutines } from "../../store/routines";
 import { addStretch } from "../../store/routine";
 import { setStretches } from "../../store/stretches";
 import { supabase } from "../../supabaseClient";
+import "./allstretches.scss"
 
 const AllStretches = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,9 @@ const AllStretches = () => {
 
   useEffect(() => {
     dispatch(setStretches());
-    dispatch(setRoutines(user.id));
+    if(user){
+      dispatch(setRoutines(user.id));
+    }
   }, []);
 
   const handleSelect = (event) => {
@@ -36,18 +39,19 @@ const AllStretches = () => {
   };
 
   return (
-    <div>
+    <div className="stretch-container">
       {console.log(selectVal)}
       {stretches.map((stretch) => {
         return (
           <div className="stretch-preview" key={stretch.id}>
-            <Link to={`/stretches/${stretch.id}`}>
-              <h2>{stretch.name}</h2>
-              <img src={stretch.image_url} alt="Stretch Img" />
-              <h3>{`Target: ${stretch.target}`}</h3>
-            </Link>
-            <div>
-              <button
+            <div className="stretch-content">
+              <Link to={`/stretches/${stretch.id}`}>
+                <h2>{stretch.name}</h2>
+                <img src={stretch.image_url} alt="Stretch Img" />
+                <h3>{`Target: ${stretch.target}`}</h3>
+              </Link>
+              {user ?(
+                <>                <button
                 type="button"
                 className="add-to-routine"
                 onClick={() => handleClick(stretch, selectVal)}
@@ -74,6 +78,10 @@ const AllStretches = () => {
                   );
                 })}
               </select>
+              </>
+              ):(
+                <></>
+              )}
             </div>
           </div>
         );
