@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { setRoutineCamera } from '../store/camera';
-import { deleteStretch, setRoutine } from '../store/routine';
-import EditDetails from './EditDetails';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { setRoutineCamera } from "../../store/camera";
+import { deleteStretch, setRoutine } from "../../store/routine";
+import EditDetails from "../EditDetails/EditDetails";
 
 const SingleRoutine = () => {
   const [loading, setLoading] = useState(true);

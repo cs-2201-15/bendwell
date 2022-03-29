@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { supabase } from '../supabaseClient';
+import { useState } from "react";
+import { supabase } from "../../supabaseClient";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ export default function Auth() {
         <h1 className="header">Supabase + React</h1>
         <p className="description">Sign In</p>
         {loading ? (
-          'Loading...'
+          "Loading..."
         ) : (
           <form onSubmit={handleLogin}>
             <label htmlFor="email">Email</label>
