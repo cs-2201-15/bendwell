@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { setRoutines } from '../store/routines';
-import { addStretch } from '../store/routine';
-import { setStretches } from '../store/stretches';
-import { supabase } from '../supabaseClient';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { setRoutines } from "../../store/routines";
+import { addStretch } from "../../store/routine";
+import { setStretches } from "../../store/stretches";
+import { supabase } from "../../supabaseClient";
 
 const AllStretches = () => {
   const dispatch = useDispatch();
   const stretches = useSelector((state) => state.stretches);
   const routines = useSelector((state) => state.routines);
 
-  const [selectVal, setSelectVal] = useState('select a routine');
+  const [selectVal, setSelectVal] = useState("select a routine");
   //routine use selector
 
   let user = supabase.auth.user();
@@ -31,7 +31,7 @@ const AllStretches = () => {
     const myRoutine = routines.filter((routine) => {
       return routine.id === Number(selectVal);
     });
-    console.log('filter: ', myRoutine);
+    console.log("filter: ", myRoutine);
     alert(`Added ${stretch.name} to ${myRoutine[0].name}`);
   };
 
@@ -57,7 +57,7 @@ const AllStretches = () => {
               <select
                 id="selectRoutines"
                 name="routines"
-                style={{ color: 'black' }}
+                style={{ color: "black" }}
                 value={selectVal}
                 onChange={(event) => handleSelect(event)}
               >

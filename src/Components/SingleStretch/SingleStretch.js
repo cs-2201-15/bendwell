@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { setSingleCamera } from "../store/camera";
-import { setStretch } from "../store/stretch";
+import { setSingleCamera } from "../../store/camera";
+import { setStretch } from "../../store/stretch";
 
 const SingleStretch = () => {
   const [loading, setLoading] = useState(true);

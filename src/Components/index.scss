@@ -1,0 +1,15 @@
+$font-content: "Merriweather Sans", sans-serif;
+$font-title: "Montserrat", sans-serif;
+$font-logo: "Signika Negative", sans-serif;
+
+$color-background: #fff5eb;
+$color-primary: #deedf0;
+$color-secondary: #f4c7ab;
+$color-tertiary: #b2b8a3;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-content;
+}

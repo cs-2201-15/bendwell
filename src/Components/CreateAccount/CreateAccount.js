@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
-import Avatar from "./Avatar";
+import { supabase } from "../../supabaseClient";
+import Avatar from "../Avatar/Avatar";
 
 const CreateAccount = ({ session }) => {
   const navigate = useNavigate();
