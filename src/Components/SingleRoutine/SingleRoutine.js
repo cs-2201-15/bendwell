@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -24,7 +25,7 @@ const SingleRoutine = () => {
   useEffect(() => {
     dispatch(setRoutine(routineId));
     setLoading(false);
-  }, [details]);
+  }, []);
 
   const handleClick = () => {
     dispatch(setRoutineCamera(routine.stretches));
@@ -82,7 +83,6 @@ const SingleRoutine = () => {
               here!
             </h4>
           )}
-
           <button
             className="add-to-routine"
             type="button"
