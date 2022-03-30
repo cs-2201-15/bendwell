@@ -9,7 +9,7 @@ import Navbar from './Navbar/Navbar';
 import RoutesDirectory from '../Routes';
 import Topbar from './Topbar/Topbar';
 
-export default () => {
+const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -20,3 +20,5 @@ export default () => {
     </div>
   );
 };
+
+export default App;

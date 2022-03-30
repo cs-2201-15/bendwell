@@ -14,7 +14,7 @@ const Topbar = ({ menuOpen, setMenuOpen }) => {
           </div>
 
           <div className="topbar-middle">
-            <Link to="/home">
+            <Link to="/">
               <div className="logo">BendWell</div>
             </Link>
           </div>

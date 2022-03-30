@@ -41,10 +41,14 @@
       .logo {
         font-size: 40px;
         font-weight: 700;
-        text-decoration: none;
+        // text-decoration: none;
         color: $color-tertiary;
         margin-right: 40px;
         font-family: $font-logo;
+      }
+
+      a {
+        text-decoration: none;
       }
     }
 

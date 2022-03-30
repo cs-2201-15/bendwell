@@ -13,15 +13,17 @@
   align-items: center;
   justify-content: center;
   transition: all 1s ease;
+  text-decoration: none;
 
   &.active {
     right: 0;
+    text-decoration: none;
   }
 
   .navbar-content {
     margin: 0;
     padding: 0;
-    list-style: none;
+    // list-style: none;
     font-size: 30px;
     font-weight: 300;
     color: $color-tertiary;
@@ -37,6 +39,7 @@
 
       &:hover {
         font-weight: 500;
+        text-decoration: none;
       }
     }
   }
