@@ -55,7 +55,7 @@ export default function Auth() {
               />
             </div>
             <button className="button block" aria-live="polite" id="create-btn">
-              Create Account
+              Log in
             </button>
           </form>
         )}
