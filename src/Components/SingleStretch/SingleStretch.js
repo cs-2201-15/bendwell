@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { setSingleCamera } from "../../store/camera";
 import { setStretch } from "../../store/stretch";
+import "./singlestretch.scss";
 
 const SingleStretch = () => {
   const [loading, setLoading] = useState(true);
@@ -30,16 +31,23 @@ const SingleStretch = () => {
     return <p>Loading...</p>;
   } else {
     return (
-      <div className="single-stretch">
-        <h2>{stretch.name}</h2>
-        <h3>{`Target: ${stretch.target}`}</h3>
-        <div className="stretch-content">
-          <img src={stretch.image_url} alt="Stretch Img" />
-          <p>{stretch.description}</p>
+      <div className="single-stretch-container">
+        <div className="single-stretch-card">
+          <h2>{stretch.name}</h2>
+          <h3>{`Target: ${stretch.target}`}</h3>
+          <div className="single-stretch-description">
+            <img src={stretch.image_url} alt="Stretch Img" />
+            <h3>{stretch.description}</h3>
+          </div>
+
+          <button
+            type="button"
+            className="start-stretch-button"
+            onClick={() => handleClick()}
+          >
+            Start Stretch
+          </button>
         </div>
-        <button type="button" onClick={() => handleClick()}>
-          Start Stretch
-        </button>
       </div>
     );
   }
