@@ -1,23 +1,17 @@
-import React from "react";
-import {
-  withRouter,
-  Route,
-  Redirect,
-  Routes,
-  BrowserRouter,
-} from "react-router-dom";
-import Auth from "./Components/Auth/Auth";
-import Home from "./Components/Home/Home";
-import Teachable from "./Components/Teachable/Teachable";
-import AllStretches from "./Components/AllStretches/AllStretches";
-import SingleStretch from "./Components/SingleStretch/SingleStretch";
-import Account from "./Components/Account/Account";
-import Routines from "./Components/Routines/Routines";
-import SingleRoutine from "./Components/SingleRoutine/SingleRoutine";
-import { useState, useEffect } from "react";
-import { supabase } from "./supabaseClient";
-import SignUp from "./Components/SignUp/SignUp";
-import CreateAccount from "./Components/CreateAccount/CreateAccount";
+import React, { useState, useEffect } from 'react';
+import { withRouter, Route, Redirect, Routes } from 'react-router-dom';
+import Auth from './Components/Auth/Auth';
+import Home from './Components/Home/Home';
+import Teachable from './Components/Teachable/Teachable';
+import AllStretches from './Components/AllStretches/AllStretches';
+import SingleStretch from './Components/SingleStretch/SingleStretch';
+import Account from './Components/Account/Account';
+import Routines from './Components/Routines/Routines';
+import SingleRoutine from './Components/SingleRoutine/SingleRoutine';
+import { supabase } from './supabaseClient';
+import SignUp from './Components/SignUp/SignUp';
+import CreateAccount from './Components/CreateAccount/CreateAccount';
+import About from './Components/About/About';
 
 const RoutesDirectory = () => {
   const [session, setSession] = useState(null);
@@ -39,6 +33,7 @@ const RoutesDirectory = () => {
       {!session ? (
         <>
           <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/stretchcam" element={<Teachable />} />
           <Route path="/stretches" element={<AllStretches />} />
           <Route path="/stretches/:id" element={<SingleStretch />} />
@@ -63,6 +58,7 @@ const RoutesDirectory = () => {
           <Route path="/routines" element={<Routines />} />
           <Route path="/routines/:id" element={<SingleRoutine />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/testwindow" element={<Teachable />} />
           <Route path="/" element={<Home />} />
         </>

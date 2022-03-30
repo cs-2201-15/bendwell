@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { editRoutine } from "../../store/routine";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { editRoutine } from '../../store/routine';
 
-const EditDetails = ({ routine }) => {
+const EditDetails = ({ routine, setDetails }) => {
   const [routineName, setroutineName] = useState(routine.name);
-  const [text, settext] = useState(routine.notes || "");
+  const [text, settext] = useState(routine.notes || '');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -13,7 +13,8 @@ const EditDetails = ({ routine }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(editRoutine(routine.id, routineName, text));
-    alert("Your Details Have Been Saved!");
+
+    setDetails(false);
   };
 
   return (

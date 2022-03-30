@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { setRoutineCamera } from "../../store/camera";
-import { deleteStretch, setRoutine } from "../../store/routine";
-import EditDetails from "../EditDetails/EditDetails";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { setRoutineCamera } from '../../store/camera';
+import { deleteStretch, setRoutine } from '../../store/routine';
+import EditDetails from '../EditDetails/EditDetails';
 
 const SingleRoutine = () => {
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const SingleRoutine = () => {
   useEffect(() => {
     dispatch(setRoutine(routineId));
     setLoading(false);
-  }, [details]);
+  }, []);
 
   const handleClick = () => {
     dispatch(setRoutineCamera(routine.stretches));
@@ -59,7 +59,9 @@ const SingleRoutine = () => {
         <button type="button" onClick={() => openDetails()}>
           Edit Details
         </button>
-        {details ? <EditDetails routine={routine} /> : null}
+        {details ? (
+          <EditDetails routine={routine} setDetails={setDetails} />
+        ) : null}
 
         {routine.stretches.map((stretch, i) => {
           return (

@@ -1,0 +1,11 @@
+@import '.index.scss';
+
+.webcam {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+}
+
+.button {
+  color: $color-primary;
+}
