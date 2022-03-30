@@ -67,6 +67,7 @@ const CreateAccount = ({ session }) => {
 
   return (
     <div aria-live="polite" className="account-containter">
+      <h2>Finish setting up your profile:</h2>
       {loading ? (
         "Saving ..."
       ) : (
@@ -99,7 +100,6 @@ const CreateAccount = ({ session }) => {
       )}
     </div>
   );
-
 };
 
 export default CreateAccount;
