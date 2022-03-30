@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
+import "./signup.scss";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -27,31 +28,37 @@ export default function SignUp() {
   };
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget" aria-live="polite">
-        <p className="description">Create Account Below!</p>
+    <div className="row flex flex-center" id="login-container">
+      <div className="col-6 form-widget" aria-live="polite" id="content-container">
+        <h2 className="description">Create an Account!</h2>
+        <h3 className="login">Already have an account? <Link to="/login">Login</Link></h3>
         {loading ? (
           "Loading..."
         ) : (
           <form onSubmit={handleLogin}>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              className="inputField"
-              type="email"
-              placeholder="Your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              id="password"
-              className="inputField"
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button className="button block" aria-live="polite">
+            <div className="content-block">
+              <label htmlFor="email" id="email-label">Email</label>
+              <input
+                id="email"
+                className="inputField"
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="content-block">
+              <label htmlFor="password" id="pass-label">Password</label>
+              <input
+                id="password"
+                className="inputField"
+                type="password"
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button className="button block" aria-live="polite" id="create-btn">
               Create Account
             </button>
           </form>
