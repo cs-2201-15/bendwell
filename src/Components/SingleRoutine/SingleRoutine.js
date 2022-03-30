@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { setRoutineCamera } from "../../store/camera";
 import { deleteStretch, setRoutine } from "../../store/routine";
 import EditDetails from "../EditDetails/EditDetails";
+import "./singleroutine.scss";
 
 const SingleRoutine = () => {
   const [loading, setLoading] = useState(true);
@@ -42,39 +43,55 @@ const SingleRoutine = () => {
     return <p>Loading...</p>;
   } else {
     return (
-      <div className="single-stretch">
-        <h2>{routine.name}</h2>
-        <h3>{routine.notes}</h3>
-        {routine.stretches.length ? (
-          <button type="button" onClick={() => handleClick()}>
-            Start Routine
+      <div className="main-container">
+        <div className="single-routine-header">
+          <h2>{routine.name}</h2>
+          <h3>{routine.notes}</h3>
+        </div>
+        <div className="single-routine-container">
+          {routine.stretches.map((stretch, i) => {
+            return (
+              <div className="stretch-preview" key={i}>
+                <Link to={`/stretches/${stretch.id}`}>
+                  <h2>{stretch.name}</h2>
+                  <img src={stretch.image_url} alt="Stretch Img" />
+                  <h3>{`Target: ${stretch.target}`}</h3>
+                </Link>
+                <button
+                  className="add-to-routine"
+                  onClick={() => handleDelete(stretch.id, routine.id)}
+                >
+                  Remove Stretch
+                </button>
+              </div>
+            );
+          })}
+        </div>
+        <div className="start-routine-footer">
+          {routine.stretches.length ? (
+            <button
+              type="button"
+              className="add-to-routine"
+              onClick={() => handleClick()}
+            >
+              Start Routine
+            </button>
+          ) : (
+            <h4>
+              No current stretches. Go to "Stretches" tab to add some stretches
+              here!
+            </h4>
+          )}
+
+          <button
+            className="add-to-routine"
+            type="button"
+            onClick={() => openDetails()}
+          >
+            Edit Details
           </button>
-        ) : (
-          <h4>
-            No current stretches. Go to "Stretches" tab to add some stretches
-            here!
-          </h4>
-        )}
-
-        <button type="button" onClick={() => openDetails()}>
-          Edit Details
-        </button>
-        {details ? <EditDetails routine={routine} /> : null}
-
-        {routine.stretches.map((stretch, i) => {
-          return (
-            <div className="stretch-preview" key={i}>
-              <Link to={`/stretches/${stretch.id}`}>
-                <p>{stretch.name}</p>
-                <img src={stretch.image_url} alt="Stretch Img" />
-                <p>{`Target: ${stretch.target}`}</p>
-              </Link>
-              <button onClick={() => handleDelete(stretch.id, routine.id)}>
-                Remove Stretch
-              </button>
-            </div>
-          );
-        })}
+          {details ? <EditDetails routine={routine} /> : null}
+        </div>
       </div>
     );
   }
