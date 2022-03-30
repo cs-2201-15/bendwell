@@ -5,7 +5,7 @@ import { setRoutines } from "../../store/routines";
 import { addStretch } from "../../store/routine";
 import { setStretches } from "../../store/stretches";
 import { supabase } from "../../supabaseClient";
-import "./allstretches.scss"
+import "./allstretches.scss";
 
 const AllStretches = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const AllStretches = () => {
 
   useEffect(() => {
     dispatch(setStretches());
-    if(user){
+    if (user) {
       dispatch(setRoutines(user.id));
     }
   }, []);
@@ -50,36 +50,38 @@ const AllStretches = () => {
                 <img src={stretch.image_url} alt="Stretch Img" />
                 <h3>{`Target: ${stretch.target}`}</h3>
               </Link>
-              {user ?(
-                <>                <button
-                type="button"
-                className="add-to-routine"
-                onClick={() => handleClick(stretch, selectVal)}
-              >
-                Add to a routine
-              </button>
-              <select
-                id="selectRoutines"
-                name="routines"
-                style={{ color: "black" }}
-                value={selectVal}
-                onChange={(event) => handleSelect(event)}
-              >
-                <option value="" label=""></option>
-                {routines.map((routine) => {
-                  return (
-                    <option
-                      key={routine.id}
-                      value={routine.id}
-                      label={routine.name}
-                    >
-                      {routine.name}
-                    </option>
-                  );
-                })}
-              </select>
-              </>
-              ):(
+              {user ? (
+                <>
+                  {" "}
+                  <button
+                    type="button"
+                    className="add-to-routine"
+                    onClick={() => handleClick(stretch, selectVal)}
+                  >
+                    Add to a routine
+                  </button>
+                  <select
+                    id="selectRoutines"
+                    name="routines"
+                    style={{ color: "black" }}
+                    value={selectVal}
+                    onChange={(event) => handleSelect(event)}
+                  >
+                    <option value="" label=""></option>
+                    {routines.map((routine) => {
+                      return (
+                        <option
+                          key={routine.id}
+                          value={routine.id}
+                          label={routine.name}
+                        >
+                          {routine.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </>
+              ) : (
                 <></>
               )}
             </div>
