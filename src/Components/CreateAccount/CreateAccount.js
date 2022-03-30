@@ -66,11 +66,11 @@ const CreateAccount = ({ session }) => {
   };
 
   return (
-    <div aria-live="polite">
+    <div aria-live="polite" className="account-containter">
       {loading ? (
         "Saving ..."
       ) : (
-        <form onSubmit={updateProfile} className="form-widget">
+        <form onSubmit={updateProfile} className="form-widget" id="avatar-form">
           <Avatar
             url={avatar_url}
             size={150}
@@ -79,8 +79,8 @@ const CreateAccount = ({ session }) => {
               updateProfile({ username, avatar_url: url });
             }}
           />
-          <div>Email: {session.user.email}</div>
-          <div>
+          <div className="email-block">Email: {session.user.email}</div>
+          <div className="name-block">
             <label htmlFor="username">Name</label>
             <input
               id="username"
@@ -90,7 +90,7 @@ const CreateAccount = ({ session }) => {
             />
           </div>
 
-          <div>
+          <div className="create-account">
             <button className="button block primary" disabled={loading}>
               Create Account
             </button>
@@ -99,6 +99,7 @@ const CreateAccount = ({ session }) => {
       )}
     </div>
   );
+
 };
 
 export default CreateAccount;
