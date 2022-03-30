@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { supabase } from '../../supabaseClient';
-import './Navbar.scss';
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { supabase } from "../../supabaseClient";
+import "./navbar.scss";
 
 export default function Navbar({ menuOpen, setMenuOpen }) {
   const [session, setSession] = useState(null);
@@ -20,28 +20,49 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
 
   return (
     <div
-      className={'navbar ' + (menuOpen && 'active')}
-      style={{ textDecoration: 'none' }}
+      className={"navbar " + (menuOpen && "active")}
+      style={{ textDecoration: "none" }}
     >
+      <div className="navbar-close" onClick={() => setMenuOpen(false)}>
+        <div>Close</div>
+        {/* <img src={"../../../public/close_black_24dp.svg"} alt="close menu" /> */}
+        <div className="navbar-close-button"></div>
+      </div>
       {!session ? (
-        <div className="navbar-content" style={{ textDecoration: 'none' }}>
-          <Link to="/stretches">Stretches</Link>
+        <div className="navbar-content">
+          <Link to="/stretches" style={{ textDecoration: "none" }}>
+            Stretches
+          </Link>
           <br />
-          <Link to="/signup">Create Account</Link>
+          <Link to="/signup" style={{ textDecoration: "none" }}>
+            Create Account
+          </Link>
           <br />
-          <Link to="/about">About</Link>
+          <Link to="/about" style={{ textDecoration: "none" }}>
+            About
+          </Link>
           <br />
-          <Link to="/login">Login</Link>
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            Login
+          </Link>
         </div>
       ) : (
-        <div className="navbar-content" style={{ textDecoration: 'none' }}>
-          <Link to="/stretches">Stretches</Link>
+        <div className="navbar-content" style={{ textDecoration: "none" }}>
+          <Link to="/stretches" style={{ textDecoration: "none" }}>
+            Stretches
+          </Link>
           <br />
-          <Link to="/routines">Routines</Link>
+          <Link to="/routines" style={{ textDecoration: "none" }}>
+            Routines
+          </Link>
           <br />
-          <Link to="/about">About</Link>
+          <Link to="/about" style={{ textDecoration: "none" }}>
+            About
+          </Link>
           <br />
-          <Link to="/account">My Account</Link>
+          <Link to="/account" style={{ textDecoration: "none" }}>
+            Account
+          </Link>
         </div>
       )}
     </div>

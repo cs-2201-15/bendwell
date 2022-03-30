@@ -24,7 +24,6 @@ export default function Auth() {
   return (
     <div className="row flex flex-center">
       <div className="col-6 form-widget" aria-live="polite">
-        <h1 className="header">Supabase + React</h1>
         <p className="description">Sign In</p>
         {loading ? (
           "Loading..."
