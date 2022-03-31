@@ -1,11 +1,55 @@
-@import '.index.scss';
+@use '../index.scss';
+.teachable-container {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  position: relative;
 
-.webcam {
-  position: fixed; /* or absolute */
-  top: 50%;
-  left: 50%;
-}
+  h2{
+    font-size: 24pt;
+    margin-bottom: 20px;
 
-.button {
-  color: $color-primary;
+  }
+  .button{
+    display: inline-block;
+    outline: 0;
+    appearance: none;
+    padding: 0px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: index.$color-background;
+    border: 1px solid rgb(137, 151, 155);
+    box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+    color: rgb(61, 79, 88);
+    font-size: 14px;
+    font-weight: 400;
+    height: 36px;
+    transition: all 150ms ease-in-out 0s;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    &:hover {
+        color: rgb(61, 79, 88);
+        background-color: index.$color-secondary;
+        border: 1px solid rgb(93, 108, 116);
+        box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px, rgb(231 238 236) 0px 0px 0px 3px;
+    }
+
+  }
+
+  canvas{
+    display:block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 250px auto 0 auto;
+  }
+
+  .label-container{
+    h3{
+      margin-top: 20px;
+    }
+  }
 }
