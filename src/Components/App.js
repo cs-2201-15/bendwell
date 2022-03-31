@@ -1,13 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { useState } from 'react';
-import './App.scss';
+import { useState } from "react";
+import "./App.scss";
 // import { supabase } from "../supabaseClient";
 // import Auth from "./Auth";
 // import Account from "./Account";
 // import Teachable from "./Teachable";
-import Navbar from './Navbar/Navbar';
-import RoutesDirectory from '../Routes';
-import Topbar from './Topbar/Topbar';
+import Navbar from "./Navbar/Navbar";
+import RoutesDirectory from "../Routes";
+import Topbar from "./Topbar/Topbar";
+import Footer from "./Footer/Footer";
 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +17,10 @@ const App = () => {
     <div className="container">
       <Topbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <RoutesDirectory />
+      <div className="content">
+        <RoutesDirectory />
+      </div>
+      <Footer />
     </div>
   );
 };

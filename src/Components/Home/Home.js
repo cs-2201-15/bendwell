@@ -1,7 +1,11 @@
+import "./home.scss";
+
 const Home = () => {
   return (
-    <div>
-      <div>this is home</div>
+    <div className="home">
+      <div className="home-landing"></div>
+      <div className="home-info"></div>
+      <div className="home-about"></div>
     </div>
   );
 };
