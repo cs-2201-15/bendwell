@@ -31,6 +31,8 @@ const Teachable = () => {
   useEffect(() => {
     return ()=>{
       window.location.reload(true);
+      matched = false;
+      setMatch(matched);
     }
   }, [])
 
