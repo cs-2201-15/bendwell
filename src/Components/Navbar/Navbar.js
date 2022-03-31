@@ -23,11 +23,11 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
       className={"navbar " + (menuOpen && "active")}
       style={{ textDecoration: "none" }}
     >
-      <div className="navbar-close" onClick={() => setMenuOpen(false)}>
-        <div>Close</div>
-        {/* <img src={"../../../public/close_black_24dp.svg"} alt="close menu" /> */}
-        <div className="navbar-close-button"></div>
-      </div>
+      {/* <div className="navbar-close" onClick={() => setMenuOpen(false)}>
+        <div>Close</div> */}
+      {/* <img src={"../../../public/close_black_24dp.svg"} alt="close menu" /> */}
+      {/* <div className="navbar-close-button"></div>
+      </div> */}
       {!session ? (
         <div className="navbar-content">
           <Link
