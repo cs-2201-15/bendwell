@@ -28,6 +28,14 @@ const Teachable = () => {
     setCompleted(false);
   }, []);
 
+  useEffect(() => {
+    return ()=>{
+      window.location.reload(true);
+      matched = false;
+      setMatch(matched);
+    }
+  }, [])
+
   async function init() {
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -59,7 +67,7 @@ const Teachable = () => {
         // console.log("CURRENT: ", cameraArr[0].name, "Prediction: ", prediction)
         let score = verify(cameraArr[0], prediction);
         console.log("CURRENT SCORE:", score, "for stretch:", cameraArr[0].name);
-        if (score && !matched) {
+        if (score) {
           console.log(
             `Pose Matched: ${score} Hit the next stretch button to start`
           );
@@ -80,35 +88,33 @@ const Teachable = () => {
   const verify = (currPose, prediction) => {
     console.log("Current:", currPose.name, prediction);
     for (let i = 0; i < prediction.length - 1; i++) {
-      if (!match) {
-        if (
-          currPose.name === prediction[i].className &&
-          prediction[i].probability > 0.8
-        ) {
-          console.log(
-            "Matched: ",
-            prediction[i].className,
-            prediction[i].probability
-          );
-          setStatus(
-            `Awesome job doing the ${currPose.name} stretch! Try to hold this stretch and click next to continue`
-          );
-          return prediction[i].probability;
-        } else if (
-          currPose.name === prediction[i].className &&
-          0.8 > prediction[i].probability > 0.4
-        ) {
-          setStatus(`Try the ${currPose.name}`);
-        } else if (
-          currPose.name === prediction[i].className &&
-          0.4 > prediction[i].probability
-        ) {
-          setStatus(
-            `Try correcting your pose for ${currPose.name}, and make sure your whole body is in frame!`
-          );
-        } else {
-          continue;
-        }
+      if (
+        currPose.name === prediction[i].className &&
+        prediction[i].probability > 0.8
+      ) {
+        console.log(
+          "Matched: ",
+          prediction[i].className,
+          prediction[i].probability
+        );
+        setStatus(
+          `Awesome job doing the ${currPose.name} stretch! Try to hold this stretch and click next to continue`
+        );
+        return prediction[i].probability;
+      } else if (
+        currPose.name === prediction[i].className &&
+        0.8 > prediction[i].probability > 0.4
+      ) {
+        setStatus(`Try the ${currPose.name}`);
+      } else if (
+        currPose.name === prediction[i].className &&
+        0.4 > prediction[i].probability
+      ) {
+        setStatus(
+          `Try correcting your pose for ${currPose.name}, and make sure your whole body is in frame!`
+        );
+      } else {
+        continue;
       }
     }
     return 0;
