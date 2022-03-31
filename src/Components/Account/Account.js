@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient";
 import Avatar from "../Avatar/Avatar";
+import "./account.scss";
 
 const Account = ({ session }) => {
   const [loading, setLoading] = useState(true);
@@ -68,44 +69,50 @@ const Account = ({ session }) => {
   };
 
   return (
-    <div aria-live="polite">
-      {loading ? (
-        "Saving ..."
-      ) : (
-        <form onSubmit={updateProfile} className="form-widget">
-          <Avatar
-            url={avatar_url}
-            size={150}
-            onUpload={(url) => {
-              setAvatarUrl(url);
-              updateProfile({ username, avatar_url: url });
-            }}
-          />
-          <div>Email: {session.user.email}</div>
-          <div>
-            <label htmlFor="username">Name</label>
-            <input
-              id="username"
-              type="text"
-              value={username || ""}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
+    <div className="main-container">
+      <div className="account-container">
+        <div aria-live="polite">
+          {loading ? (
+            "Saving ..."
+          ) : (
+            <form onSubmit={updateProfile} className="form-widget">
+              <Avatar
+                url={avatar_url}
+                size={150}
+                onUpload={(url) => {
+                  setAvatarUrl(url);
+                  updateProfile({ username, avatar_url: url });
+                }}
+              />
+              <div>
+                <h3>Email: {session.user.email}</h3>
+              </div>
+              <div>
+                <label htmlFor="username">Name: </label>
+                <input
+                  id="username"
+                  type="text"
+                  value={username || ""}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
 
-          <div>
-            <button className="button block primary" disabled={loading}>
-              Update profile
-            </button>
-          </div>
-        </form>
-      )}
-      <button
-        type="button"
-        className="button block"
-        onClick={() => supabase.auth.signOut()}
-      >
-        Sign Out
-      </button>
+              <div>
+                <button className="edit-profile-button" disabled={loading}>
+                  Update profile
+                </button>
+              </div>
+            </form>
+          )}
+          <button
+            type="button"
+            className="edit-profile-button"
+            onClick={() => supabase.auth.signOut()}
+          >
+            Sign Out
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,82 @@
+@use "../index.scss";
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 50px;
+
+  .account-container {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 index.$color-secondary;
+    width: 50vw;
+    height: 50vh;
+
+    .email-container {
+      font-size: 14pt;
+      font-family: index.$font-content;
+      font-weight: 300;
+    }
+
+    .form-widget {
+      font-size: 14pt;
+      font-family: index.$font-title;
+      font-weight: 300;
+
+      label,
+      h3 {
+        font-size: 14pt;
+        font-family: index.$font-content;
+        font-weight: 300;
+      }
+      img {
+        margin-top: 25px;
+        border-radius: 50%;
+        border: 4px solid index.$color-primary;
+
+        &:hover {
+          box-shadow: 0 0 2px 2px index.$color-tertiary;
+        }
+      }
+      input {
+        width: 50%;
+        padding: 8px 8px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        font-size: 16px;
+
+        &:focus {
+          border: 3px solid index.$color-tertiary;
+        }
+      }
+    }
+    .edit-profile-button {
+      display: inline-block;
+      outline: 0;
+      appearance: none;
+      padding: 0px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: index.$color-background;
+      border: 1px solid rgb(137, 151, 155);
+      box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+      color: rgb(61, 79, 88);
+      font-size: 14px;
+      font-weight: 400;
+      height: 36px;
+      transition: all 150ms ease-in-out 0s;
+      margin-top: 10px;
+      margin-right: 8px;
+
+      &:hover {
+        color: index.$color-tertiary;
+        background-color: index.$color-primary;
+        border: 1px solid rgb(93, 108, 116);
+        box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
+          rgb(231 238 236) 0px 0px 0px 3px;
+      }
+    }
+  }
+}
