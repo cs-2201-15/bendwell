@@ -1,4 +1,4 @@
-@use "../index.scss";
+@use '../index.scss';
 
 .single-stretch-container {
   display: flex;
@@ -18,7 +18,8 @@
     text-align: center;
     border-radius: 10px;
     margin: 20px 0;
-    box-shadow: 10px 8px 0px index.$color-primary-hover;
+    box-shadow: 10px 8px 0px;
+    color: index.$color-primary-hover;
     transition-property: box-shadow;
     transition-duration: 0.5s;
     padding-top: 15px;
@@ -29,12 +30,15 @@
       font-family: index.$font-title;
       letter-spacing: 2px;
       font-weight: 700;
+      // color: index.$color-accent-secondary;
     }
 
     h3 {
       font-size: 14pt;
       font-family: index.$font-title;
       font-weight: 400;
+      padding-bottom: 10px;
+      color: index.$color-accent-secondary;
     }
 
     &:hover {
@@ -53,12 +57,19 @@
       img {
         width: 200px;
         height: 200px;
+        border-radius: 25px;
       }
 
       h3 {
         font-size: 14pt;
         font-family: index.$font-title;
         font-weight: 400;
+        color: index.$color-accent-secondary; //words
+        margin: 5px 10px;
+        padding: 10px 30px;
+        border: 1px;
+        border-radius: 25px;
+        background-color: index.$color-background;
       }
     }
     .start-stretch-button {

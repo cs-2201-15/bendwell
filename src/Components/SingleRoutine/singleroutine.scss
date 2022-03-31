@@ -1,4 +1,4 @@
-@use "../index.scss";
+@use '../index.scss';
 
 .main-container {
   .single-routine-header {
@@ -11,11 +11,12 @@
   }
 
   h2 {
-    margin-top: 10px;
+    margin-top: 50px;
     font-size: 20pt;
     font-family: index.$font-title;
     letter-spacing: 2px;
     font-weight: 700;
+    color: index.$color-accent-secondary;
   }
 
   img {
@@ -99,6 +100,12 @@
   .start-routine-footer {
     text-align: center;
 
+    .warning {
+      border: 1px;
+      border-radius: 10px;
+      background-color: red;
+    }
+
     .add-to-routine {
       display: inline-block;
       outline: 0;
@@ -106,7 +113,6 @@
       padding: 0px 12px;
       border-radius: 4px;
       cursor: pointer;
-      background-color: index.$color-background;
       border: 1px solid rgb(137, 151, 155);
       box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
       color: rgb(61, 79, 88);
@@ -116,6 +122,9 @@
       transition: all 150ms ease-in-out 0s;
       margin-top: 10px;
       margin-right: 8px;
+      margin-bottom: 10px;
+      color: white;
+      background-color: #20c1c3;
 
       &:hover {
         color: rgb(61, 79, 88);

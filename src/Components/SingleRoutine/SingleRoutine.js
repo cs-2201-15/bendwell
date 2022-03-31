@@ -1,11 +1,10 @@
-
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { setRoutineCamera } from "../../store/camera";
-import { deleteStretch, setRoutine } from "../../store/routine";
-import EditDetails from "../EditDetails/EditDetails";
-import "./singleroutine.scss";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { setRoutineCamera } from '../../store/camera';
+import { deleteStretch, setRoutine } from '../../store/routine';
+import EditDetails from '../EditDetails/EditDetails';
+import './singleroutine.scss';
 
 const SingleRoutine = () => {
   const [loading, setLoading] = useState(true);
@@ -78,7 +77,7 @@ const SingleRoutine = () => {
               Start Routine
             </button>
           ) : (
-            <h4>
+            <h4 className="warning">
               No current stretches. Go to "Stretches" tab to add some stretches
               here!
             </h4>
