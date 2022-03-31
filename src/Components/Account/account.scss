@@ -13,6 +13,7 @@
     box-shadow: 0 4px 8px 0 index.$color-secondary;
     width: 50vw;
     height: 50vh;
+    background-color: index.$color-primary;
 
     .email-container {
       font-size: 14pt;
@@ -29,7 +30,8 @@
       h3 {
         font-size: 14pt;
         font-family: index.$font-content;
-        font-weight: 300;
+        font-weight: 400;
+        margin: 40px 0px 12px 0px;
       }
       img {
         margin-top: 25px;
@@ -42,8 +44,7 @@
       }
       input {
         width: 50%;
-        padding: 8px 8px;
-        margin: 8px 0;
+        padding: 8px 8x;
         box-sizing: border-box;
         font-size: 16px;
 
@@ -67,13 +68,13 @@
       font-weight: 400;
       height: 36px;
       transition: all 150ms ease-in-out 0s;
-      margin-top: 10px;
+      margin-top: 12px;
       margin-right: 8px;
 
       &:hover {
         color: index.$color-tertiary;
         background-color: index.$color-primary;
-        border: 1px solid rgb(93, 108, 116);
+        border: 2px solid rgb(93, 108, 116);
         box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
           rgb(231 238 236) 0px 0px 0px 3px;
       }
