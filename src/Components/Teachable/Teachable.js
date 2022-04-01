@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
 import { useNavigate } from "react-router-dom";
+import "./teachable.scss";
 
 //if we get "t is not a func" error, make sure dependencies are as follows:    "@teachablemachine/pose": "^0.8.6",
 // "@tensorflow/tfjs": "^3.14.0",
@@ -133,7 +134,7 @@ const Teachable = () => {
       // draw the keypoints and skeleton
       if (pose) {
         const minPartConfidence = 0.5;
-        tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+        // tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
         tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
       }
     }
@@ -151,8 +152,8 @@ const Teachable = () => {
   };
   // let stretchName = cameraArr[0].name || ""
   return (
-    <div>
-      <div>Teachable Machine Pose Model</div>
+    <div className="teachable-container">
+      <h2>Teachable Machine Pose Model</h2>
       <button
         className="button"
         type="button"
@@ -162,22 +163,14 @@ const Teachable = () => {
       >
         Start
       </button>
-      <div className="webcam">
-        <canvas
-          ref={canvasRef}
-          width={500}
-          height={500}
-          style={{
-            position: "absolute",
-            top: "30%",
-            left: "40%",
-            justifyContent: "center",
-          }}
-        ></canvas>
-      </div>
+      <canvas
+        ref={canvasRef}
+        width={500}
+        height={700}
+      ></canvas>
       <div id="label-container">
         {/* <div>{`Stretch: ${stretchName}`}</div> */}
-        <h3>{status}</h3>
+        <h3 className="status">{status}</h3>
         {completed ? (
           <button className="button" onClick={() => handleClick()}>
             Go Back to Stretches
