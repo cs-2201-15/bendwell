@@ -20,12 +20,14 @@ const EditDetails = ({ routine, setDetails }) => {
   return (
     <>
       <h1>Edit Routine Details</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <input
+          className="title"
           onChange={(e) => setroutineName(e.target.value)}
           value={routineName}
         ></input>
         <textarea
+          className="textbox"
           onChange={(e) => settext(e.target.value)}
           value={text}
         ></textarea>

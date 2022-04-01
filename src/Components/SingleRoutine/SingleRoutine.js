@@ -43,7 +43,10 @@ const SingleRoutine = () => {
     return <p>Loading...</p>;
   } else {
     return (
-      <div className="main-container">
+      <div
+        className="main-container"
+        style={{ width: '100vw', height: '100vh' }}
+      >
         <div className="single-routine-header">
           <h2>{routine.name}</h2>
           <h3>{routine.notes}</h3>
@@ -60,6 +63,7 @@ const SingleRoutine = () => {
                 <button
                   className="add-to-routine"
                   onClick={() => handleDelete(stretch.id, routine.id)}
+                  style={{ backgroundColor: '#20c1c3' }}
                 >
                   Remove Stretch
                 </button>
