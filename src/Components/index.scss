@@ -2,6 +2,22 @@ $font-content: "Signika Negative", sans-serif;
 $font-title: "Signika Negative", sans-serif;
 $font-logo: "Signika Negative", sans-serif;
 
+@mixin font-content() {
+  font-family: $font-content;
+  font-size: 32px;
+  font-weight: 300;
+}
+@mixin font-detail() {
+  font-family: $font-title;
+  font-size: 20px;
+  font-weight: 300;
+}
+@mixin font-logo() {
+  font-family: $font-logo;
+  font-size: 64px;
+  font-weight: 600;
+}
+
 $color-background: #ecf5ff;
 $color-primary: #d6e9ff;
 $color-primary-hover: #6f9dc8;
