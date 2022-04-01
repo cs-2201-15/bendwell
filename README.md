@@ -19,21 +19,13 @@
 -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/cs-2201-15/capstone">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Bendwell</h3>
+  <h2 align="center">Bendwell</h2>
 
   <p align="center">
     A wellness platform
@@ -48,8 +40,6 @@
     <a href="https://github.com/cs-2201-15/capstone/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -73,11 +63,8 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -86,28 +73,17 @@
 
 Bendwell is a wellness platform aimed at those who are stuck at their desks for many hours at a time. Through the use of a custom trained pose detection model, users are able to stretch and recieve real time feedback, without having to leave their office, desk, or any other workspace they are at. Users can choose stretches to try from our pre-trained catalogue of stretches, or if interested, can make an account to build custom routines for targeting certain muscle groups, having a set break for stretching, or to accomate for different space requirments.
 
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 ### Built With
 
 Here is a list of the technology and frameworks used to build Bendwell.
 
 * [React.js](https://reactjs.org/)
-* [Node.js] (https://nodejs.org/)
-* [Redux] (https://reduc.js.org/)
-* [Supabase] (https://supabase.com/)
-* [TensorFlow] (https://tensorflow.org/)
-* [Teachable Machine] (https://teachablemachine.withgoogle.com/)
-* [Sass] (https://sass-lang.com/)
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
+* [Node.js](https://nodejs.org/)
+* [Redux](https://reduc.js.org/)
+* [Supabase](https://supabase.com/)
+* [TensorFlow](https://tensorflow.org/)
+* [Teachable Machine](https://teachablemachine.withgoogle.com/)
+* [Sass](https://sass-lang.com/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -139,10 +115,6 @@ _Below is an example of how you can instruct your audience on installing and set
   npm run start
   ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -150,11 +122,6 @@ _Below is an example of how you can instruct your audience on installing and set
 * If a user is interested in compiling more than one stretch together into a routine, either create an account or log in. After logging in, the user is able to create a new routine in the routines tab, and add individual stretches into that routine from the stretches tab. To run a routine, select any of the user's routines and press the 'start routine' button to run the stretch cam.
 * To remove a stretch, press the 'remove' button in a specific routine, and similarly to remove an entire routine, press 'remove routine' from within the routines tab.
 * To edit any information within the user's profile or any of the user-created routines, press the 'edit' button to edit any information availible.
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -165,12 +132,7 @@ _Below is an example of how you can instruct your audience on installing and set
 - [ ] Progressive Web App capability
 - [ ] Incorporate social connections through sharing and rating routines
 
-
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -186,17 +148,12 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
@@ -213,27 +170,17 @@ Project Link: [https://github.com/cs-2201-15/capstone](https://github.com/cs-220
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[contributors-url]: https://github.com/cs-2201-15/capstone/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[forks-url]: https://github.com/cs-2201-15/capstone/network/members
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/cs-2201-15/capstone/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[license-url]: https://github.com/cs-2201-15/capstone/blob/main/LICENSE
+
 [product-screenshot]: images/screenshot.png
