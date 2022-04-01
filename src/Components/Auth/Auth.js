@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { supabase } from "../../supabaseClient";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./auth.scss";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ export default function Auth() {
       alert(error.error_description || error.message);
     } finally {
       setLoading(false);
+      navigate('/stretches');
     }
   };
 
@@ -54,7 +57,7 @@ export default function Auth() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button className="button block" aria-live="polite" id="create-btn">
+            <button className="block" aria-live="polite" id="create-btn">
               Log in
             </button>
           </form>

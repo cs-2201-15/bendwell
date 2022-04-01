@@ -155,6 +155,7 @@ const Teachable = () => {
     <div className="teachable-container">
       <h2>Teachable Machine Pose Model</h2>
       <button
+        id='init'
         className="button"
         type="button"
         onClick={() => {
