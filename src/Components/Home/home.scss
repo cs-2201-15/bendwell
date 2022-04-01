@@ -99,8 +99,33 @@
   }
 
   &__about {
+    background-color: $color-background;
+    @include font-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 150px;
+    &-title {
+      font-weight: 600;
+    }
+    &-description {
+      text-align: center;
+    }
     &-list {
-      svg {
+      margin-top: 48px;
+      li {
+        display: flex;
+        justify-content: center;
+        margin: 32px 0;
+        svg {
+          color: $color-tertiary;
+          height: 54px;
+        }
+        p {
+          padding-top: 8px;
+        }
       }
     }
   }
