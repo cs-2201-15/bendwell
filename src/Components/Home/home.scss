@@ -1,5 +1,107 @@
-@import '../index.scss';
+@import "../index.scss";
 
 .home {
-  color: $color-tertiary;
+  &__landing {
+    position: relative;
+
+    display: flex;
+    background-color: $color-background;
+    height: 880px;
+
+    &-img {
+      width: 50vw;
+      // height: 100vh;
+      height: calc(100vh - 64px);
+      object-fit: cover;
+      border-top-right-radius: 220px;
+      // object-position: right -100px;
+      z-index: 1;
+    }
+    // &-fill {
+    //   width: 100%;
+    // }
+    &-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px;
+      // align-items: center;
+      &-text {
+        @include font-content;
+        h1 {
+          font-weight: 300;
+        }
+        span {
+          color: $color-tertiary;
+          font-weight: 600;
+        }
+      }
+      &-button {
+        margin-top: 24px;
+        button {
+          @include button;
+        }
+      }
+    }
+  }
+
+  &__info {
+    // margin-top: -150px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    background-color: $color-primary;
+    z-index: 2;
+    padding: 48px;
+
+    &-img {
+      object-fit: cover;
+      height: 240px;
+    }
+    &-tag {
+      text-align: center;
+      padding: 0 24px;
+      h2 {
+        @include font-content;
+      }
+      span {
+        color: $color-tertiary;
+        font-weight: 600;
+      }
+    }
+    &-details {
+      display: flex;
+      gap: 16px;
+      padding: 10px 48px;
+      &-cards {
+        width: 30vw;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $color-background;
+        padding: 0 28px;
+        @include font-detail;
+        border-radius: 48px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        h2 {
+          font-weight: 600;
+          text-align: center;
+        }
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &__about {
+    &-list {
+      svg {
+      }
+    }
+  }
 }
