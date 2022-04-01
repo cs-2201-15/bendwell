@@ -79,23 +79,23 @@ const Account = ({ session }) => {
               <Avatar
                 className="image-container"
                 url={avatar_url}
-                size={150}
+                size={200}
                 onUpload={(url) => {
                   setAvatarUrl(url);
                   updateProfile({ username, avatar_url: url });
                 }}
               />
-              <div>
+              <div className="info-container">
                 <h3>Email: {session.user.email}</h3>
-              </div>
-              <div>
-                <h3 htmlFor="username">Name: </h3>
-                <input
-                  id="username"
-                  type="text"
-                  value={username || ""}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
+                <h3 htmlFor="username">
+                  Name:
+                  <input
+                    id="username"
+                    type="text"
+                    value={username || ""}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />{" "}
+                </h3>
               </div>
 
               <div>
@@ -105,13 +105,13 @@ const Account = ({ session }) => {
               </div>
             </form>
           )}
-          <button
+          {/* <button
             type="button"
             className="edit-profile-button"
             onClick={() => supabase.auth.signOut()}
           >
             Sign Out
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
