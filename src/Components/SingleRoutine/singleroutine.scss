@@ -1,4 +1,4 @@
-@use "../index.scss";
+@import "../index.scss";
 
 .main-container {
   .single-routine-header {
@@ -13,7 +13,7 @@
   h2 {
     margin-top: 10px;
     font-size: 20pt;
-    font-family: index.$font-title;
+    font-family: $font-title;
     letter-spacing: 2px;
     font-weight: 700;
   }
@@ -25,7 +25,7 @@
 
   h3 {
     font-size: 14pt;
-    font-family: index.$font-title;
+    font-family: $font-title;
     font-weight: 400;
   }
 
@@ -43,47 +43,29 @@
     .stretch-preview {
       width: 350px;
       height: 350px;
-      background-color: index.$color-primary;
+      background-color: $color-primary;
       text-align: center;
       border-radius: 10px;
       margin: 20px 0;
-      box-shadow: 10px 8px 0px index.$color-primary-hover;
+      box-shadow: 10px 8px 0px $color-primary-hover;
       transition-property: box-shadow;
       transition-duration: 0.5s;
 
       &:hover {
         color: rgb(61, 79, 88);
-        background-color: index.$color-primary-hover;
+        background-color: $color-primary-hover;
         border: 1px solid rgb(93, 108, 116);
         box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
           rgb(231 238 236) 0px 0px 0px 3px;
       }
 
       .add-to-routine {
-        display: inline-block;
-        outline: 0;
-        appearance: none;
-        padding: 0px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        background-color: index.$color-background;
-        border: 1px solid rgb(137, 151, 155);
-        box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
-        color: rgb(61, 79, 88);
-        font-size: 14px;
+        @include button;
         font-weight: 400;
+        font-size: 14px;
         height: 36px;
-        transition: all 150ms ease-in-out 0s;
         margin-top: 10px;
         margin-right: 8px;
-
-        &:hover {
-          color: rgb(61, 79, 88);
-          background-color: index.$color-secondary;
-          border: 1px solid rgb(93, 108, 116);
-          box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
-            rgb(231 238 236) 0px 0px 0px 3px;
-        }
       }
 
       #selectRoutines {
@@ -91,7 +73,7 @@
         height: 36px;
         width: 140px;
         border-radius: 4px;
-        background-color: index.$color-background;
+        background-color: $color-background;
         color: rgb(61, 79, 88);
       }
     }
@@ -100,30 +82,13 @@
     text-align: center;
 
     .add-to-routine {
-      display: inline-block;
-      outline: 0;
-      appearance: none;
-      padding: 0px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      background-color: index.$color-background;
-      border: 1px solid rgb(137, 151, 155);
-      box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
-      color: rgb(61, 79, 88);
+      @include button;
       font-size: 14px;
       font-weight: 400;
       height: 36px;
-      transition: all 150ms ease-in-out 0s;
       margin-top: 10px;
       margin-right: 8px;
 
-      &:hover {
-        color: rgb(61, 79, 88);
-        background-color: index.$color-secondary;
-        border: 1px solid rgb(93, 108, 116);
-        box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
-          rgb(231 238 236) 0px 0px 0px 3px;
-      }
     }
   }
 }
