@@ -57,7 +57,7 @@ export default function Auth() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button className="button block" aria-live="polite" id="create-btn">
+            <button className=" button block" aria-live="polite" id="create-btn">
               Log in
             </button>
           </form>
