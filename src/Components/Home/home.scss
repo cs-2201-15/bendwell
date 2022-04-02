@@ -40,7 +40,7 @@
       &-button {
         margin-top: 24px;
         button {
-          @include button;
+          @include button-menu;
         }
       }
     }
