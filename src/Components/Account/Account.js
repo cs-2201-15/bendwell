@@ -86,8 +86,11 @@ const Account = ({ session }) => {
                 }}
               />
               <div className="info-container">
-                <h3>Email: {session.user.email}</h3>
-                <h3 htmlFor="username">
+                <h3 className="email-container">
+                  <div className="email-text">Email: </div>
+                  {session.user.email}
+                </h3>
+                <h3 htmlFor="username" className="name-text">
                   Name:
                   <input
                     id="username"

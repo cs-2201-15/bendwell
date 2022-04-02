@@ -23,6 +23,9 @@
     }
 
     .form-widget {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
       font-size: 14pt;
       font-family: index.$font-title;
@@ -41,15 +44,40 @@
         border-radius: 25px;
         color: index.$color-primary;
         background-color: index.$color-tertiary;
+
+        &:hover {
+          color: index.$color-primary;
+          background-color: index.$color-primary-hover;
+          border: 2px solid rgb(93, 108, 116);
+          box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
+            rgb(231 238 236) 0px 0px 0px 3px;
+        }
       }
       .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         font-size: 14pt;
         font-family: index.$font-content;
-        font-weight: 400;
         margin: 25px;
 
+        .email-container {
+          display: flex;
+          flex-direction: row;
+          padding-left: 10px;
+
+          .email-text {
+            font-weight: 400;
+            margin-right: 10px;
+          }
+        }
+
+        .name-text {
+          width: 300px;
+        }
+
         input {
-          width: 50%;
+          width: 70%;
           padding: 8px 8x;
           box-sizing: border-box;
           font-size: 16px;
@@ -67,7 +95,7 @@
         margin-left: auto;
         margin-right: auto;
         width: 50%;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         border-radius: 50%;
         border: 4px solid index.$color-primary;
 
