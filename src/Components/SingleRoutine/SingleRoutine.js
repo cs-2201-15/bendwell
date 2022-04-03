@@ -47,8 +47,11 @@ const SingleRoutine = () => {
         className="main-container"
         style={{ width: '100vw', height: '100vh' }}
       >
+        <div className="landingpage-single">
+          {/* <h1 className="routine-banner">Personalized Routines</h1> */}
+        </div>
         <div className="single-routine-header">
-          <h2>{routine.name}</h2>
+          <h2 style={{ padding: '5px' }}>{routine.name}</h2>
           <h3>{routine.notes}</h3>
         </div>
         <div className="single-routine-container">
@@ -63,7 +66,6 @@ const SingleRoutine = () => {
                 <button
                   className="add-to-routine"
                   onClick={() => handleDelete(stretch.id, routine.id)}
-                  style={{ backgroundColor: '#20c1c3' }}
                 >
                   Remove Stretch
                 </button>

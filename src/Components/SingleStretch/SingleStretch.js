@@ -37,17 +37,17 @@ const SingleStretch = () => {
           <h3>{`Target: ${stretch.target}`}</h3>
           <div className="single-stretch-description">
             <img src={stretch.image_url} alt="Stretch Img" />
-            <h3>{stretch.description}</h3>
           </div>
-
           <button
             type="button"
             className="start-stretch-button"
             onClick={() => handleClick()}
-            style={{ backgroundColor: '#20c1c3', color: 'white' }}
           >
             Start Stretch
           </button>
+          <div className="stretch-gif">
+            <img src={stretch.gif} alt="stretch" />
+          </div>
         </div>
       </div>
     );
