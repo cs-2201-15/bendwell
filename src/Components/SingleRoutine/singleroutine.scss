@@ -2,6 +2,7 @@
 @import '../index.scss';
 
 .main-container {
+  display: block;
   .single-routine-header {
     text-align: center;
     // height: 100%;
@@ -48,13 +49,6 @@
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
-
-    // .routine-banner {
-    //   top: 50%;
-    //   left: 20%;
-    //   color: white;
-    //   border-style: inset;
-    // }
   }
 
   .single-routine-container {
@@ -169,13 +163,5 @@
       height: 40px;
       width: auto;
     }
-  }
-
-  &_active {
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
   }
 }
