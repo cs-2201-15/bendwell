@@ -47,19 +47,22 @@ const SingleRoutine = () => {
         className="main-container"
         style={{ width: '100vw', height: '100vh' }}
       >
+        <div className="single-routine-header" style={{ borderBottom: '2px' }}>
+          <h2 style={{ paddingTop: '10px' }}>{routine.name}</h2>
+          <h3 style={{ color: 'navy' }}>{routine.notes}</h3>
+        </div>
         <div className="landingpage-single">
           {/* <h1 className="routine-banner">Personalized Routines</h1> */}
         </div>
-        <div className="single-routine-header">
-          <h2 style={{ padding: '5px' }}>{routine.name}</h2>
-          <h3>{routine.notes}</h3>
-        </div>
+
         <div className="single-routine-container">
           {routine.stretches.map((stretch, i) => {
             return (
               <div className="stretch-preview" key={i}>
                 <Link to={`/stretches/${stretch.id}`}>
-                  <h2>{stretch.name}</h2>
+                  <h2 style={{ color: 'navy', paddingBottom: '5px' }}>
+                    {stretch.name}
+                  </h2>
                   <img src={stretch.image_url} alt="Stretch Img" />
                   <h3>{`Target: ${stretch.target}`}</h3>
                 </Link>
@@ -96,6 +99,16 @@ const SingleRoutine = () => {
             Edit Details
           </button>
           {details ? <EditDetails routine={routine} /> : null}
+        </div>
+        <div className="tier3">
+          <div className="more">
+            <span style={{ color: '#23b54d' }}>Ready</span> for More?
+          </div>
+          <Link to="/stretches">
+            <button type="button" className="addmore">
+              Add Stretches!
+            </button>
+          </Link>
         </div>
       </div>
     );
