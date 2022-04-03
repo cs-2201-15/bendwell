@@ -1,12 +1,12 @@
 @import "../index.scss";
 
 .navbar {
-  width: 300px;
+  width: 250px;
   height: 100vh;
   background-color: $color-primary;
   position: fixed;
   top: 0px;
-  right: -300px;
+  right: -250px;
   z-index: 2;
   // display: flex;
   // flex-direction: column;
@@ -22,25 +22,6 @@
     right: 0;
     text-decoration: none;
   }
-
-  // .navbar-close {
-  //   display: flex;
-  //   justify-content: flex-end;
-  // }
-
-  // .navbar-close-button {
-  //   // background-color: white;
-  //   // border-radius: 50%;
-  //   width: 25px;
-  //   height: 25px;
-  //   // border: 2px solid black;
-  //   background-image: url("../../../public/close_black_24dp.svg");
-
-  //   // &:hover {
-  //   //     font-weight: 500;
-  //   //     text-decoration: none;
-  //   //   }
-  // }
 
   .navbar-content {
     text-align: center;
