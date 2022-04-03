@@ -22,34 +22,41 @@ const Topbar = ({ menuOpen, setMenuOpen }) => {
     <div>
       <div className="topbar">
         <div className="wrapper">
-          {!session ? (
-            <div className="topbar-left">
-              <Link to="/signup">
-                <button>Sign Up</button>
-              </Link>
-              <Link to="/login">
-                <button>Login</button>
-              </Link>
-            </div>
-          ) : (
-            <div className="topbar-left">
-              <button type="button" onClick={() => supabase.auth.signOut()}>
-                Logout
-              </button>
-            </div>
-          )}
-
-          <div className="topbar-middle">
+          <div className="topbar-left">
             <Link to="/">
-              <div className="logo">BendWell</div>
+              <div className="logo" onClick={() => setMenuOpen(false)}>
+                bendwell
+              </div>
             </Link>
           </div>
 
           <div className="topbar-right">
-            <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-              <span className="line1"></span>
-              <span className="line2"></span>
-              <span className="line3"></span>
+            <div className="topbar-right-button">
+              {!session ? (
+                <>
+                  <Link to="/signup">
+                    <button>Sign Up</button>
+                  </Link>
+                  <Link to="/login">
+                    <button>Login</button>
+                  </Link>
+                </>
+              ) : (
+                <button type="button" onClick={() => supabase.auth.signOut()}>
+                  Logout
+                </button>
+              )}
+            </div>
+
+            <div className="topbar-right-menu">
+              <div
+                className={"hamburger " + (menuOpen && "active")}
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                <span className="line1"></span>
+                <span className="line2"></span>
+                <span className="line3"></span>
+              </div>
             </div>
           </div>
         </div>
