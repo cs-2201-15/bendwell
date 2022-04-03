@@ -35,7 +35,11 @@ export const setRoutines = (id) => {
     try {
       let { data: routines, error } = await supabase
         .from("routines")
-        .select("*")
+        .select(
+          `*,
+        stretches:stretches(*)
+        `
+        )
         .eq("userId", id);
       dispatch(_setRoutines(routines));
     } catch (error) {

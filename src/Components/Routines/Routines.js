@@ -22,6 +22,8 @@ const AllRoutines = () => {
     dispatch(removeRoutine(id));
   };
 
+  console.log(routines);
+
   return (
     <div className="main-container">
       <div className="routines-container">
