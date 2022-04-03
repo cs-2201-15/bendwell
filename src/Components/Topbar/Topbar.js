@@ -35,15 +35,15 @@ const Topbar = ({ menuOpen, setMenuOpen }) => {
               {!session ? (
                 <>
                   <Link to="/signup">
-                    <button>Sign Up</button>
+                    <button>SIGN UP</button>
                   </Link>
                   <Link to="/login">
-                    <button>Login</button>
+                    <button>LOGIN</button>
                   </Link>
                 </>
               ) : (
                 <button type="button" onClick={() => supabase.auth.signOut()}>
-                  Logout
+                  LOGOUT
                 </button>
               )}
             </div>
