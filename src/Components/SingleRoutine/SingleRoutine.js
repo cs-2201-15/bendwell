@@ -9,6 +9,7 @@ import './singleroutine.scss';
 const SingleRoutine = () => {
   const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState(false);
+  const [isActive, setActive] = useState(false);
 
   const dispatch = useDispatch();
   let params = useParams();
@@ -39,12 +40,16 @@ const SingleRoutine = () => {
     setDetails(!details); //
   };
 
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   } else {
     return (
       <div
-        className="main-container"
+        className={`main-container ${isActive ? '_active' : ''}`}
         style={{ width: '100vw', height: '100vh' }}
       >
         <div className="single-routine-header" style={{ borderBottom: '2px' }}>
@@ -92,15 +97,24 @@ const SingleRoutine = () => {
             </h4>
           )}
           <button
-            className="add-to-routine"
+            className={`add-to-routine`}
             type="button"
-            onClick={() => openDetails()}
+            onClick={() => {
+              openDetails();
+              handleToggle();
+            }}
           >
             Edit Details
           </button>
           {details ? <EditDetails routine={routine} /> : null}
         </div>
+
         <div className="tier3">
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/005/004/110/small/challenge-icon-mountain-with-flag-business-logo-vector.jpg"
+            alt="challenge_icon"
+            className="challenge"
+          />
           <div className="more">
             <span style={{ color: '#23b54d' }}>Ready</span> for More?
           </div>

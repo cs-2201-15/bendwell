@@ -4,6 +4,7 @@
 .main-container {
   .single-routine-header {
     text-align: center;
+    // height: 100%;
   }
 
   * {
@@ -12,9 +13,7 @@
   }
 
   h2 {
-    // margin-top: 10px;
-    // display: flex;
-    font-size: 20pt;
+    font-size: 24pt;
     align-items: center;
     justify-items: center;
     text-align: center;
@@ -36,26 +35,45 @@
     font-weight: 400;
   }
 
+  //tier 1
+  .landingpage-single {
+    width: 100vw;
+    height: 12vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://htpartners.com/wp-content/uploads/2017/07/iStock_000007946674Small.jpg');
+    filter: blur(8px);
+    -webkit-filter: blur(2px);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+
+    // .routine-banner {
+    //   top: 50%;
+    //   left: 20%;
+    //   color: white;
+    //   border-style: inset;
+    // }
+  }
+
   .single-routine-container {
     display: flex;
     flex-wrap: wrap;
-    // margin: 20px auto;
     gap: 10px;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     width: 100vw;
-    height: auto;
+    height: 64%;
 
     //background image shadow
     box-shadow: inset 0 0 0 1000px rgba(137, 155, 170, 0.4);
     background-image: url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZW1wdHklMjBkZXNrfGVufDB8fDB8fA%3D%3D&w=1000&q=80');
     background-position-y: 60%;
-    // position: left;
     background-repeat: no-repeat;
     background-size: 120%;
-    // border-style: blur;
-    border-width: 3px;
+    // border-width: 3px;
 
     .stretch-preview {
       flex-direction: column;
@@ -63,9 +81,6 @@
       opacity: 0.95;
       background-color: index.$color-primary;
       text-align: center;
-      // border-radius: 10px;
-      margin: 20px 0;
-      padding-bottom: 2px;
       box-shadow: 10px 8px 0px $color-primary-hover;
       transition-property: box-shadow;
       transition-duration: 0.5s;
@@ -75,14 +90,10 @@
       align-items: center;
       justify-content: center;
       box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-      // mix-blend-mode: soft-light;
 
       .add-to-routine {
-        display: inline-block;
-        align-content: center;
         outline: 0;
         appearance: none;
-        padding: 0px 10px;
         border-radius: 4px;
         cursor: pointer;
         background-color: index.$color-background;
@@ -92,36 +103,27 @@
         font-size: 14px;
         font-weight: 400;
         font-size: 14px;
-        height: 36px;
-        margin-top: 10px;
+        height: 100x;
+        margin-top: 5px;
         margin-right: 8px;
         @include button();
-
-        // &:hover {
-        //   color: rgb(61, 79, 88);
-        //   background-color: index.$color-secondary;
-        //   border: 1px solid rgb(93, 108, 116);
-        //   box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
-        //     rgb(231 238 236) 0px 0px 0px 3px;
-        // }
-      }
-
-      #selectRoutines {
-        border: 1px solid rgb(137, 151, 155);
-        height: 36px;
-        width: 140px;
-        border-radius: 4px;
-        background-color: $color-background;
-        color: rgb(61, 79, 88);
       }
     }
   }
   .start-routine-footer {
-    text-align: center;
+    // display: contents;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: auto;
+    left: 45%;
+    top: 45%;
 
     .warning {
+      display: inline-block;
       border: 1px;
-      border-radius: 10px;
+      border-radius: 5px;
       background-color: red;
     }
 
@@ -144,38 +146,36 @@
       @include button();
     }
   }
-  .landingpage-single {
-    width: 100vw;
-    height: 12vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('https://htpartners.com/wp-content/uploads/2017/07/iStock_000007946674Small.jpg');
-    filter: blur(8px);
-    -webkit-filter: blur(2px);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: cover;
 
-    .routine-banner {
-      top: 50%;
-      left: 20%;
-      color: white;
-      border-style: inset;
-    }
-  }
   .tier3 {
     display: flex;
     align-content: center;
     justify-content: center;
-    gap: 10px;
-    height: 20vh;
-    width: 100vw;
-    padding-top: 50px;
+    gap: 40px;
+    height: auto;
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    // padding-top: 50px 0px;
     @include font-content();
 
+    //button
     .addmore {
       @include button();
     }
+
+    //icon
+    .challenge {
+      height: 40px;
+      width: auto;
+    }
+  }
+
+  &_active {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
   }
 }
