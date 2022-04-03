@@ -28,7 +28,7 @@ $color-accent-tertiary: #70a9a1;
 }
 @mixin font-logo() {
   font-family: $font-logo;
-  font-size: 64px;
+  font-size: 32px;
   font-weight: 600;
 }
 
@@ -39,11 +39,22 @@ $color-accent-tertiary: #70a9a1;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  transition-property: box-shadow;
-  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+@mixin button-menu() {
+  padding: 4px 12px;
+  background-color: black;
+  color: white;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  transition: all 150ms ease-in-out 0s;
+  cursor: pointer;
 
   &:hover {
-    box-shadow: none;
+    box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
   }
 }
 
