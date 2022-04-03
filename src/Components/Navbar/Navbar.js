@@ -23,43 +23,38 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
       className={"navbar " + (menuOpen && "active")}
       style={{ textDecoration: "none" }}
     >
-      {/* <div className="navbar-close" onClick={() => setMenuOpen(false)}>
-        <div>Close</div> */}
-      {/* <img src={"../../../public/close_black_24dp.svg"} alt="close menu" /> */}
-      {/* <div className="navbar-close-button"></div>
-      </div> */}
       {!session ? (
         <div className="navbar-content">
-          <Link
-            to="/stretches"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            Stretches
-          </Link>
-          <br />
-          <Link
-            to="/signup"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            Create Account
-          </Link>
-          <br />
           <Link
             to="/about"
             style={{ textDecoration: "none" }}
             onClick={() => setMenuOpen(false)}
           >
-            About
+            ABOUT US
           </Link>
-          <br />
+
+          <Link
+            to="/stretches"
+            style={{ textDecoration: "none" }}
+            onClick={() => setMenuOpen(false)}
+          >
+            STRETCHES
+          </Link>
+
+          <Link
+            to="/signup"
+            style={{ textDecoration: "none" }}
+            onClick={() => setMenuOpen(false)}
+          >
+            SIGN UP
+          </Link>
+
           <Link
             to="/login"
             style={{ textDecoration: "none" }}
             onClick={() => setMenuOpen(false)}
           >
-            Login
+            LOGIN
           </Link>
         </div>
       ) : (
@@ -69,31 +64,30 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
             style={{ textDecoration: "none" }}
             onClick={() => setMenuOpen(false)}
           >
-            Stretches
+            STRETCHES
           </Link>
-          <br />
+
           <Link
             to="/routines"
             style={{ textDecoration: "none" }}
             onClick={() => setMenuOpen(false)}
           >
-            Routines
+            ROUTINES
           </Link>
-          <br />
-          <Link
-            to="/about"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            About
-          </Link>
-          <br />
+
           <Link
             to="/account"
             style={{ textDecoration: "none" }}
             onClick={() => setMenuOpen(false)}
           >
-            Account
+            ACCOUNT
+          </Link>
+          <Link
+            to="/about"
+            style={{ textDecoration: "none" }}
+            onClick={() => setMenuOpen(false)}
+          >
+            ABOUT US
           </Link>
         </div>
       )}

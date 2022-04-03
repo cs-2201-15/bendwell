@@ -1,11 +1,12 @@
 @import "../index.scss";
 
 .footer {
-  background-color: $color-secondary;
+  background-color: rgb(12, 12, 12);
   height: 72px;
-  color: rgb(185, 185, 185);
+  color: $color-background;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 16px;
 
   &__left {
@@ -16,28 +17,28 @@
       color: white;
     }
     &-tp {
-      padding-top: 10px;
+      // padding-top: 10px;
       p {
         cursor: pointer;
         transition: all 150ms ease-in-out 0s;
         &:hover {
-          color: white;
+          color: $color-tertiary;
         }
       }
     }
   }
 
   &__icon {
-    padding-top: 8px;
     display: flex;
     gap: 16px;
     &-mui {
-      color: rgb(185, 185, 185);
-
       &:hover {
-        color: white;
+        color: $color-tertiary;
         transition: all 150ms ease-in-out 0s;
       }
     }
+  }
+  &__right {
+    // padding-top: 10px;
   }
 }
