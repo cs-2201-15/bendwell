@@ -1,8 +1,11 @@
-@import "../index.scss";
+@use '../index.scss';
+@import '../index.scss';
 
 .main-container {
+  display: block;
   .single-routine-header {
     text-align: center;
+    // height: 100%;
   }
 
   * {
@@ -11,16 +14,20 @@
   }
 
   h2 {
-    margin-top: 10px;
-    font-size: 20pt;
+    font-size: 24pt;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
     font-family: $font-title;
     letter-spacing: 2px;
     font-weight: 700;
+    color: $color-tertiary;
   }
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
   }
 
   h3 {
@@ -29,66 +36,132 @@
     font-weight: 400;
   }
 
+  //tier 1
+  .landingpage-single {
+    width: 100vw;
+    height: 12vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://htpartners.com/wp-content/uploads/2017/07/iStock_000007946674Small.jpg');
+    filter: blur(8px);
+    -webkit-filter: blur(2px);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+  }
+
   .single-routine-container {
     display: flex;
-    flex-direction: row;
-    margin: 20px auto;
+    flex-wrap: wrap;
     gap: 10px;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    width: 90%vw;
-    height: auto;
+    width: 100vw;
+    height: 64%;
+
+    //background image shadow
+    box-shadow: inset 0 0 0 1000px rgba(137, 155, 170, 0.4);
+    background-image: url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZW1wdHklMjBkZXNrfGVufDB8fDB8fA%3D%3D&w=1000&q=80');
+    background-position-y: 60%;
+    background-repeat: no-repeat;
+    background-size: 120%;
+    // border-width: 3px;
 
     .stretch-preview {
-      width: 350px;
-      height: 350px;
-      background-color: $color-primary;
+      flex-direction: column;
+      display: flex;
+      opacity: 0.95;
+      background-color: index.$color-primary;
       text-align: center;
-      border-radius: 10px;
-      margin: 20px 0;
       box-shadow: 10px 8px 0px $color-primary-hover;
       transition-property: box-shadow;
       transition-duration: 0.5s;
-
-      &:hover {
-        color: rgb(61, 79, 88);
-        background-color: $color-primary-hover;
-        border: 1px solid rgb(93, 108, 116);
-        box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
-          rgb(231 238 236) 0px 0px 0px 3px;
-      }
+      border-radius: 10px;
+      @include card($color-primary);
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
       .add-to-routine {
-        @include button;
+        outline: 0;
+        appearance: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: index.$color-background;
+        border: 1px solid rgb(137, 151, 155);
+        box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+        color: rgb(61, 79, 88);
+        font-size: 14px;
         font-weight: 400;
         font-size: 14px;
-        height: 36px;
-        margin-top: 10px;
+        height: 100x;
+        margin-top: 5px;
         margin-right: 8px;
-      }
-
-      #selectRoutines {
-        border: 1px solid rgb(137, 151, 155);
-        height: 36px;
-        width: 140px;
-        border-radius: 4px;
-        background-color: $color-background;
-        color: rgb(61, 79, 88);
+        @include button();
       }
     }
   }
   .start-routine-footer {
-    text-align: center;
+    // display: contents;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: auto;
+    left: 45%;
+    top: 45%;
+
+    .warning {
+      display: inline-block;
+      border: 1px;
+      border-radius: 5px;
+      background-color: red;
+    }
 
     .add-to-routine {
-      @include button;
+      display: inline-block;
+      outline: 0;
+      appearance: none;
+      padding: 0px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid rgb(137, 151, 155);
+      box-shadow: rgba(125, 146, 161, 0.3) 0px 1px 2px;
+      color: rgb(61, 79, 88);
       font-size: 14px;
       font-weight: 400;
       height: 36px;
       margin-top: 10px;
       margin-right: 8px;
+      margin-bottom: 10px;
+      @include button();
+    }
+  }
 
+  .tier3 {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 40px;
+    height: auto;
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    // padding-top: 50px 0px;
+    @include font-content();
+
+    //button
+    .addmore {
+      @include button();
+    }
+
+    //icon
+    .challenge {
+      height: 40px;
+      width: auto;
     }
   }
 }

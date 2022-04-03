@@ -1,0 +1,58 @@
+@import '../index.scss';
+
+.edit-details-container {
+  position: absolute;
+  display: flex;
+  top: 20%;
+  left: -5%;
+  height: 30vh;
+  width: 50vh;
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+
+  background-color: rgb(203, 228, 236);
+
+  .form {
+    display: inline-block;
+    display: column;
+  }
+
+  .placeholder {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin: 0px 0px 10px 0px;
+    border: 1px solid #ffd2d2;
+    padding: 20px;
+    background: #fff4f4;
+    box-shadow: inset 0px 0px 15px #ffe5e5;
+    -moz-box-shadow: inset 0px 0px 15px #ffe5e5;
+    -webkit-box-shadow: inset 0px 0px 15px #ffe5e5;
+  }
+
+  .textbox {
+    width: 200px;
+    height: 100px;
+
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin: 0px 0px 10px 0px;
+    border: 1px solid #ffd2d2;
+    padding: 20px;
+    background: #fff4f4;
+    box-shadow: inset 0px 0px 15px #ffe5e5;
+    -moz-box-shadow: inset 0px 0px 15px #ffe5e5;
+    -webkit-box-shadow: inset 0px 0px 15px #ffe5e5;
+  }
+
+  .save {
+    position: absolute;
+    top: 80%;
+    left: 55%;
+    @include button();
+  }
+}
