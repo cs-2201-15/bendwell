@@ -1,14 +1,13 @@
-@import '../index.scss';
+@import "../index.scss";
 .teachable-container {
   width: 100%;
   height: auto;
   text-align: center;
   position: relative;
 
-  h2{
+  h2 {
     font-size: 24pt;
     margin-bottom: 20px;
-
   }
   .button {
     @include button;
@@ -17,11 +16,10 @@
     font-size: 14px;
     font-weight: 400;
     height: 36px;
-
   }
 
-  canvas{
-    display:block;
+  canvas {
+    display: block;
     position: absolute;
     left: 0;
     right: 0;
@@ -30,8 +28,8 @@
     margin: 250px auto 0 auto;
   }
 
-  .label-container{
-    h3{
+  .label-container {
+    h3 {
       margin-top: 20px;
     }
   }

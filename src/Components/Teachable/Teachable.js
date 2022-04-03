@@ -13,6 +13,7 @@ const Teachable = () => {
   const [completed, setCompleted] = useState(false);
   const [match, setMatch] = useState(false);
   const [status, setStatus] = useState("Ready To Stretch?");
+  const [loading, setLoading] = useState(false);
   let matched = false;
   console.log(cameraArr);
   // More API functions here:
@@ -30,14 +31,15 @@ const Teachable = () => {
   }, []);
 
   useEffect(() => {
-    return ()=>{
+    return () => {
       window.location.reload(true);
       matched = false;
       setMatch(matched);
-    }
-  }, [])
+    };
+  }, []);
 
   async function init() {
+    setLoading(true);
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     // Note: the pose library adds a tmPose object to your window (window.tmPose)
@@ -50,6 +52,7 @@ const Teachable = () => {
     webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
     await webcam.play();
+    setLoading(false);
     window.requestAnimationFrame(loop);
 
     ctx = canvasRef.current.getContext("2d"); //in use effect/didmount
@@ -155,20 +158,16 @@ const Teachable = () => {
     <div className="teachable-container">
       <h2>Teachable Machine Pose Model</h2>
       <button
-        id='init'
+        id="init"
         className="button"
         type="button"
         onClick={() => {
           init();
         }}
       >
-        Start
+        {loading ? "Loading..." : "Start"}
       </button>
-      <canvas
-        ref={canvasRef}
-        width={500}
-        height={700}
-      ></canvas>
+      <canvas ref={canvasRef} width={500} height={700}></canvas>
       <div id="label-container">
         {/* <div>{`Stretch: ${stretchName}`}</div> */}
         <h3 className="status">{status}</h3>
