@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import StretchGraphic from "../StretchGraphic/StretchGraphic";
 import "./home.scss";
 
 const Home = () => {
@@ -31,7 +32,8 @@ const Home = () => {
       </section>
 
       <section className="home__info">
-        <img src="Frame.png" alt="woman_stretch" className="home__info-img" />
+        {/* <img src="Frame.png" alt="woman_stretch" className="home__info-img" /> */}
+        <StretchGraphic />
 
         <div className="home__info-tag">
           <h2>

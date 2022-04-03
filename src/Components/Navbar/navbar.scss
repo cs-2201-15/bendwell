@@ -1,12 +1,13 @@
 @import "../index.scss";
 
 .navbar {
-  width: 250px;
-  height: 100vh;
-  background-color: $color-primary;
+  width: 220px;
+  height: 320px;
+  background-color: $color-secondary;
   position: fixed;
-  top: 0px;
-  right: -250px;
+  top: -320px;
+  right: 32px;
+  // right: -200px;
   z-index: 2;
   // display: flex;
   // flex-direction: column;
@@ -14,28 +15,33 @@
   // justify-content: center;
   transition: all 0.75s ease;
   text-decoration: none;
-  padding-top: 90px;
-  padding-left: 30px;
-  color: black;
+  padding: 110px 30px 0 20px;
+  // border: 1px solid rgba(95, 95, 95, 0.349);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  color: $color-background;
 
   &.active {
-    right: 0;
+    // right: 0;
+    top: 0;
     text-decoration: none;
   }
 
   .navbar-content {
-    text-align: center;
-    margin: 0;
-    padding: 0;
+    text-align: left;
+    // margin: 0;
+    // padding: 0;
     // list-style: none;
-    font-size: 30px;
+    font-size: 16px;
     font-weight: 300;
-    color: $color-tertiary;
-    width: 60%;
+    // color: black;
+    // width: 60%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+    gap: 32px;
+    letter-spacing: 3.5px;
 
     // li {
     //   margin-bottom: 25px;
