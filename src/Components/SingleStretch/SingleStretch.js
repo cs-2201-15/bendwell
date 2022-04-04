@@ -54,7 +54,7 @@ const SingleStretch = () => {
               <img
                 src={stretch.gif}
                 alt="stretch"
-                style={{ height: 'auto', width: '350px' }}
+                style={{ height: '370px', width: '350px' }}
               />
             </div>
 
@@ -72,9 +72,15 @@ const SingleStretch = () => {
             </div>
           </div>
           <div className="discover">
+            <img
+              src="https://static.thenounproject.com/png/4236378-200.png"
+              alt="brave-icon"
+              className="brave-icon"
+            />
             <h2>
               Discover More <span style={{ color: '#23b54d' }}>Stretches</span>
             </h2>
+
             <Link to="/stretches">
               <button className="view-stretches">View Stretches</button>
             </Link>

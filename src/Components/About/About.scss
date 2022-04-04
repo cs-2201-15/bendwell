@@ -7,7 +7,11 @@
   // background-color: ie-hex-str($color: #000000);
   background: linear-gradient(hsla(137, 70%, 12%, 0.8), hsla(137, 68%, 52%, 0.8)), url("../../../public/about-background.jpg");
   width: 100%;
+<<<<<<< HEAD
   height: calc(100vh - 142px);
+=======
+  height: 100%;
+>>>>>>> 4e96de00368f0cbdbc2573b4cb653b9dfe70b492
   background-size: cover;
   background-position: center;
   overflow: scroll;
@@ -18,8 +22,12 @@
   .content{
     position: relative;
     text-align: center;
+<<<<<<< HEAD
     // overflow: scroll;
 
+=======
+    margin-bottom: 20px;
+>>>>>>> 4e96de00368f0cbdbc2573b4cb653b9dfe70b492
     h1{
       color: $color-background;
       margin-bottom: 10px;
@@ -32,14 +40,18 @@
       margin: 0 40px;
     }
     .creator-wrapper{
-      margin-top: 30px;
+      margin-top: 10px;
       justify-content: space-evenly;
       display: flex;
       flex-direction: row;
       height: auto;
       flex-wrap: wrap;
+<<<<<<< HEAD
       gap: 30px;
       // height: 300px;
+=======
+      gap: 20px;
+>>>>>>> 4e96de00368f0cbdbc2573b4cb653b9dfe70b492
       // border-radius: ;
 
       .creator{
@@ -52,15 +64,15 @@
         padding: 28px 28px;
 
         h3{
-          margin-bottom: 20px;
+          margin-bottom: 10px;
           color: $color-tertiary;
           font-size: 36pt;
           font-weight: 600;
 
         }
         .headshot{
-          width: 300px;
-          height: 300px;
+          width: 250px;
+          height: 250px;
           border-radius: 48px;
           margin-bottom: 10px;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

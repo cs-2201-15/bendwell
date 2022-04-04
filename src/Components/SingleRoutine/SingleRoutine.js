@@ -65,7 +65,7 @@ const SingleRoutine = () => {
             return (
               <div className="stretch-preview" key={i}>
                 <Link to={`/stretches/${stretch.id}`}>
-                  <h2 style={{ color: 'navy', paddingBottom: '5px' }}>
+                  <h2 style={{ color: 'white', paddingBottom: '5px' }}>
                     {stretch.name}
                   </h2>
                   <img src={stretch.image_url} alt="Stretch Img" />
