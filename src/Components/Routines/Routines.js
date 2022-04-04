@@ -63,7 +63,7 @@ const AllRoutines = () => {
               </div>
             )}
             <div className="routines__routine-middle">
-              {routine.stretches?.length <= 0 && (
+              {(routine.stretches?.length <= 0 || !routine.stretches) && (
                 <div className="routines__routine--no-stretches">
                   This routine has no stretches. 😭 Go&nbsp;
                   <Link className="" to="/stretches">
@@ -76,7 +76,7 @@ const AllRoutines = () => {
                 <p className="routines__routine-name">{routine.name}</p>
                 <button
                   className="routines__remove-routine-btn"
-                  onClick={handleDeleteRoutine}
+                  onClick={() => handleDeleteRoutine(routine.id)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

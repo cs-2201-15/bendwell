@@ -12,7 +12,9 @@ const AllStretches = () => {
   const stretches = useSelector((state) => state.stretches);
   const routines = useSelector((state) => state.routines);
 
-  const [selectVal, setSelectVal] = useState("select a routine");
+  const [selectVal, setSelectVal] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentStretch, setCurrentStretch] = useState(null);
   //routine use selector
 
   let user = supabase.auth.user();
@@ -29,57 +31,103 @@ const AllStretches = () => {
   };
 
   const handleClick = (stretch, selectedRoutineId) => {
-    console.log(typeof selectVal);
+    console.log(stretch, selectedRoutineId);
     dispatch(addStretch(stretch.id, selectedRoutineId));
-    const myRoutine = routines.filter((routine) => {
-      return routine.id === Number(selectVal);
-    });
-    console.log("filter: ", myRoutine);
-    alert(`Added ${stretch.name} to ${myRoutine[0].name}`);
+    // const myRoutine = routines.filter((routine) => {
+    //   return routine.id === selectVal;
+    // });
+    // console.log("filter: ", myRoutine);
+    // alert(`Added ${stretch.name} to ${myRoutine[0].name}`);
   };
 
   return (
     <div className="stretch-container">
-      {console.log(selectVal)}
+      {isModalOpen ? (
+        <div className="add-routine-popup">
+          <div className="add-routine-popup-card">
+            <div className="add-routine-popup-card-top">
+              <h1>Select a routine:</h1>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                onClick={() => {
+                  setIsModalOpen(false);
+                }}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+            <div className="add-routine-popup-card-mid">
+              {routines?.map((routine) => {
+                return (
+                  <div
+                    className="add-routine-popup-card-mid-name"
+                    key={routine.id}
+                  >
+                    <span
+                      onClick={() => {
+                        setIsModalOpen(false);
+                        console.log(currentStretch);
+                        console.log(routine.id);
+                        handleClick(currentStretch, routine.id);
+                      }}
+                    >
+                      {routine.name}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
       {stretches.map((stretch) => {
         return (
           <div className="stretch-preview" key={stretch.id}>
             <div className="stretch-content">
               <Link to={`/stretches/${stretch.id}`}>
-                <h2>{stretch.name}</h2>
+                {" "}
                 <img src={stretch.image_url} alt="Stretch Img" />
-                <h3>{`Target: ${stretch.target}`}</h3>
+                <div className="stretch-content-text">
+                  <h2>{stretch.name}</h2>
+                  <h3>{`Target: ${stretch.target}`}</h3>
+                </div>
               </Link>
               {user ? (
                 <>
-                  {" "}
-                  <button
-                    type="button"
-                    className="add-to-routine"
-                    onClick={() => handleClick(stretch, selectVal)}
-                  >
-                    Add to a routine
-                  </button>
-                  <select
-                    id="selectRoutines"
-                    name="routines"
-                    style={{ color: "black" }}
-                    value={selectVal}
-                    onChange={(event) => handleSelect(event)}
-                  >
-                    <option value="" label=""></option>
-                    {routines.map((routine) => {
-                      return (
-                        <option
-                          key={routine.id}
-                          value={routine.id}
-                          label={routine.name}
-                        >
-                          {routine.name}
-                        </option>
-                      );
-                    })}
-                  </select>
+                  <div className="add-to-routine">
+                    <button
+                      onClick={() => {
+                        setIsModalOpen(true);
+                        setCurrentStretch(stretch);
+                      }}
+                    >
+                      Add to a routine
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </>
               ) : (
                 <></>

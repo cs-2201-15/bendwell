@@ -21,42 +21,46 @@ const Topbar = ({ menuOpen, setMenuOpen }) => {
   return (
     <div>
       <div className="topbar">
-        <div className="wrapper">
-          <div className="topbar-left">
-            <Link to="/">
-              <div className="logo" onClick={() => setMenuOpen(false)}>
-                bendwell
-              </div>
-            </Link>
+        <div className="topbar-left">
+          <Link to="/">
+            <div className="logo" onClick={() => setMenuOpen(false)}>
+              bendwell
+            </div>
+          </Link>
+        </div>
+
+        <div className="topbar-right">
+          <div className="topbar-right-button">
+            {!session ? (
+              <>
+                <Link to="/signup">
+                  <button onClick={() => setMenuOpen(false)}>Sign Up</button>
+                </Link>
+                <Link to="/login">
+                  <button onClick={() => setMenuOpen(false)}>Login</button>
+                </Link>
+              </>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false);
+                  supabase.auth.signOut();
+                }}
+              >
+                Logout
+              </button>
+            )}
           </div>
 
-          <div className="topbar-right">
-            <div className="topbar-right-button">
-              {!session ? (
-                <>
-                  <Link to="/signup">
-                    <button>SIGN UP</button>
-                  </Link>
-                  <Link to="/login">
-                    <button>LOGIN</button>
-                  </Link>
-                </>
-              ) : (
-                <button type="button" onClick={() => supabase.auth.signOut()}>
-                  LOGOUT
-                </button>
-              )}
-            </div>
-
-            <div className="topbar-right-menu">
-              <div
-                className={"hamburger " + (menuOpen && "active")}
-                onClick={() => setMenuOpen(!menuOpen)}
-              >
-                <span className="line1"></span>
-                <span className="line2"></span>
-                <span className="line3"></span>
-              </div>
+          <div className="topbar-right-menu">
+            <div
+              className={"hamburger " + (menuOpen && "active")}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <span className="line1"></span>
+              <span className="line2"></span>
+              <span className="line3"></span>
             </div>
           </div>
         </div>

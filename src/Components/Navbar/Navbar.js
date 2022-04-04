@@ -25,70 +25,85 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
     >
       {!session ? (
         <div className="navbar-content">
-          <Link
-            to="/about"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            ABOUT US
-          </Link>
-
-          <Link
-            to="/stretches"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            STRETCHES
-          </Link>
-
-          <Link
-            to="/signup"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            SIGN UP
-          </Link>
-
-          <Link
-            to="/login"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            LOGIN
-          </Link>
+          <div className="navbar-content-link">
+            <Link
+              to="/about"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              ABOUT US
+            </Link>
+          </div>
+          <div className="navbar-content-link">
+            <Link
+              to="/stretches"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              STRETCHES
+            </Link>
+          </div>
+          <div className="navbar-content-link">
+            <Link
+              to="/signup"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              SIGN UP
+            </Link>
+          </div>
+          <div className="navbar-content-link">
+            <Link
+              to="/login"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              LOGIN
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="navbar-content" style={{ textDecoration: "none" }}>
-          <Link
-            to="/stretches"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            STRETCHES
-          </Link>
-
-          <Link
-            to="/routines"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            ROUTINES
-          </Link>
-
-          <Link
-            to="/account"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            ACCOUNT
-          </Link>
-          <Link
-            to="/about"
-            style={{ textDecoration: "none" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            ABOUT US
-          </Link>
+          <div className="navbar-content-link">
+            <Link
+              to="/stretches"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              STRETCHES
+            </Link>
+            <span className="navbar-content-link-underline"></span>
+          </div>
+          <div className="navbar-content-link">
+            <Link
+              to="/routines"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              ROUTINES
+            </Link>
+            <span className="navbar-content-link-underline"></span>
+          </div>
+          <div className="navbar-content-link">
+            <Link
+              to="/account"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              ACCOUNT
+            </Link>
+            <span className="navbar-content-link-underline"></span>
+          </div>
+          <div className="navbar-content-link">
+            <Link
+              to="/about"
+              style={{ textDecoration: "none" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              ABOUT US
+            </Link>
+            <span className="navbar-content-link-underline"></span>
+          </div>
         </div>
       )}
     </div>

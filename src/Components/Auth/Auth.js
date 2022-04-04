@@ -18,11 +18,11 @@ export default function Auth() {
       const { error } = await supabase.auth.signIn({ email, password });
 
       if (error) throw error;
+      navigate("/home");
     } catch (error) {
       alert(error.error_description || error.message);
     } finally {
       setLoading(false);
-      navigate("/home");
     }
   };
 
