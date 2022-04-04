@@ -101,7 +101,7 @@ const SingleRoutine = () => {
             type="button"
             onClick={() => {
               openDetails();
-              handleToggle();
+              // handleToggle();
             }}
           >
             Edit Details
