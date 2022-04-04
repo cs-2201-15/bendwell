@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   // flex-direction: row;
-  height: 86vh;
+  height: auto;
   width: 100vw;
   align-items: center;
   align-content: center;
@@ -23,6 +23,12 @@
     padding-bottom: 20px;
     background-color: $color-primary;
     width: 100%;
+
+    img {
+      width: 300px;
+      height: 300px;
+      border-radius: 20px;
+    }
 
     h2 {
       margin-top: 10px;
@@ -85,23 +91,34 @@
     width: 100%;
     height: 40vh;
     margin: 20px;
-    gap: 100px;
+    gap: 300px;
 
     .stretch-gif {
       display: contents;
-      width: 100px;
-      height: auto;
+      // width: 100px;
+      // height: auto;
+      border-radius: 20px;
+
+      img {
+        // width: 600px;
+
+        object-fit: cover;
+        border-radius: 20px;
+      }
     }
 
     .steps {
-      display: inline-block;
-      // list-style-position: inside;
-      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 200px;
       height: auto;
       padding: 5px;
       color: white;
       background-color: $color-secondary;
       border-radius: 20px;
+      @include font-content();
+      font-size: 20px;
     }
   }
 
@@ -118,6 +135,7 @@
     justify-items: center;
     width: 100%;
     // height: 40vh;
+    padding: 10px;
     flex-grow: 1;
     background-color: $color-primary;
 
