@@ -69,7 +69,7 @@ const Account = ({ session }) => {
   };
 
   return (
-    <div className="main-container">
+    <div className="full-view-container">
       <div className="account-container">
         <div aria-live="polite">
           {loading ? (
