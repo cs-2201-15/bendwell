@@ -4,10 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 128px;
-  width: 100vw;
   background: url("../../../public/about-background.jpg");
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 
   background-size: cover;
@@ -21,7 +19,7 @@
     align-items: center;
     box-shadow: 0 4px 8px 0 $color-secondary;
     width: 40vw;
-    height: 50vh;
+    height: 60vh;
     background-color: $color-background;
 
     .form-widget {
@@ -59,7 +57,7 @@
         .email-container {
           display: flex;
           flex-direction: row;
-          padding-left: 10px;
+          padding-left: 6px;
           font-size: 14pt;
           font-family: $font-content;
           font-weight: 300;
@@ -75,7 +73,7 @@
 
         input {
           width: 70%;
-          padding: 8px 8x;
+          padding: 4px 4px;
           box-sizing: border-box;
           font-size: 16px;
           margin: 10px;
@@ -83,7 +81,7 @@
           display: inline-block;
 
           &:focus {
-            border: 3px solid $color-tertiary;
+            border: 3px solid $color-primary-hover;
           }
         }
       }
@@ -97,7 +95,7 @@
         border: 4px solid $color-accent-secondary;
 
         &:hover {
-          box-shadow: 0 0 2px 2px $color-accent-tertiary;
+          box-shadow: 0 0 4px 4px $color-accent-tertiary;
         }
       }
     }
