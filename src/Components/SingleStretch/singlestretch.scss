@@ -43,7 +43,7 @@
       font-family: index.$font-title;
       letter-spacing: 2px;
       font-weight: 700;
-      // color: index.$color-accent-secondary;
+      color: $color-tertiary;
     }
 
     h3 {
@@ -51,7 +51,7 @@
       font-family: index.$font-title;
       font-weight: 400;
       padding-bottom: 10px;
-      color: index.$color-accent-secondary;
+      color: white;
     }
 
     .start-stretch-button {
@@ -148,6 +148,11 @@
 
     .view-stretches {
       @include button();
+    }
+
+    .brave-icon {
+      height: 50px;
+      width: 50px;
     }
   }
 }
