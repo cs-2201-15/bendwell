@@ -54,7 +54,7 @@ const SingleStretch = () => {
               <img
                 src={stretch.gif}
                 alt="stretch"
-                style={{ height: 'auto', width: '350px' }}
+                style={{ height: '370px', width: '350px' }}
               />
             </div>
 

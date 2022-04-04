@@ -26,9 +26,9 @@
     background-size: cover;
     background-repeat: no-repeat;
 
-    background-position: 20% 40%;
+    // background-position: 20% 40%;
     // backdrop-filter: ;
-    // background-position-x: 30%;
+    background-position-y: 65%;
     width: 100%;
 
     img {
@@ -44,6 +44,7 @@
       letter-spacing: 2px;
       font-weight: 700;
       color: $color-tertiary;
+      @include font-logo();
     }
 
     h3 {
@@ -52,6 +53,7 @@
       font-weight: 400;
       padding-bottom: 10px;
       color: white;
+      color: font-logo();
     }
 
     .start-stretch-button {
@@ -111,6 +113,7 @@
 
         object-fit: cover;
         border-radius: 20px;
+        // height: auto;
       }
     }
 
