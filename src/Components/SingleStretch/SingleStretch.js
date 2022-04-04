@@ -51,10 +51,15 @@ const SingleStretch = () => {
 
           <div className="secondhalf">
             <div className="stretch-gif">
-              <img src={stretch.gif} alt="stretch" />
+              <img
+                src={stretch.gif}
+                alt="stretch"
+                style={{ height: '400px', width: '300px' }}
+              />
             </div>
 
             <div className="steps">
+              <h2> Steps</h2>
               {stretch.one}
               <br />
               {stretch.stepTwo}
