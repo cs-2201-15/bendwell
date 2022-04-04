@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { setSingleCamera } from '../../store/camera';
 import { setStretch } from '../../store/stretch';
 import './singlestretch.scss';
@@ -30,23 +30,49 @@ const SingleStretch = () => {
   if (loading) {
     return <p>Loading...</p>;
   } else {
+    console.log(stretch.one);
     return (
-      <div className="single-stretch-container">
-        <div className="single-stretch-card">
-          <h2>{stretch.name}</h2>
-          <h3>{`Target: ${stretch.target}`}</h3>
-          <div className="single-stretch-description">
-            <img src={stretch.image_url} alt="Stretch Img" />
+      <div>
+        <div className="single-stretch-container">
+          <div className="single-stretch-card">
+            <h2>{stretch.name}</h2>
+            <h3>{`Target: ${stretch.target}`}</h3>
+            <div className="single-stretch-description">
+              <img src={stretch.image_url} alt="Stretch Img" />
+            </div>
+            <button
+              type="button"
+              className="start-stretch-button"
+              onClick={() => handleClick()}
+            >
+              Start Stretch
+            </button>
           </div>
-          <button
-            type="button"
-            className="start-stretch-button"
-            onClick={() => handleClick()}
-          >
-            Start Stretch
-          </button>
-          <div className="stretch-gif">
-            <img src={stretch.gif} alt="stretch" />
+
+          <div className="secondhalf">
+            <div className="stretch-gif">
+              <img src={stretch.gif} alt="stretch" />
+            </div>
+
+            <div className="steps">
+              {stretch.one}
+              <br />
+              {stretch.stepTwo}
+              <br />
+              {stretch.stepThree}
+              <br />
+              {stretch.stepFour}
+              <br />
+              {stretch.stepFive}
+            </div>
+          </div>
+          <div className="discover">
+            <h2>
+              Discover More <span style={{ color: '#23b54d' }}>Stretches</span>
+            </h2>
+            <Link to="/stretches">
+              <button className="view-stretches">View Stretches</button>
+            </Link>
           </div>
         </div>
       </div>

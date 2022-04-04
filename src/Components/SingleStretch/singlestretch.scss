@@ -3,16 +3,26 @@
 
 .single-stretch-container {
   display: flex;
+  flex-direction: column;
+  // flex-direction: row;
+  height: 86vh;
+  width: 100vw;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  // z-index: 9999;
+  background-image: url('https://media.istockphoto.com/photos/blue-light-background-old-grunge-texture-blank-pastel-abstract-paper-picture-id1217216727?k=20&m=1217216727&s=170667a&w=0&h=_7TFcJGAjmywlbtitPW6fP8RfisqiNiky8fngWXqx3Q=');
+  background-size: cover;
 
+  //tier 1
   .single-stretch-card {
-    @include card(lightblue);
-    display: inline-block;
-    // position: absolute;
-    // top: 50%;
-
-    // background-image: url('https://media.istockphoto.com/photos/rear-view-of-a-businessman-stretching-his-arms-picture-id1189508152?k=20&m=1189508152&s=612x612&w=0&h=aZVcISiDZ7Iq8E0bpPG1SX4ZC3Iqwn5mVcLhey4YBcs= ');
-    // background-size: cover;
-    // background-position: right;
+    // @include card(lightblue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    background-color: $color-primary;
+    width: 100%;
 
     h2 {
       margin-top: 10px;
@@ -36,30 +46,17 @@
 
       @include button();
 
-      // &:hover {
-      //   color: rgb(61, 79, 88);
-      //   background-color: index.$color-secondary;
-      //   border: 1px solid rgb(93, 108, 116);
-      //   box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
-      //     rgb(231 238 236) 0px 0px 0px 3px;
-      // }
-
       .single-stretch-description {
         * {
-          display: inline-block;
+          // display: inline-block;
           text-decoration: none;
           color: black;
           margin: 0px 50px;
         }
 
-        img {
-          width: 400px;
-          height: 400px;
-          border-radius: 25px;
-        }
         // description box
         h3 {
-          display: inline-block; /* This has to be "list-item"                                               */
+          display: inline-block;
           position: absolute;
           flex-wrap: wrap;
           top: 20%;
@@ -79,20 +76,53 @@
       }
     }
   }
-  .stretch-gif {
-    display: inline-block;
-    position: absolute;
-    justify-content: left;
-    top: 20%;
-    left: 15%;
-    padding: 10px;
-    height: 200px;
-    width: 200px;
 
+  //tier 2
+  .secondhalf {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 40vh;
+    margin: 20px;
+    gap: 100px;
 
-    img {
-      border-radius: 10px;
+    .stretch-gif {
+      display: contents;
+      width: 100px;
+      height: auto;
+    }
+
+    .steps {
+      display: inline-block;
+      // list-style-position: inside;
+      width: 300px;
+      height: auto;
+      padding: 5px;
+      color: white;
+      background-color: $color-secondary;
+      border-radius: 20px;
+    }
+  }
+
+  //tier3
+  .discover {
+    * {
+      text-decoration: none;
+    }
+    // position: relative;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    // height: 40vh;
+    flex-grow: 1;
+    background-color: $color-primary;
+
+    .view-stretches {
+      @include button();
     }
   }
 }
