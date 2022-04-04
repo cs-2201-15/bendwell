@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient";
 import Avatar from "../Avatar/Avatar";
 import "./account.scss";
@@ -69,7 +69,7 @@ const Account = ({ session }) => {
   };
 
   return (
-    <div className="main-container">
+    <div className="full-view-container">
       <div className="account-container">
         <div aria-live="polite">
           {loading ? (
@@ -108,13 +108,6 @@ const Account = ({ session }) => {
               </div>
             </form>
           )}
-          {/* <button
-            type="button"
-            className="edit-profile-button"
-            onClick={() => supabase.auth.signOut()}
-          >
-            Sign Out
-          </button> */}
         </div>
       </div>
     </div>

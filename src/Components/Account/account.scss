@@ -1,26 +1,26 @@
-@use "../index.scss";
+@import "../index.scss";
 
-.main-container {
+.full-view-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 128px;
+  background: url("../../../public/about-background.jpg");
   width: 100vw;
+  height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
 
   .account-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px 0 index.$color-secondary;
-    width: 50vw;
-    height: 50vh;
-    background-color: index.$color-primary;
-
-    .email-container {
-      font-size: 14pt;
-      font-family: index.$font-content;
-      font-weight: 300;
-    }
+    box-shadow: 0 4px 8px 0 $color-secondary;
+    width: 40vw;
+    height: 60vh;
+    background-color: $color-background;
 
     .form-widget {
       display: flex;
@@ -28,29 +28,22 @@
       align-items: center;
       text-align: center;
       font-size: 14pt;
-      font-family: index.$font-title;
+      font-family: $font-title;
       font-weight: 300;
       margin: auto;
 
       label {
+        @include button();
         text-decoration: none;
-        background-color: #eeeeee;
         color: #333333;
-        padding: 5px;
-        border-top: 2px solid #cccccc;
-        border-right: 2px solid #333333;
-        border-bottom: 2px solid #333333;
-        border-left: 2px solid #cccccc;
-        border-radius: 25px;
-        color: index.$color-primary;
-        background-color: index.$color-tertiary;
+        color: white;
+        background-color: #272b2e;
 
         &:hover {
-          color: index.$color-primary;
-          background-color: index.$color-primary-hover;
+          color: $color-primary-hover;
+          background-color: $color-background;
           border: 2px solid rgb(93, 108, 116);
-          box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
-            rgb(231 238 236) 0px 0px 0px 3px;
+          box-shadow: $box-shadow;
         }
       }
       .info-container {
@@ -58,14 +51,16 @@
         flex-direction: column;
         align-items: flex-start;
         font-size: 14pt;
-        font-family: index.$font-content;
+        font-family: $font-content;
         margin: 25px;
 
         .email-container {
           display: flex;
           flex-direction: row;
-          padding-left: 10px;
-
+          padding-left: 6px;
+          font-size: 14pt;
+          font-family: $font-content;
+          font-weight: 300;
           .email-text {
             font-weight: 400;
             margin-right: 10px;
@@ -78,7 +73,7 @@
 
         input {
           width: 70%;
-          padding: 8px 8x;
+          padding: 4px 4px;
           box-sizing: border-box;
           font-size: 16px;
           margin: 10px;
@@ -86,7 +81,7 @@
           display: inline-block;
 
           &:focus {
-            border: 3px solid index.$color-tertiary;
+            border: 3px solid $color-primary-hover;
           }
         }
       }
@@ -97,35 +92,21 @@
         width: 50%;
         margin-bottom: 15px;
         border-radius: 50%;
-        border: 4px solid index.$color-primary;
+        border: 4px solid $color-accent-secondary;
 
         &:hover {
-          box-shadow: 0 0 2px 2px index.$color-tertiary;
+          box-shadow: 0 0 4px 4px $color-accent-tertiary;
         }
       }
     }
     .edit-profile-button {
-      display: inline-block;
-      outline: 0;
-      appearance: none;
-      padding: 0px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      background-color: index.$color-background;
-      border: 2px solid rgb(137, 151, 155);
-      box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
-      color: rgb(61, 79, 88);
-      font-size: 14px;
-      font-weight: 400;
-      height: 36px;
-      transition: all 150ms ease-in-out 0s;
+      @include button();
 
       &:hover {
-        color: index.$color-tertiary;
-        background-color: index.$color-primary;
+        color: $color-primary-hover;
+        background-color: $color-background;
         border: 2px solid rgb(93, 108, 116);
-        box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px,
-          rgb(231 238 236) 0px 0px 0px 3px;
+        box-shadow: $box-shadow;
       }
     }
   }
