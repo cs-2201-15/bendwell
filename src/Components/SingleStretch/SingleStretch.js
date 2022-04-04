@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { setSingleCamera } from "../../store/camera";
-import { setStretch } from "../../store/stretch";
-import "./singlestretch.scss";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { setSingleCamera } from '../../store/camera';
+import { setStretch } from '../../store/stretch';
+import './singlestretch.scss';
 
 const SingleStretch = () => {
   const [loading, setLoading] = useState(true);
@@ -37,9 +37,7 @@ const SingleStretch = () => {
           <h3>{`Target: ${stretch.target}`}</h3>
           <div className="single-stretch-description">
             <img src={stretch.image_url} alt="Stretch Img" />
-            <h3>{stretch.description}</h3>
           </div>
-
           <button
             type="button"
             className="start-stretch-button"
@@ -47,6 +45,9 @@ const SingleStretch = () => {
           >
             Start Stretch
           </button>
+          <div className="stretch-gif">
+            <img src={stretch.gif} alt="stretch" />
+          </div>
         </div>
       </div>
     );

@@ -1,15 +1,15 @@
-
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { setRoutineCamera } from "../../store/camera";
-import { deleteStretch, setRoutine } from "../../store/routine";
-import EditDetails from "../EditDetails/EditDetails";
-import "./singleroutine.scss";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { setRoutineCamera } from '../../store/camera';
+import { deleteStretch, setRoutine } from '../../store/routine';
+import EditDetails from '../EditDetails/EditDetails';
+import './singleroutine.scss';
 
 const SingleRoutine = () => {
   const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState(false);
+  const [isActive, setActive] = useState(false);
 
   const dispatch = useDispatch();
   let params = useParams();
@@ -40,21 +40,34 @@ const SingleRoutine = () => {
     setDetails(!details); //
   };
 
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   } else {
     return (
-      <div className="main-container">
-        <div className="single-routine-header">
-          <h2>{routine.name}</h2>
-          <h3>{routine.notes}</h3>
+      <div
+        className={`main-container ${isActive ? '_active' : ''}`}
+        style={{ width: '100vw', height: '100vh' }}
+      >
+        <div className="single-routine-header" style={{ borderBottom: '2px' }}>
+          <h2 style={{ paddingTop: '10px' }}>{routine.name}</h2>
+          <h3 style={{ color: 'navy' }}>{routine.notes}</h3>
         </div>
+        <div className="landingpage-single">
+          {/* <h1 className="routine-banner">Personalized Routines</h1> */}
+        </div>
+
         <div className="single-routine-container">
           {routine.stretches.map((stretch, i) => {
             return (
               <div className="stretch-preview" key={i}>
                 <Link to={`/stretches/${stretch.id}`}>
-                  <h2>{stretch.name}</h2>
+                  <h2 style={{ color: 'navy', paddingBottom: '5px' }}>
+                    {stretch.name}
+                  </h2>
                   <img src={stretch.image_url} alt="Stretch Img" />
                   <h3>{`Target: ${stretch.target}`}</h3>
                 </Link>
@@ -78,19 +91,38 @@ const SingleRoutine = () => {
               Start Routine
             </button>
           ) : (
-            <h4>
+            <h4 className="warning">
               No current stretches. Go to "Stretches" tab to add some stretches
               here!
             </h4>
           )}
           <button
-            className="add-to-routine"
+            className={`add-to-routine`}
             type="button"
-            onClick={() => openDetails()}
+            onClick={() => {
+              openDetails();
+              handleToggle();
+            }}
           >
             Edit Details
           </button>
           {details ? <EditDetails routine={routine} /> : null}
+        </div>
+
+        <div className="tier3">
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/005/004/110/small/challenge-icon-mountain-with-flag-business-logo-vector.jpg"
+            alt="challenge_icon"
+            className="challenge"
+          />
+          <div className="more">
+            <span style={{ color: '#23b54d' }}>Ready</span> for More?
+          </div>
+          <Link to="/stretches">
+            <button type="button" className="addmore">
+              Add Stretches!
+            </button>
+          </Link>
         </div>
       </div>
     );
