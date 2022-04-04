@@ -4,58 +4,91 @@
   display: flex;
   flex-direction: row;
   margin: 20px auto;
-  gap: 10px;
+  padding: 0 24px;
+  gap: 24px;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: center;
-  // width: 90%vw;
-  // height: 100vh;
 
   .stretch-preview {
-    width: 350px;
-    height: 350px;
-    background-color: $color-primary;
-    text-align: center;
+    width: 360px;
+    // CARD1
+    // background-color: $color-secondary;
     border-radius: 10px;
     margin: 20px 0;
-    box-shadow: 10px 8px 0px $color-primary-hover;
-    transition-property: box-shadow;
-    transition-duration: 0.5s;
+    // CARD1
+    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: all 150ms ease-in-out 0s;
+    padding: 8px;
 
-    &:hover {
-      color: rgb(61, 79, 88);
-      background-color: $color-primary-hover;
-      border: 1px solid rgb(93, 108, 116);
-      box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px, rgb(231 238 236) 0px 0px 0px 3px;
-    }
+    //CARD1
+    // &:hover {
+    //   box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.3);
+    //   transform: translateY(-2px);
+    // }
 
     .stretch-content {
       * {
         text-decoration: none;
+        // CARD1
+        // color: white;
         color: black;
       }
 
-      h2 {
-        margin-top: 10px;
-        font-size: 20pt;
-        font-family: $font-title;
-        letter-spacing: 2px;
-        font-weight: 700;
-      }
-
       img {
-        width: 200px;
-        height: 200px;
-      }
+        width: 344px;
+        //ADD HEIGHT OF PIC HERE
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        transition: all 150ms ease-in-out 0s;
 
-      h3 {
-        font-size: 14pt;
-        font-family: $font-title;
-        font-weight: 400;
+        &:hover {
+          box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.3);
+          transform: translateY(-2px);
+        }
+      }
+      &-text {
+        padding: 20px 0 8px 12px;
+        h2 {
+          font-size: 32px;
+          letter-spacing: 1.5px;
+          font-weight: 400;
+        }
+
+        h3 {
+          font-size: 16px;
+          font-weight: 100;
+          letter-spacing: 0.75px;
+        }
       }
 
       .add-to-routine {
-        @include button;
+        display: flex;
+        // justify-content: flex-end;
+        align-items: center;
+        text-align: right;
+        cursor: pointer;
+        margin-left: 12px;
+
+        // font-style: italic;
+
+        button {
+          display: flex;
+          align-items: center;
+          background: none;
+          border: none;
+          font: inherit;
+          cursor: pointer;
+          color: $color-tertiary;
+          svg {
+            height: 16px;
+            margin: 6px;
+            transition: transform 150ms;
+            stroke: $color-tertiary;
+          }
+          &:hover svg {
+            transform: translateX(5px);
+          }
+        }
       }
 
       #selectRoutines {
@@ -65,6 +98,63 @@
         border-radius: 4px;
         background-color: $color-background;
         color: rgb(61, 79, 88);
+      }
+    }
+  }
+}
+
+.add-routine-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &-card {
+    width: 33vw;
+    max-height: 50vh;
+
+    background-color: $color-background;
+    border-radius: 16px;
+    // border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+
+    // padding: 32px;
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(71, 71, 71, 0.315);
+      padding: 16px;
+      align-items: center;
+      h1 {
+        @include font-content;
+        font-size: 24px;
+        font-weight: 400;
+      }
+      svg {
+        height: 32px;
+        cursor: pointer;
+      }
+    }
+    &-mid {
+      padding: 0 24px;
+      font-size: 24px;
+      overflow-y: scroll;
+      min-height: 25vh;
+      &-name {
+        margin: 24px 0;
+        span {
+          transition: all 150ms ease-in-out 0s;
+          cursor: pointer;
+          &:hover {
+            color: $color-tertiary;
+          }
+        }
       }
     }
   }

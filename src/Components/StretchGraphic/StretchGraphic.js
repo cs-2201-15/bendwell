@@ -7,7 +7,7 @@ const StretchGraphic = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_114_2)">
+      <g clipPath="url(#clip0_114_2)">
         <path
           opacity="0.1"
           d="M453.421 98.5097C449.023 87.5688 443.08 77.4191 435.798 68.4176L191.306 65.8376L392.606 35.5403C379.603 29.9885 365.759 27.0452 351.763 26.8571C332.507 10.3554 308.794 0.957663 284.152 0.062515C259.51 -0.832633 235.258 6.82262 215.003 21.8891C198.815 12.9737 180.87 8.34216 162.669 8.38193C108.347 8.38193 63.0804 48.7026 52.9248 102.172L453.421 98.5097Z"
@@ -212,7 +212,7 @@ const StretchGraphic = () => {
           opacity="0.1"
           d="M95.7062 286.623C95.7062 286.623 99.6413 284.467 105.41 287.165C107.469 288.115 109.59 288.904 111.756 289.526C115.23 290.531 118.564 292.024 121.672 293.966C125.688 296.468 131.139 299.471 134.17 299.471"
           stroke="black"
-          stroke-miterlimit="10"
+          strokeMiterlimit="10"
         />
         <path
           opacity="0.1"
@@ -278,9 +278,9 @@ const StretchGraphic = () => {
           y2="159.008"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <clipPath id="clip0_114_2">
           <rect width="462" height="345" fill="white" />

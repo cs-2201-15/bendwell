@@ -31,14 +31,12 @@
   &__icon {
     display: flex;
     gap: 16px;
+    cursor: pointer;
     &-mui {
       &:hover {
         color: $color-tertiary;
         transition: all 150ms ease-in-out 0s;
       }
     }
-  }
-  &__right {
-    // padding-top: 10px;
   }
 }
