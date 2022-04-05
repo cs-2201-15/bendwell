@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
 import Avatar from "../Avatar/Avatar";
+import "./createaccount.scss";
 
 const CreateAccount = ({ session }) => {
   const navigate = useNavigate();
@@ -66,38 +67,48 @@ const CreateAccount = ({ session }) => {
   };
 
   return (
-    <div aria-live="polite" className="account-containter">
-      <h2>Finish setting up your profile:</h2>
-      {loading ? (
-        "Saving ..."
-      ) : (
-        <form onSubmit={updateProfile} className="form-widget" id="avatar-form">
-          <Avatar
-            url={avatar_url}
-            size={150}
-            onUpload={(url) => {
-              setAvatarUrl(url);
-              updateProfile({ username, avatar_url: url });
-            }}
-          />
-          <div className="email-block">Email: {session.user.email}</div>
-          <div className="name-block">
-            <label htmlFor="username">Name</label>
-            <input
-              id="username"
-              type="text"
-              value={username || ""}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
+    <div className="full-view-container">
+      <div className="account-container">
+        <div aria-live="polite">
+          <h2>Finish setting up your profile:</h2>
+          {loading ? (
+            "Saving ..."
+          ) : (
+            <form onSubmit={updateProfile} className="form-widget">
+              <Avatar
+                className="image-container"
+                url={avatar_url}
+                size={200}
+                onUpload={(url) => {
+                  setAvatarUrl(url);
+                  updateProfile({ username, avatar_url: url });
+                }}
+              />
+              <div className="info-container">
+                <h3 className="email-container">
+                  <div className="email-text">Email: </div>
+                  {session.user.email}
+                </h3>
+                <h3 htmlFor="username" className="name-text">
+                  Name:
+                  <input
+                    id="username"
+                    type="text"
+                    value={username || ""}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />{" "}
+                </h3>
+              </div>
 
-          <div className="create-account">
-            <button className="button block primary" disabled={loading}>
-              Create Account
-            </button>
-          </div>
-        </form>
-      )}
+              <div className="create-account">
+                <button className="edit-profile-button" disabled={loading}>
+                  Create Account
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
