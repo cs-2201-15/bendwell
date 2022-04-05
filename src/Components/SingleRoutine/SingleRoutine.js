@@ -61,9 +61,10 @@ const SingleRoutine = () => {
             <h2 style={{ paddingTop: "10px" }}>{routine.name}</h2>
             <h3 style={{ color: "navy" }}>{routine.notes}</h3>
           </div>
-          <div className="landingpage-single">
-            {/* <h1 className="routine-banner">Personalized Routines</h1> */}
-          </div>
+
+          {/* <div className="landingpage-single"> */}
+          {/* <h1 className="routine-banner">Personalized Routines</h1> */}
+          {/* </div> */}
 
           <div className="single-routine-container">
             {routine.stretches.map((stretch, i) => {
@@ -119,7 +120,7 @@ const SingleRoutine = () => {
               className="challenge"
             />
             <div className="more">
-              <span style={{ color: "#23b54d" }}>Ready</span> for More?
+              <span style={{ color: "#23b54d" }}>Ready</span> for more?
             </div>
             <Link to="/stretches">
               <button type="button" className="addmore">
