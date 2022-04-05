@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { setRoutines } from "../../store/routines";
-import { addStretch } from "../../store/routine";
-import { setStretches } from "../../store/stretches";
-import { supabase } from "../../supabaseClient";
-import "./allstretches.scss";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { setRoutines } from '../../store/routines';
+import { addStretch } from '../../store/routine';
+import { setStretches } from '../../store/stretches';
+import { supabase } from '../../supabaseClient';
+import './allstretches.scss';
 
 const AllStretches = () => {
   const dispatch = useDispatch();
@@ -95,8 +95,8 @@ const AllStretches = () => {
           <div className="stretch-preview" key={stretch.id}>
             <div className="stretch-content">
               <Link to={`/stretches/${stretch.id}`}>
-                {" "}
-                <img src={stretch.image_url} alt="Stretch Img" />
+                {' '}
+                <img src={stretch.stretchimages} alt="Stretch Img" />
                 <div className="stretch-content-text">
                   <h2>{stretch.name}</h2>
                   <h3>{`Target: ${stretch.target}`}</h3>
