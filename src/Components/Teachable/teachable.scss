@@ -5,6 +5,7 @@
   width: 100%;
   height: auto;
   align-items: center;
+  // align-content: center;
   justify-content: center;
   // position: relative;
 
@@ -13,29 +14,50 @@
     margin-bottom: 20px;
     margin-top: 30px;
   }
+
   .button {
     @include button();
-    // margin-top: 10px;
     margin-bottom: 20px;
-    // font-size: 14px;
-    // font-weight: 400;
     width: auto;
     height: 36px;
   }
 
+  // button {
+  //   @include button();
+  // }
   canvas {
     display: inline-block;
     margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  button {
+    @include button();
   }
 
   .label-container {
     display: flex;
-    margin-bottom: 20px;
-  }
-
-  .status {
-    display: inline-block;
     flex-direction: column;
-    margin-bottom: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    // margin-bottom: 100px;
+    // flex-grow: 1;
+
+    .status {
+      display: flex;
+      flex-direction: column;
+      // margin-bottom: 30px;
+      margin-top: 30px;
+      font-size: 32px;
+      font-weight: 300;
+      align-items: center;
+      justify-content: center;
+
+      .button-status {
+        display: inline-block;
+        background-color: black;
+      }
+    }
   }
 }
