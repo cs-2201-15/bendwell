@@ -1,2 +1,117 @@
-@use "../index.scss";
+@import "../index.scss";
 
+.full-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../../public/about-background.jpg");
+  min-width: 100vw;
+  height: calc(100vh - 142px);
+
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+
+  h2 {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 $color-secondary;
+    width: 40vw;
+    height: 60vh;
+    background-color: $color-background;
+
+    .form-widget {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-size: 14pt;
+      font-family: $font-title;
+      font-weight: 300;
+      margin: auto;
+
+      label {
+        @include button();
+        text-decoration: none;
+        color: #333333;
+        color: white;
+        background-color: #272b2e;
+
+        &:hover {
+          color: $color-primary-hover;
+          background-color: $color-background;
+          border: 2px solid rgb(93, 108, 116);
+          box-shadow: $box-shadow;
+        }
+      }
+      .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 14pt;
+        font-family: $font-content;
+        margin: 25px;
+
+        .email-container {
+          display: flex;
+          flex-direction: row;
+          padding-left: 6px;
+          font-size: 14pt;
+          font-family: $font-content;
+          font-weight: 300;
+          .email-text {
+            font-weight: 400;
+            margin-right: 10px;
+          }
+        }
+
+        .name-text {
+          width: 300px;
+        }
+
+        input {
+          width: 70%;
+          padding: 4px 4px;
+          box-sizing: border-box;
+          font-size: 16px;
+          margin: 10px;
+          text-align: center;
+          display: inline-block;
+
+          &:focus {
+            border: 3px solid $color-primary-hover;
+          }
+        }
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-bottom: 15px;
+        border-radius: 50%;
+        border: 4px solid $color-accent-secondary;
+
+        &:hover {
+          box-shadow: 0 0 4px 4px $color-accent-tertiary;
+        }
+      }
+    }
+    .edit-profile-button {
+      @include button();
+
+      &:hover {
+        color: $color-primary-hover;
+        background-color: $color-background;
+        border: 2px solid rgb(93, 108, 116);
+        box-shadow: $box-shadow;
+      }
+    }
+  }
+}
