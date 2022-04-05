@@ -11,7 +11,7 @@
   align-content: center;
   justify-content: center;
   // z-index: 9999;
-  background-image: url('https://media.istockphoto.com/photos/blue-light-background-old-grunge-texture-blank-pastel-abstract-paper-picture-id1217216727?k=20&m=1217216727&s=170667a&w=0&h=_7TFcJGAjmywlbtitPW6fP8RfisqiNiky8fngWXqx3Q=');
+  // background-image: url('https://media.istockphoto.com/photos/blue-light-background-old-grunge-texture-blank-pastel-abstract-paper-picture-id1217216727?k=20&m=1217216727&s=170667a&w=0&h=_7TFcJGAjmywlbtitPW6fP8RfisqiNiky8fngWXqx3Q=');
   background-size: cover;
 
   //tier 1
@@ -22,7 +22,7 @@
     align-items: center;
     padding-bottom: 20px;
     background-color: $color-primary;
-    background-image: url('https://wallpaper.dog/large/20361107.jpg');
+    // background-image: url("https://wallpaper.dog/large/20361107.jpg");
     background-size: cover;
     background-repeat: repeat-x;
 
@@ -52,7 +52,7 @@
       font-family: index.$font-title;
       font-weight: 400;
       padding-bottom: 10px;
-      color: white;
+      color: black;
       color: font-logo();
     }
 
@@ -121,7 +121,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 300px;
+      width: 360px;
       height: auto;
       padding: 20px;
       color: white;

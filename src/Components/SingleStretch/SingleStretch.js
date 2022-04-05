@@ -61,11 +61,15 @@ const SingleStretch = () => {
               <h2> Steps</h2>
               {stretch.one}
               <br />
+              <br />
               {stretch.stepTwo}
+              <br />
               <br />
               {stretch.stepThree}
               <br />
+              <br />
               {stretch.stepFour}
+              <br />
               <br />
               {stretch.stepFive}
             </div>
