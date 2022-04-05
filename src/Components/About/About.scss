@@ -18,7 +18,10 @@
   .content{
     position: relative;
     text-align: center;
+<<<<<<< HEAD
     // overflow: scroll;
+=======
+>>>>>>> 2adbd1d229cc5d76995fab594f00986b69edf9bb
 
     h1{
       color: $color-background;
@@ -32,7 +35,7 @@
       margin: 0 40px;
     }
     .creator-wrapper{
-      margin-top: 10px;
+      margin-top: 30px;
       justify-content: space-evenly;
       display: flex;
       flex-direction: row;
@@ -52,15 +55,15 @@
         padding: 28px 28px;
 
         h3{
-          margin-bottom: 10px;
+          margin-bottom: 20px;
           color: $color-tertiary;
           font-size: 36pt;
           font-weight: 600;
 
         }
         .headshot{
-          width: 250px;
-          height: 250px;
+          width: 300px;
+          height: 300px;
           border-radius: 48px;
           margin-bottom: 10px;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
