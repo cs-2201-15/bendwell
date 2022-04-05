@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams, Link } from 'react-router-dom';
-import { setSingleCamera } from '../../store/camera';
-import { setStretch } from '../../store/stretch';
-import './singlestretch.scss';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import { setSingleCamera } from "../../store/camera";
+import { setStretch } from "../../store/stretch";
+import "./singlestretch.scss";
 
 const SingleStretch = () => {
   const [loading, setLoading] = useState(true);
@@ -37,9 +37,9 @@ const SingleStretch = () => {
           <div className="single-stretch-card">
             <h2>{stretch.name}</h2>
             <h3>{`Target: ${stretch.target}`}</h3>
-            <div className="single-stretch-description">
+            {/* <div className="single-stretch-description">
               <img src={stretch.image_url} alt="Stretch Img" />
-            </div>
+            </div> */}
             <button
               type="button"
               className="start-stretch-button"
@@ -54,7 +54,7 @@ const SingleStretch = () => {
               <img
                 src={stretch.gif}
                 alt="stretch"
-                style={{ height: '370px', width: '350px' }}
+                style={{ height: "370px", width: "350px" }}
               />
             </div>
 
@@ -62,11 +62,15 @@ const SingleStretch = () => {
               <h2> Steps</h2>
               {stretch.one}
               <br />
+              <br />
               {stretch.stepTwo}
+              <br />
               <br />
               {stretch.stepThree}
               <br />
+              <br />
               {stretch.stepFour}
+              <br />
               <br />
               {stretch.stepFive}
             </div>
@@ -78,7 +82,7 @@ const SingleStretch = () => {
               className="brave-icon"
             />
             <h2>
-              Discover More <span style={{ color: '#23b54d' }}>Stretches</span>
+              Discover More <span style={{ color: "#23b54d" }}>Stretches</span>
             </h2>
 
             <Link to="/stretches">

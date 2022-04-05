@@ -67,25 +67,32 @@ const SingleRoutine = () => {
           {/* </div> */}
 
           <div className="single-routine-container">
-            {routine.stretches.map((stretch, i) => {
-              return (
-                <div className="stretch-preview" key={i}>
-                  <Link to={`/stretches/${stretch.id}`}>
-                    <h2 style={{ color: "navy", paddingBottom: "5px" }}>
-                      {stretch.name}
-                    </h2>
-                    <img src={stretch.image_url} alt="Stretch Img" />
-                    <h3>{`Target: ${stretch.target}`}</h3>
-                  </Link>
-                  <button
-                    className="add-to-routine"
-                    onClick={() => handleDelete(stretch.id, routine.id)}
-                  >
-                    Remove Stretch
-                  </button>
-                </div>
-              );
-            })}
+            {routine.stretches.length ? (
+              routine.stretches.map((stretch, i) => {
+                return (
+                  <div className="stretch-preview" key={i}>
+                    <Link to={`/stretches/${stretch.id}`}>
+                      <h2 style={{ color: "navy", paddingBottom: "5px" }}>
+                        {stretch.name}
+                      </h2>
+                      <img src={stretch.image_url} alt="Stretch Img" />
+                      <h3>{`Target: ${stretch.target}`}</h3>
+                    </Link>
+                    <button
+                      className="add-to-routine"
+                      onClick={() => handleDelete(stretch.id, routine.id)}
+                    >
+                      Remove Stretch
+                    </button>
+                  </div>
+                );
+              })
+            ) : (
+              <h4 className="warning">
+                No current stretches. Go to "Stretches" tab to add some
+                stretches here!
+              </h4>
+            )}
           </div>
           <div className="start-routine-footer">
             {routine.stretches.length ? (
@@ -97,10 +104,7 @@ const SingleRoutine = () => {
                 Start Routine
               </button>
             ) : (
-              <h4 className="warning">
-                No current stretches. Go to "Stretches" tab to add some
-                stretches here!
-              </h4>
+              <></>
             )}
             <button
               className={`add-to-routine`}
