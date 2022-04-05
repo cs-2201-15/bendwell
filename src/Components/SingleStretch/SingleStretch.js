@@ -30,7 +30,6 @@ const SingleStretch = () => {
   if (loading) {
     return <p>Loading...</p>;
   } else {
-    console.log(stretch.one);
     return (
       <div>
         <div className="single-stretch-container">
@@ -38,7 +37,7 @@ const SingleStretch = () => {
             <h2>{stretch.name}</h2>
             <h3>{`Target: ${stretch.target}`}</h3>
             <div className="single-stretch-description">
-              <img src={stretch.image_url} alt="Stretch Img" />
+              <img src={stretch.stretchimages} alt="Stretch Img" />
             </div>
             <button
               type="button"

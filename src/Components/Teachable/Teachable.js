@@ -12,7 +12,9 @@ const Teachable = () => {
   const cameraArr = useSelector((state) => state.camera);
   const [completed, setCompleted] = useState(false);
   const [match, setMatch] = useState(false);
-  const [status, setStatus] = useState('Ready To Stretch?');
+  const [status, setStatus] = useState(
+    'Ready To Stretch? Press Start to Begin!'
+  );
   let matched = false;
   console.log(cameraArr);
   // More API functions here:
@@ -164,7 +166,12 @@ const Teachable = () => {
       >
         Start
       </button>
-      <canvas ref={canvasRef} width={500} height={700}></canvas>
+      <canvas
+        ref={canvasRef}
+        width={500}
+        height={700}
+        className="canvas"
+      ></canvas>
       <div id="label-container">
         {/* <div>{`Stretch: ${stretchName}`}</div> */}
         <h3 className="status">{status}</h3>
