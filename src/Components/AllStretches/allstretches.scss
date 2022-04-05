@@ -1,13 +1,15 @@
-@import "../index.scss";
+@import '../index.scss';
 
 .stretch-container {
   display: flex;
   flex-direction: row;
-  margin: 20px auto;
+  // margin: 20px auto;
   padding: 0 24px;
   gap: 24px;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-image: url('https://img.freepik.com/free-photo/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products-plain-studio-background_1258-54444.jpg?w=2000');
+  background-size: cover;
 
   .stretch-preview {
     width: 360px;
@@ -52,6 +54,8 @@
           font-size: 32px;
           letter-spacing: 1.5px;
           font-weight: 400;
+          @include font-logo();
+          color: $color-tertiary;
         }
 
         h3 {
