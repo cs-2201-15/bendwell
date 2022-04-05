@@ -169,18 +169,23 @@ const Teachable = () => {
       <canvas
         ref={canvasRef}
         width={500}
-        height={700}
+        height={500}
         className="canvas"
       ></canvas>
       <div id="label-container">
         {/* <div>{`Stretch: ${stretchName}`}</div> */}
-        <h3 className="status">{status}</h3>
+        <h3
+          style={{ fontSize: '32px', fontWeight: '500', margintop: '30px' }}
+          className="status"
+        >
+          {status}
+        </h3>
         {completed ? (
-          <button className="button" onClick={() => handleClick()}>
+          <button className="button-status" onClick={() => handleClick()}>
             Go Back to Stretches
           </button>
         ) : match ? (
-          <button className="button" onClick={() => handleNext()}>
+          <button className="button-status" onClick={() => handleNext()}>
             Next Stretch
           </button>
         ) : (
