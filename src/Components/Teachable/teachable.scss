@@ -1,38 +1,63 @@
 @import '../index.scss';
 .teachable-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: auto;
-  text-align: center;
-  position: relative;
+  align-items: center;
+  // align-content: center;
+  justify-content: center;
+  // position: relative;
 
-  h2{
+  h2 {
     font-size: 24pt;
     margin-bottom: 20px;
-
+    margin-top: 30px;
   }
+
   .button {
-    @include button;
-    margin-top: 10px;
+    @include button();
     margin-bottom: 20px;
-    font-size: 14px;
-    font-weight: 400;
+    width: auto;
     height: 36px;
-
   }
 
-  canvas{
-    display:block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: 250px auto 0 auto;
+  // button {
+  //   @include button();
+  // }
+  canvas {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 40px;
   }
 
-  .label-container{
-    h3{
-      margin-top: 20px;
+  button {
+    @include button();
+  }
+
+  .label-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    // margin-bottom: 100px;
+    // flex-grow: 1;
+
+    .status {
+      display: flex;
+      flex-direction: column;
+      // margin-bottom: 30px;
+      margin-top: 30px;
+      font-size: 32px;
+      font-weight: 300;
+      align-items: center;
+      justify-content: center;
+
+      .button-status {
+        display: inline-block;
+        background-color: black;
+      }
     }
   }
 }
