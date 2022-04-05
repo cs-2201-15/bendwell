@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams, Link } from 'react-router-dom';
-import { setSingleCamera } from '../../store/camera';
-import { setStretch } from '../../store/stretch';
-import './singlestretch.scss';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import { setSingleCamera } from "../../store/camera";
+import { setStretch } from "../../store/stretch";
+import "./singlestretch.scss";
 
 const SingleStretch = () => {
   const [loading, setLoading] = useState(true);
@@ -37,7 +37,7 @@ const SingleStretch = () => {
             <h2>{stretch.name}</h2>
             <h3>{`Target: ${stretch.target}`}</h3>
             <div className="single-stretch-description">
-              <img src={stretch.stretchimages} alt="Stretch Img" />
+              {/* <img src={stretch.stretchimages} alt="Stretch Img" /> */}
             </div>
             <button
               type="button"
@@ -53,7 +53,7 @@ const SingleStretch = () => {
               <img
                 src={stretch.gif}
                 alt="stretch"
-                style={{ height: '370px', width: '350px' }}
+                style={{ height: "370px", width: "350px" }}
               />
             </div>
 
@@ -81,7 +81,7 @@ const SingleStretch = () => {
               className="brave-icon"
             />
             <h2>
-              Discover More <span style={{ color: '#23b54d' }}>Stretches</span>
+              Discover More <span style={{ color: "#23b54d" }}>Stretches</span>
             </h2>
 
             <Link to="/stretches">
