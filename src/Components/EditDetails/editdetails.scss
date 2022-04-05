@@ -1,13 +1,25 @@
-@import '../index.scss';
+@import "../index.scss";
 
+.edit-details-background {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.541);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .edit-details-container {
   position: absolute;
   display: flex;
-  top: 20%;
-  left: -5%;
+  // top: 20%;
+  // left: -5%;
   height: 30vh;
   width: 50vh;
-  display: flex;
+  // display: flex;
   border-radius: 20px;
   align-items: center;
   justify-content: center;
@@ -15,6 +27,13 @@
 
   background-color: rgb(203, 228, 236);
 
+  svg {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    height: 32px;
+    cursor: pointer;
+  }
   .form {
     display: inline-block;
     display: column;
