@@ -1,11 +1,11 @@
-import { supabase } from '../supabaseClient';
+import { supabase } from "../supabaseClient";
 
 //action types
 
-const SET_ROUTINE = 'SET_ROUTINE';
-const ADD_STRETCH = 'ADD_STRETCH';
-const DELETE_STRETCH = 'DELETE_STRETCH';
-const EDIT_ROUTINE = 'EDIT_ROUTINE';
+const SET_ROUTINE = "SET_ROUTINE";
+const ADD_STRETCH = "ADD_STRETCH";
+const DELETE_STRETCH = "DELETE_STRETCH";
+const EDIT_ROUTINE = "EDIT_ROUTINE";
 
 //action creators
 
@@ -42,13 +42,13 @@ export const setRoutine = (id) => {
   return async (dispatch) => {
     try {
       let { data: routine, error } = await supabase
-        .from('routines')
+        .from("routines")
         .select(
           `*,
         stretches:stretches(*)
         `
         )
-        .eq('id', id);
+        .eq("id", id);
       dispatch(_setRoutine(routine[0]));
     } catch (error) {
       console.log(error);
@@ -60,7 +60,7 @@ export const addStretch = (stretchId, routineId) => {
   return async (dispatch) => {
     try {
       const { data, error } = await supabase
-        .from('stretchRoutines')
+        .from("stretchRoutines")
         .insert([{ stretchId: stretchId, routineId: routineId }]);
     } catch (error) {
       console.log(error);
@@ -72,7 +72,7 @@ export const deleteStretch = (stretchId, routineId) => {
   return async (dispatch) => {
     try {
       const { data, error } = await supabase
-        .from('stretchRoutines')
+        .from("stretchRoutines")
         .delete()
         .match({ stretchId: stretchId, routineId: routineId });
       console.log(data);
@@ -85,11 +85,21 @@ export const deleteStretch = (stretchId, routineId) => {
 export const editRoutine = (routineId, routineName, text) => {
   return async (dispatch) => {
     try {
-      const { data: routine, error } = await supabase
-        .from('routines')
+      const { data: routine } = await supabase
+        .from("routines")
         .update({ name: routineName, notes: text })
-        .eq('id', routineId);
-      dispatch(_editRoutine(routine));
+        .eq("id", routineId);
+
+      const { data: updated } = await supabase
+        .from("routines")
+        .select(
+          `*,
+        stretches:stretches(*)
+        `
+        )
+        .eq("id", routineId);
+
+      dispatch(_editRoutine(updated));
       console.log(routine);
     } catch (error) {
       console.log(error);

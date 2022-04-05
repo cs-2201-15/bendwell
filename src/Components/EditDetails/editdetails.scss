@@ -1,5 +1,14 @@
-@import '../index.scss';
+@import "../index.scss";
 
+.edit-details-background {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.541);
+}
 .edit-details-container {
   position: absolute;
   display: flex;
