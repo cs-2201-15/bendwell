@@ -1,0 +1,146 @@
+@import "../index.scss";
+
+.stretch-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0 24px;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-size: cover;
+
+  .stretch-preview {
+    width: 360px;
+    // CARD1
+    // background-color: $color-secondary;
+    // border-radius: 10px;
+    margin: 20px 0;
+    transition: all 150ms ease-in-out 0s;
+    padding: 8px;
+    .stretch-content {
+      * {
+        text-decoration: none;
+        color: black;
+      }
+
+      img {
+        width: 344px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        transition: all 150ms ease-in-out 0s;
+        border-radius: 4px;
+
+        &:hover {
+          box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.3);
+          transform: translateY(-3px);
+        }
+      }
+      &-text {
+        padding: 20px 0 8px 12px;
+        h2 {
+          font-size: 32px;
+          letter-spacing: 1.5px;
+          font-weight: 400;
+          @include font-logo();
+          color: $color-tertiary;
+        }
+
+        h3 {
+          font-size: 16px;
+          font-weight: 100;
+          letter-spacing: 0.75px;
+        }
+      }
+
+      .add-to-routine {
+        display: flex;
+        align-items: center;
+        text-align: right;
+        cursor: pointer;
+        margin-left: 12px;
+
+        button {
+          display: flex;
+          align-items: center;
+          background: none;
+          border: none;
+          font: inherit;
+          cursor: pointer;
+          color: $color-tertiary;
+          svg {
+            height: 16px;
+            margin: 6px;
+            transition: transform 150ms;
+            stroke: $color-tertiary;
+          }
+          &:hover svg {
+            transform: translateX(5px);
+          }
+        }
+      }
+
+      #selectRoutines {
+        border: 1px solid rgb(137, 151, 155);
+        height: 36px;
+        width: 140px;
+        border-radius: 4px;
+        background-color: $color-background;
+        color: rgb(61, 79, 88);
+      }
+    }
+  }
+}
+
+.add-routine-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &-card {
+    width: 33vw;
+    max-height: 50vh;
+
+    background-color: $color-background;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(71, 71, 71, 0.315);
+      padding: 16px;
+      align-items: center;
+      h1 {
+        @include font-content;
+        font-size: 24px;
+        font-weight: 400;
+      }
+      svg {
+        height: 32px;
+        cursor: pointer;
+      }
+    }
+    &-mid {
+      padding: 0 24px;
+      font-size: 24px;
+      overflow-y: scroll;
+      min-height: 25vh;
+      &-name {
+        margin: 24px 0;
+        span {
+          transition: all 150ms ease-in-out 0s;
+          cursor: pointer;
+          &:hover {
+            color: $color-tertiary;
+          }
+        }
+      }
+    }
+  }
+}

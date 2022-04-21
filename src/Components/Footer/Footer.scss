@@ -1,0 +1,43 @@
+@import "../index.scss";
+
+.footer {
+  background-color: rgb(12, 12, 12);
+  height: 72px;
+  color: $color-background;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+
+  &__left {
+    display: flex;
+    gap: 16px;
+    &-logo {
+      @include font-logo;
+      color: white;
+    }
+    &-tp {
+      // padding-top: 10px;
+      p {
+        cursor: pointer;
+        transition: all 150ms ease-in-out 0s;
+        &:hover {
+          color: $color-tertiary;
+        }
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    gap: 16px;
+    cursor: pointer;
+    padding-right: 24px;
+    &-mui {
+      &:hover {
+        color: $color-tertiary;
+        transition: all 150ms ease-in-out 0s;
+      }
+    }
+  }
+}

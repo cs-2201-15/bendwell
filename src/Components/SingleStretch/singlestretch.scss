@@ -1,0 +1,161 @@
+@use "../index.scss";
+@import "../index.scss";
+
+.single-stretch-container {
+  display: flex;
+  flex-direction: column;
+  // flex-direction: row;
+  height: auto;
+  width: 100vw;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  // z-index: 9999;
+  // background-image: url('https://media.istockphoto.com/photos/blue-light-background-old-grunge-texture-blank-pastel-abstract-paper-picture-id1217216727?k=20&m=1217216727&s=170667a&w=0&h=_7TFcJGAjmywlbtitPW6fP8RfisqiNiky8fngWXqx3Q=');
+  background-size: cover;
+
+  //tier 1
+  .single-stretch-card {
+    // @include card(lightblue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    background-color: $color-primary;
+    // background-image: url("https://wallpaper.dog/large/20361107.jpg");
+    background-size: cover;
+    background-repeat: repeat-x;
+
+    // background-position: 20% 40%;
+    // backdrop-filter: ;
+    background-position: 0px -470px;
+    width: 100%;
+
+    img {
+      width: 300px;
+      height: 300px;
+      border-radius: 20px;
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-size: 20pt;
+      font-family: index.$font-title;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: $color-tertiary;
+      @include font-logo();
+    }
+
+    h3 {
+      font-size: 14pt;
+      font-family: index.$font-title;
+      font-weight: 400;
+      padding-bottom: 10px;
+      color: black;
+      color: font-logo();
+    }
+
+    .start-stretch-button {
+      display: inline-block;
+
+      @include button();
+
+      .single-stretch-description {
+        * {
+          // display: inline-block;
+          text-decoration: none;
+          color: black;
+          margin: 0px 50px;
+        }
+
+        // description box
+        h3 {
+          display: inline-block;
+          position: absolute;
+          flex-wrap: wrap;
+          top: 20%;
+          left: 65%;
+          font-size: 14pt;
+          font-family: index.$font-title;
+          font-weight: 400;
+          color: index.$color-accent-secondary; //words
+          margin: 5px 10px;
+          padding: 10px 30px;
+          border: 1px;
+          border-radius: 25px;
+          width: 200px;
+          height: 400px;
+          background-color: $color-secondary;
+        }
+      }
+    }
+  }
+
+  //tier 2
+  .secondhalf {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 40vh;
+    margin: 20px;
+    // gap: 300px;
+
+    .stretch-gif {
+      display: contents;
+      // width: 100px;
+      // height: auto;
+      border-radius: 20px;
+
+      img {
+        // width: 600px;
+
+        object-fit: cover;
+        border-radius: 20px;
+        // height: auto;
+      }
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 480px;
+      max-height: 370px;
+      padding: 20px;
+      color: white;
+      background-color: $color-secondary;
+      border-radius: 20px;
+      @include font-content();
+      font-size: 20px;
+    }
+  }
+
+  //tier3
+  .discover {
+    * {
+      text-decoration: none;
+    }
+    // position: relative;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    // height: 40vh;
+    padding: 10px;
+    flex-grow: 1;
+    background-color: $color-primary;
+
+    .view-stretches {
+      @include button();
+    }
+
+    .brave-icon {
+      height: 50px;
+      width: 50px;
+    }
+  }
+}

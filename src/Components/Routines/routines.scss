@@ -1,0 +1,162 @@
+@import "../index.scss";
+
+.routines {
+  &__topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 30px;
+  }
+
+  &__topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__header {
+    font-weight: 400;
+  }
+
+  &__routines-count {
+    background-color: rgb(24, 24, 24);
+    border-radius: 9999px;
+    padding: 4px 8px;
+    color: white;
+    font-size: 12px;
+  }
+
+  &__add-routine-btn {
+    @include button;
+  }
+
+  &__routines {
+    padding: 16px 30px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__routine {
+    @include card($color-background);
+
+    padding: 0;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+
+    &--no-stretches {
+      padding: 12px 16px;
+      background: $color-warning;
+      color: black;
+      border-radius: 4px;
+      font-size: 16px;
+      margin: 16px;
+    }
+  }
+
+  &__routine-left {
+    display: flex;
+    flex: 0 1 300px;
+    flex-wrap: wrap;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__routine-middle {
+    flex: 2;
+  }
+
+  &__routine-middle-content {
+    padding: 24px;
+  }
+
+  &__routine-right {
+    flex: 1;
+    background: $color-primary;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  &__routine-stretch-image {
+    min-width: 150px;
+    height: 50%;
+    flex: 1;
+    object-fit: cover;
+  }
+
+  &__routine-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    background: $color-primary;
+  }
+
+  &__routine-name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__routine-notes {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__routine-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: rgb(24, 24, 24);
+    svg {
+      width: 24px;
+      height: 24px;
+      transition: transform 150ms;
+    }
+
+    &:hover {
+      transition: all 150px ease-in-out;
+      svg {
+        transform: translateX(5px);
+      }
+    }
+  }
+
+  &__remove-routine-btn {
+    @include icon-button($color-error);
+  }
+
+  &__stretches-title {
+    background: #c0ddff;
+    height: 96px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-top-right-radius: 8px;
+  }
+
+  &__add-stretch-btn {
+    @include icon-button(rgb(24, 24, 24));
+  }
+
+  &__stretches-list {
+    border-bottom-right-radius: 8px;
+    padding: 24px;
+    list-style: none;
+    overflow-y: auto;
+  }
+
+  &__stretches-list-item {
+    font-size: 14px;
+  }
+}

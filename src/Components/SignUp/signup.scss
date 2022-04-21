@@ -1,0 +1,68 @@
+@import "../index.scss";
+
+#login-container{
+  height: 100vh;
+}
+#content-container{
+  margin: 20px 20px;
+  font-family: $font-title;
+  font-weight: 700;
+  font-size: 28pt;
+  text-align: center;
+
+
+  .login{
+    font-size: 18pt;
+    margin-bottom: 20px;
+    font-weight: 400;
+    letter-spacing: .01rem;
+
+  }
+  .content-block{
+    display: block;
+
+    #email-label{
+      font-size: 18pt;
+      margin-right: 10px;
+      font-weight: 300;
+    }
+
+    #email{
+      border: 1px solid rgb(137, 151, 155);
+      height: 36px;
+      width: 200px;
+      border-radius: 4px;
+      background-color: $color-background;
+      color: rgb(61, 79, 88);
+      font-size: 12pt;
+      margin-left: 43px;
+    }
+
+    #pass-label{
+      font-size: 18pt;
+      margin-right: 10px;
+      font-weight: 300;
+
+    }
+
+    #password{
+      border: 1px solid rgb(137, 151, 155);
+      height: 36px;
+      width: 200px;
+      border-radius: 4px;
+      background-color: $color-background;
+      color: rgb(61, 79, 88);
+      font-size: 12pt;
+
+    }
+  }
+
+
+  #create-btn{
+    @include button;
+    font-size: 14px;
+    font-weight: 400;
+    height: 36px;
+    margin: 20px auto;
+  }
+}

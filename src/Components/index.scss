@@ -1,0 +1,126 @@
+//font variables
+$font-content: "Signika Negative", sans-serif;
+$font-title: "Signika Negative", sans-serif;
+$font-logo: "Signika Negative", sans-serif;
+
+//color variables
+$color-background: #ecf5ff;
+$color-primary: #d6e9ff;
+$color-primary-hover: #6f9dc8;
+$color-secondary: #6a8cb5;
+$color-tertiary: #23b54d;
+$color-error: #ef4444;
+$color-warning: #fcd34d;
+
+//shadow variables
+$box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$color-lightG: #cfe0c3;
+$color-accent-secondary: #0a253b;
+$color-button-secondary: #20c1c3;
+$color-accent-tertiary: #70a9a1;
+
+//mixins
+//@include mixin-name
+@mixin font-content() {
+  font-family: $font-content;
+  font-size: 32px;
+  font-weight: 300;
+}
+@mixin font-detail() {
+  font-family: $font-title;
+  font-size: 20px;
+  font-weight: 300;
+}
+@mixin font-logo() {
+  font-family: $font-logo;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+@mixin button() {
+  font-size: 16px;
+  padding: 0 24px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #272b2e;
+  color: white;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 150ms ease-in-out 0s;
+
+  &:hover {
+    box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+  }
+}
+
+@mixin button-menu() {
+  font-size: 16px;
+  padding: 0 24px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-tertiary;
+  color: white;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  transition: all 150ms ease-in-out 0s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+  }
+}
+
+@mixin button-sm() {
+  @include button-menu();
+  padding: 0 16px;
+  height: 32px;
+}
+
+@mixin icon-button($btn-clr: black) {
+  @include button;
+
+  padding: 12px;
+  background: none;
+  box-shadow: none;
+  width: 48px;
+  height: 48px;
+  transition: all 150ms;
+
+  svg {
+    stroke: $btn-clr;
+  }
+
+  &:hover {
+    background: $btn-clr;
+
+    svg {
+      stroke: white;
+    }
+  }
+}
+
+@mixin card($card-color) {
+  width: 300px;
+  height: 300px;
+  background-color: $card-color;
+  padding: 0 28px;
+  @include font-detail;
+  border-radius: 48px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-content;
+}
