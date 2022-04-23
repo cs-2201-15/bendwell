@@ -56,7 +56,7 @@ const AllRoutines = () => {
                   <img
                     key={index}
                     className="routines__routine-stretch-image"
-                    src={stretch.image_url}
+                    src={stretch.stretchimages}
                     alt={`${stretch.name} stretch`}
                   />
                 ))}
