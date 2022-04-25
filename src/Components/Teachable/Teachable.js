@@ -16,7 +16,7 @@ const Teachable = () => {
     "Ready To Stretch? Press Start to Begin!"
   );
   let matched = false;
-  // console.log(cameraArr);
+  console.log(cameraArr);
   // More API functions here:
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
@@ -157,7 +157,8 @@ const Teachable = () => {
 
   return (
     <div className="teachable-container">
-      <h2>Teachable Machine Pose Model</h2>
+      <h2>Stretch Cam</h2>
+      <p>Make sure your full body is in view!</p>
       <button
         id="init"
         className="button"
@@ -174,7 +175,7 @@ const Teachable = () => {
         height={500}
         className="canvas"
       ></canvas>
-      <div id="label-container">
+      <div className="label-container">
         {/* <div>{`Stretch: ${stretchName}`}</div> */}
         <h3
           style={{ fontSize: "32px", fontWeight: "500", margintop: "30px" }}

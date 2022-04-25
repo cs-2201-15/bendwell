@@ -1,1 +1,33 @@
-{"tfjsVersion":"1.3.1","tmVersion":"0.8.6","packageVersion":"0.8.6","packageName":"@teachablemachine/pose","timeStamp":"2022-04-04T21:31:23.342Z","userMetadata":{},"modelName":"BendFlow","labels":["Leg Pull (L)","Leg Pull  (R)","Leg Fold (L)","Leg Fold (R)","Cross Leg Turn (L)","Cross Leg Turn (R)","Shoulder Reach","Lateral Stretch","Neck Stretch (L)","Neck Stretch (R)","Oblique Reach (L)","Oblique Reach (R)","Calf Stretch (L)","Calf Stretch (R)"],"modelSettings":{"posenet":{"architecture":"MobileNetV1","outputStride":16,"inputResolution":257,"multiplier":0.75}}}
+{
+  "tfjsVersion": "1.3.1",
+  "tmVersion": "0.8.6",
+  "packageVersion": "0.8.6",
+  "packageName": "@teachablemachine/pose",
+  "timeStamp": "2022-04-04T21:31:23.342Z",
+  "userMetadata": {},
+  "modelName": "BendFlow",
+  "labels": [
+    "Leg Pull (L)",
+    "Leg Pull (R)",
+    "Leg Fold (L)",
+    "Leg Fold (R)",
+    "Cross Leg Turn (L)",
+    "Cross Leg Turn (R)",
+    "Shoulder Reach",
+    "Lateral Stretch",
+    "Neck Stretch (L)",
+    "Neck Stretch (R)",
+    "Oblique Reach (L)",
+    "Oblique Reach (R)",
+    "Calf Stretch (L)",
+    "Calf Stretch (R)"
+  ],
+  "modelSettings": {
+    "posenet": {
+      "architecture": "MobileNetV1",
+      "outputStride": 16,
+      "inputResolution": 257,
+      "multiplier": 0.75
+    }
+  }
+}

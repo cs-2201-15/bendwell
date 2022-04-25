@@ -1,4 +1,4 @@
-@import '../index.scss';
+@import "../index.scss";
 .teachable-container {
   display: flex;
   flex-direction: column;
@@ -11,8 +11,12 @@
 
   h2 {
     font-size: 24pt;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     margin-top: 30px;
+  }
+  p {
+    font-size: 14pt;
+    margin-bottom: 20px;
   }
 
   .button {
@@ -22,18 +26,15 @@
     height: 36px;
   }
 
-  // button {
-  //   @include button();
-  // }
   canvas {
     display: inline-block;
     margin-top: 20px;
-    margin-bottom: 40px;
+    // margin-bottom: 40px;
   }
 
-  button {
-    @include button();
-  }
+  // button {
+  //   @include button();
+  // }
 
   .label-container {
     display: flex;
@@ -41,23 +42,23 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    // margin-bottom: 100px;
-    // flex-grow: 1;
+    margin-bottom: 20px;
+    gap: 20px;
 
     .status {
-      display: flex;
-      flex-direction: column;
+      // display: flex;
+      // flex-direction: column;
       // margin-bottom: 30px;
       margin-top: 30px;
       font-size: 32px;
       font-weight: 300;
-      align-items: center;
-      justify-content: center;
-
-      .button-status {
-        display: inline-block;
-        background-color: black;
-      }
+      // align-items: center;
+      // justify-content: center;
     }
   }
+}
+
+.button-status {
+  // display: inline-block;
+  @include button();
 }

@@ -20,7 +20,8 @@ export const setStretches = () => {
     try {
       let { data: Stretches, error } = await supabase
         .from("stretches")
-        .select("*");
+        .select("*")
+        .order("id", { ascending: true });
       dispatch(_setStretches(Stretches));
     } catch (error) {
       console.log(error);
