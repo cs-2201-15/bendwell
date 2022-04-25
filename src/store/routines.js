@@ -73,7 +73,6 @@ export const removeRoutine = (routineId) => {
         .from("routines")
         .delete()
         .match({ id: routineId });
-      console.log(routine);
       dispatch(_removeRoutine(routineId));
     } catch (error) {
       console.log(error);

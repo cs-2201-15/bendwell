@@ -75,7 +75,6 @@ export const deleteStretch = (stretchId, routineId) => {
         .from("stretchRoutines")
         .delete()
         .match({ stretchId: stretchId, routineId: routineId });
-      console.log(data);
       dispatch(_deleteStretch(stretchId));
     } catch (error) {
       console.log(error);
@@ -100,7 +99,6 @@ export const editRoutine = (routineId, routineName, text) => {
         .eq("id", routineId);
 
       dispatch(_editRoutine(updated));
-      console.log(routine);
     } catch (error) {
       console.log(error);
     }
