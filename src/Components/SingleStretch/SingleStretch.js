@@ -15,7 +15,6 @@ const SingleStretch = () => {
   const navigate = useNavigate();
 
   stretch = stretch[0] || {};
-  console.log(stretch);
 
   useEffect(() => {
     dispatch(setStretch(stretchId));

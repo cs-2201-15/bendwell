@@ -16,7 +16,7 @@ const Teachable = () => {
     "Ready To Stretch? Press Start to Begin!"
   );
   let matched = false;
-  console.log(cameraArr);
+  // console.log(cameraArr);
   // More API functions here:
   // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
@@ -71,17 +71,17 @@ const Teachable = () => {
       if (cameraArr.length > 0) {
         // console.log("CURRENT: ", cameraArr[0].name, "Prediction: ", prediction)
         let score = verify(cameraArr[0], prediction);
-        console.log("CURRENT SCORE:", score, "for stretch:", cameraArr[0].name);
+        // console.log("CURRENT SCORE:", score, "for stretch:", cameraArr[0].name);
         if (score) {
-          console.log(
-            `Pose Matched: ${score} Hit the next stretch button to start`
-          );
+          // console.log(
+          //   `Pose Matched: ${score} Hit the next stretch button to start`
+          // );
           matched = true;
           setMatch(matched);
         }
       } else {
         setCompleted(true);
-        console.log("Routine Completed");
+        // console.log("Routine Completed");
         setStatus(
           "Routine Complete! Click to go back to check out some more stretches."
         );
@@ -91,17 +91,17 @@ const Teachable = () => {
   }
 
   const verify = (currPose, prediction) => {
-    console.log("Current:", currPose.name, prediction);
+    // console.log("Current:", currPose.name, prediction);
     for (let i = 0; i < prediction.length - 1; i++) {
       if (
         currPose.name === prediction[i].className &&
         prediction[i].probability > 0.8
       ) {
-        console.log(
-          "Matched: ",
-          prediction[i].className,
-          prediction[i].probability
-        );
+        // console.log(
+        //   "Matched: ",
+        //   prediction[i].className,
+        //   prediction[i].probability
+        // );
         setStatus(
           `Awesome job doing the ${currPose.name} stretch! Try to hold this stretch and click next to continue`
         );

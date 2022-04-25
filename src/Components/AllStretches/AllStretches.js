@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { setRoutines } from '../../store/routines';
-import { addStretch } from '../../store/routine';
-import { setStretches } from '../../store/stretches';
-import { supabase } from '../../supabaseClient';
-import './allstretches.scss';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { setRoutines } from "../../store/routines";
+import { addStretch } from "../../store/routine";
+import { setStretches } from "../../store/stretches";
+import { supabase } from "../../supabaseClient";
+import "./allstretches.scss";
 
 const AllStretches = () => {
   const dispatch = useDispatch();
@@ -31,12 +31,10 @@ const AllStretches = () => {
   };
 
   const handleClick = (stretch, selectedRoutineId) => {
-    console.log(stretch, selectedRoutineId);
     dispatch(addStretch(stretch.id, selectedRoutineId));
     // const myRoutine = routines.filter((routine) => {
     //   return routine.id === selectVal;
     // });
-    // console.log("filter: ", myRoutine);
     // alert(`Added ${stretch.name} to ${myRoutine[0].name}`);
   };
 
@@ -74,8 +72,6 @@ const AllStretches = () => {
                     <span
                       onClick={() => {
                         setIsModalOpen(false);
-                        console.log(currentStretch);
-                        console.log(routine.id);
                         handleClick(currentStretch, routine.id);
                       }}
                     >
@@ -95,7 +91,7 @@ const AllStretches = () => {
           <div className="stretch-preview" key={stretch.id}>
             <div className="stretch-content">
               <Link to={`/stretches/${stretch.id}`}>
-                {' '}
+                {" "}
                 <img src={stretch.stretchimages} alt="Stretch Img" />
                 <div className="stretch-content-text">
                   <h2>{stretch.name}</h2>

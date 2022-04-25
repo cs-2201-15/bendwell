@@ -20,7 +20,6 @@ const SingleRoutine = () => {
   if (!routine.stretches) {
     routine.stretches = [];
   }
-  console.log(routine);
 
   useEffect(() => {
     dispatch(setRoutine(routineId));
