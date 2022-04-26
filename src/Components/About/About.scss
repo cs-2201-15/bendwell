@@ -1,35 +1,29 @@
 @import "../index.scss";
 
 .about-container {
-  // background-image: url('../../../public/about-background.jpg');
-  // background-size: 100vw auto;
-  // background-position: center;
-  // background-color: ie-hex-str($color: #000000);
-  background: linear-gradient(
-      hsla(137, 70%, 12%, 0.8),
-      hsla(137, 68%, 52%, 0.8)
-    ),
-    url("../../../public/about-background.jpg");
+  background: url("../../../public/about-background.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(26, 26, 26, 0.49);
+
   width: 100%;
-  height: calc(100vh - 142px);
   background-size: cover;
   background-position: center;
-  overflow: scroll;
+  overflow-y: scroll;
   background-repeat: no-repeat;
-  position: reltaive;
+  position: relative;
   justify-content: center;
+  padding-bottom: 20px;
 
   .content {
     position: relative;
     text-align: center;
 
     h1 {
-      color: $color-background;
+      color: white;
       margin-bottom: 10px;
       font-size: 40pt;
     }
     h2 {
-      color: $color-background;
+      color: rgb(255, 255, 255);
       font-size: 26pt;
       font-weight: 400;
       margin: 0 40px;
@@ -42,28 +36,27 @@
       height: auto;
       flex-wrap: wrap;
       gap: 30px;
-      // height: 300px;
-      // border-radius: ;
 
       .creator {
         display: flex;
         flex-direction: column;
         text-align: center;
         @include card($color-primary);
+        border-radius: 1rem;
         height: auto;
         width: auto;
         padding: 28px 28px;
 
         h3 {
           margin-bottom: 20px;
-          color: $color-tertiary;
+          color: black;
           font-size: 36pt;
           font-weight: 600;
         }
         .headshot {
           width: 300px;
           height: 300px;
-          border-radius: 48px;
+          border-radius: 24px;
           margin-bottom: 10px;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }

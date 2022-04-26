@@ -1,33 +1,32 @@
 @import "../index.scss";
 
-#login-container{
-  height: 100vh;
-}
-#content-container{
+// #login-container {
+//   max-height: calc(100vh - 164px);
+
+// }
+#content-container {
   margin: 20px 20px;
   font-family: $font-title;
   font-weight: 700;
   font-size: 28pt;
   text-align: center;
 
-
-  .login{
+  .login {
     font-size: 18pt;
     margin-bottom: 20px;
     font-weight: 400;
-    letter-spacing: .01rem;
-
+    letter-spacing: 0.01rem;
   }
-  .content-block{
+  .content-block {
     display: block;
 
-    #email-label{
+    #email-label {
       font-size: 18pt;
       margin-right: 10px;
       font-weight: 300;
     }
 
-    #email{
+    #email {
       border: 1px solid rgb(137, 151, 155);
       height: 36px;
       width: 200px;
@@ -35,17 +34,15 @@
       background-color: $color-background;
       color: rgb(61, 79, 88);
       font-size: 12pt;
-      margin-left: 43px;
     }
 
-    #pass-label{
+    #pass-label {
       font-size: 18pt;
       margin-right: 10px;
       font-weight: 300;
-
     }
 
-    #password{
+    #password {
       border: 1px solid rgb(137, 151, 155);
       height: 36px;
       width: 200px;
@@ -53,12 +50,10 @@
       background-color: $color-background;
       color: rgb(61, 79, 88);
       font-size: 12pt;
-
     }
   }
 
-
-  #create-btn{
+  #create-btn {
     @include button;
     font-size: 14px;
     font-weight: 400;

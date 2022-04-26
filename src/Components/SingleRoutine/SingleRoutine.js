@@ -57,8 +57,8 @@ const SingleRoutine = () => {
             className="single-routine-header"
             style={{ borderBottom: "2px" }}
           >
-            <h2 style={{ paddingTop: "10px" }}>{routine.name}</h2>
-            <h3 style={{ color: "navy" }}>{routine.notes}</h3>
+            <h1 style={{ paddingTop: "10px" }}>{routine.name}</h1>
+            <h2 style={{ color: "navy" }}>{routine.notes}</h2>
           </div>
 
           {/* <div className="landingpage-single"> */}
@@ -74,7 +74,7 @@ const SingleRoutine = () => {
                       <h2 style={{ color: "navy", paddingBottom: "5px" }}>
                         {stretch.name}
                       </h2>
-                      <img src={stretch.image_url} alt="Stretch Img" />
+                      <img src={stretch.stretchimages} alt="Stretch Img" />
                       <h3>{`Target: ${stretch.target}`}</h3>
                     </Link>
                     <button
